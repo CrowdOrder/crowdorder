@@ -1,0 +1,173 @@
+﻿@using CrowdOrder.beta.Infrastructure;
+@inject SiteDataService siteDataService
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<section id="hero" class="section-bg">
+    <div id="heroCarousel" class="slide carousel-fade">
+        <div class="carousel-inner" role="listbox">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <div class="container">
+                        <div class="row content" style="margin-top:40px">
+                            <div class="col-lg-6 align-text-bottom">
+                                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Crowd Order</span></h2>
+                                <p class="animate__animated animate__fadeInUp">
+                                    The only marketplace where companies offer exclusive rates to start-ups and SMEs
+                                    Everything your business needs at an attractive price.
+                                </p>
+                                <a href="#who" class="btn-get-started animate__animated animate__fadeInUp scrollto">Learn More</a>
+                            </div>
+                            <div class="col-lg-6 pt-4 pt-lg-0">
+                                <img src="~/finance400.png" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Hero -->
+<main id="main">
+    <!-- ======= Who Section ======= -->
+    <section id="who" class="about">
+        <div class="container">
+
+            <div class="row content">
+                <div class="col-lg-6">
+                    <h2>Who we are</h2>
+                    <p>Crowd Order is the only marketplace where great companies are prepared to offer their products and services at exclusive rates to start-ups and SMEs </p>
+                    <a href="about-us" class="get-started-btn animate__animated animate__fadeInUp scrollto">Learn More</a>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <img src="~/Who we are400.png" />
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Who Section -->
+    <!-- ======= what Section ======= -->
+    <section id="what" class="about">
+        <div class="container">
+
+            <div class="row content">
+                <div class="col-lg-6">
+                    <img src="~/commerce400.png" />
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h2>What we do</h2>
+                    <p>
+                        We find companies that are ready to offer you a reduced rate, representing the buying power of all of the start-ups and SMEs using Crowd Order to find new providers
+                    </p>
+                    <p>
+                        It's completely free to explore and take advantage of this new marketplace and takes less than a minute to get started
+                    </p>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="get-started-btn animate__animated animate__fadeInUp scrollto">Get Started</a>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= available Section ======= -->
+    <section id="available" class="about">
+        <div class="container">
+            <div class="row content">
+                <div class="col-lg-6">
+                    <h2>Whats Available</h2>
+                    <p>Are you looking for a new software solution? A marketing or design agency to work on your brand? To discover new ways to save on tax? Perhaps to improve your finance function? Or maybe to outsource admin or other operations? Whatever your need, we have a Partner willing to offer you an exclusive rate</p>
+                    <a href="/small-business-start-up-services" class="get-started-btn animate__animated animate__fadeInUp scrollto">View all offers</a>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <img src="~/What's available500.png" />
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Whats Section -->
+    <!-- ======= Partners Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="partners/byrd_logo.png" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="~/partners/Custard_logo.jpg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="~/partners/Digital_Next_logo.jpg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="~/partners/Glorious_Creative_logo.jpg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="~/partners/kissflow_logo.png" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="~/partners/pipedrive_logo.png" class="img-fluid" alt="">
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Clients Section -->
+    <!-- ======= blog Section ======= -->
+
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our Blog</h2>
+                <p>Latest information from our team</p>
+            </div>
+
+            <div class="row">
+                @foreach (var item in siteDataService.GetLatestBlogs(2))
+                {
+                    var first = true;
+                    if (first)
+                    {
+                        first = false;
+                        <div class="col-md-6">
+                            <div class="icon-box">
+                                <i class="icofont-computer"></i>
+                                <h4><a href="blog-single.html">@item.Title</a></h4>
+                                <p>@item.Abstract</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-6 mt-4 mt-md-0">
+                            <div class="icon-box">
+                                <i class="icofont-computer"></i>
+                                <h4><a href="blog-single.html">@item.Title</a></h4>
+                                <p>@item.Abstract</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+</main><!-- End #main -->
+
+
+
+
+
+
+
+

@@ -1,0 +1,182 @@
+﻿@model CrowdOrder.beta.Models.Partner
+@using CrowdOrder.beta.Infrastructure;
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject PartnerConnectionsService ConnectService
+@{
+    ViewData["Title"] = Model.Title;
+}
+@section metatags
+{
+    <meta name="description" content=@Model.MetaDescription />
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>@Html.DisplayFor(model => model.H1)</h1>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/small-business-start-up-services">Services</a></li>
+                    <li>@Model.Name</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+
+                        <div class="entry-img">
+                            <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{Model.LogoUrl}")" alt="" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            About @Model.Name
+                        </h2>
+
+                        <div class="entry-content">
+                            <markdown source="@Model.About"></markdown>
+                        </div>
+                        <div class="entry-content">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                if (ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)Model.Services[0].Id))
+                                {
+                                    <p class="alreadyTakenUp"><strong>You have already received this offer</strong></p>
+                                }
+                                else
+                                {
+                                    if (Model.Services[0].QualifyingCriteria != null && Model.Services[0].QualifyingCriteria != "")
+                                    {
+                                        <div class="section-bg">
+                                            <div class="checksContainer">
+                                                <h4 id="qualifying">Qualifying criteria</h4>
+                                                <markdown source="@Model.Services[0].QualifyingCriteria"></markdown>
+                                                <input class="checks" type="checkbox" name="chkAgree" value="Agree" /> &nbsp;&nbsp;I acknowledge the qualifying criteria to be true and correct.
+                                            </div>
+                                        </div>
+                                        <a class="connect get-started-btn isDisabled" asp-controller="PartnerConnect" asp-action="Details" asp-route-id="@Model.Services[0].Id" disabled>Connect to Partner</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="get-started-btn" asp-controller="PartnerConnect" asp-action="Details" asp-route-id="@Model.Services[0].Id">Connect to Partner</a>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <a class="get-started-btn" asp-area="Identity" asp-page="/Account/login" asp-route-id="@Model.Id">Login to view offers</a>
+                            }
+
+                        </div>
+
+                        <div class="entry-footer clearfix">
+
+                            <div class="float-right share">
+                                <a href="http://www.twitter.com/share?url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)" title="Share on Twitter" class="twitter-share-button"><i class="icofont-twitter"></i></a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)&amp;src=sdkpreparse" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)&title=&summary=&source=" title="Share on LinkedIn"><i class="icofont-linkedin"></i></a>
+                            </div>
+
+                        </div>
+
+                    </article><!-- End blog entry -->
+
+                </div><!-- End blog entries list -->
+
+                <div class="col-lg-4">
+
+                    <div class="sidebar">
+                        <div class="sidebar-item recent-posts">
+
+                            <div class="sidebar-item categories">
+                                <ul>
+                                    <li><a href="@Model.SiteUrl">Visit Partner Site</a></li>
+                                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")"><< Back to Discounts</a></li>
+                                </ul>
+                            </div>
+                            <h3 class="sidebar-title">Services</h3>
+                            @foreach (var item in Model.Services)
+                            {
+                        <div class="post-item clearfix">
+                            <img src="assets/img/business-6.jpg" alt="">
+                            <h4> @Html.DisplayFor(modelItem => item.Title)</h4>
+                            <p>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    @Html.DisplayFor(modelItem => item.DiscountOffer)
+                                }
+                                else
+                                {
+                                    @Html.Raw("Please login in to view offer")
+                                }
+                            </p>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                if (ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)item.Id))
+                                {
+                                    <p class="alreadyTakenUp"><strong>You have already received this offer</strong></p>
+                                }
+                                else
+                                {
+                                    if (Model.Services[0].QualifyingCriteria != null && Model.Services[0].QualifyingCriteria != "")
+                                    {
+                                        <h4>Please confirm you qualify for this offer/discount</h4>
+                                        <p><a href="#qualifying">&lt;&lt;Click here&gt;&gt;</a> to check you qualify for this offer/discount</p>
+                                        <a class="connect get-started-btn isDisabled" asp-controller="PartnerConnect" asp-action="Details" asp-route-id="@item.Id" disabled>Connect to Partner</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="get-started-btn" asp-controller="PartnerConnect" asp-action="Details" asp-route-id="@item.Id">Connect to Partner</a>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <a class="get-started-btn" asp-area="Identity" asp-page="/Account/login" asp-route-id="@item.Id">Login to view offers</a>
+                            }
+                        </div>
+                            }
+
+                        </div><!-- End sidebar recent posts-->
+
+                    </div><!-- End sidebar -->
+
+                </div><!-- End blog sidebar -->
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+</main>
+@section scripts
+{
+    <script>
+        $('.checksContainer').prop("disabled", true);
+        $('input:checkbox').click(function () {
+            if ($(this).is(":checked")) {
+                $("a.connect").removeClass("isDisabled");
+                $("a.connect").prop('disabled', false);
+            } else {
+                $("a.connect").addClass("isDisabled");
+                $("a.connect").prop('disabled', true);
+            }
+        });
+    </script>
+
+}

@@ -1,0 +1,41 @@
+﻿@model CrowdOrder.beta.Models.Category
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section metatags
+{
+    <meta name="description" content=@Model.MetaDescription />
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Categories
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SubCategories)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Services" asp-route-id="@item.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

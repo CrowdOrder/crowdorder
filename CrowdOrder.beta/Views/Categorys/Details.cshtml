@@ -1,0 +1,75 @@
+﻿@model CrowdOrder.beta.Models.Category
+@using CrowdOrder.beta.Infrastructure;
+@{
+    ViewData["Title"] = Model.Title;
+}
+@section metatags
+{
+    <meta name="description" content="@Model.MetaDescription" />
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/small-business-start-up-services">Services</a></li>
+                    <li>@Model.Name</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+                <h1>@Html.DisplayFor(model => model.H1)</h1>
+                <p>@Html.DisplayFor(model => model.Body)</p>
+                @foreach (var item in Model.SubCategories)
+                {
+            <section id="blog" class="blog">
+                <h3>@Html.DisplayFor(modelItem => item.Name) </h3>
+                <div class="row">
+
+                    @*<a href="@item.Url">View all @item.Name</a>*@
+                </div>
+                <div class="row">
+                    @foreach (var serv in item.Services)
+                    {
+                        <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                            <div class="entry">
+
+                                <div class="entry-img">
+                                    <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{serv.Partner.LogoUrl}")" alt="" class="img-fluid">
+                                </div>
+
+                                <h2 class="entry-title">
+                                    @Html.DisplayFor(modelItem => serv.Partner.Title)
+                                </h2>
+
+                                <div class="entry-content">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => serv.Partner.Body)
+                                    </p>
+                                    <div class="read-more">
+                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, serv.Partner.Url)">Click here for offers</a>
+                                    </div>
+                                </div>
+
+                            </div><!-- End blog entry -->
+                        </div>
+                    }
+                </div>
+            </section>  
+                }
+
+            </div>
+        </div>
+    </section>
+</main>

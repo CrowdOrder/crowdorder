@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CrowdOrder.beta.Models.Partner>
+
+@{
+    ViewData["Title"] = "Partners";
+}
+
+<h1>Partners</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.About)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MainContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MainContactEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MainContactTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultPartnerSignupType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.About)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainContactEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainContactTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultPartnerSignupType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

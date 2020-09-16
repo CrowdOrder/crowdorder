@@ -1,0 +1,96 @@
+﻿@model CrowdOrder.beta.Models.Article
+@using Microsoft.AspNetCore.Identity
+@using CrowdOrder.beta.Infrastructure;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject SiteDataService siteDataService
+@{
+    ViewData["Title"] = "Details";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Start Up and Small Business Blog and Guides</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "/small-business-start-up-blogs-guides")"></a>Blogs &amp; Guides</li>
+                    <li>Blog</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+                        <h2 class="entry-title">
+                            @Model.Title
+                        </h2>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="icofont-user"></i>@(Model.Author.Email ?? Model.Author.UserName)</li>
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>                                
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <markdown source="@Model.Contents"></markdown>
+
+                        </div>
+
+                        <div class="entry-footer clearfix">
+                            <div class="float-left">                               
+                            </div>
+
+                            <div class="float-right share">
+                                <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
+                                <a href="" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                            </div>
+
+                        </div>
+
+                    </article><!-- End blog entry -->
+
+                   
+
+
+                </div><!-- End blog entries list -->
+
+                <div class="col-lg-4">
+
+                    <div class="sidebar">                       
+
+                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <div class="sidebar-item recent-posts">
+                            @foreach (var item in siteDataService.GetLatestBlogs(3))
+                            {
+                                <div class="post-item clearfix">
+                                    <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
+                                    <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time>
+                                </div>
+                            }
+
+                        </div><!-- End sidebar recent posts-->
+
+                    </div><!-- End sidebar -->
+
+                </div><!-- End blog sidebar -->
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+</main><!-- End #main -->

@@ -1,0 +1,36 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Account signup confirmation";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>@ViewData["Title"]</h1>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>@ViewData["Title"]</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <p>
+                        In order to validate your details we have sent an email to your given address. Please check your email to confirm your account.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

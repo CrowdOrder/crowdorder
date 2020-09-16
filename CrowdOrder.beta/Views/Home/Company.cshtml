@@ -1,0 +1,73 @@
+﻿@model CrowdOrder.beta.Models.Company
+
+@{
+    ViewData["Title"] = "Company Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Company Details</h1>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Company Details</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="form-row">
+                <div class="col-md-8">
+                    <form asp-action="Company">
+                        <p>To enable us to provide you with our offers and discounts, please provide the following essential information.</p>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger" ><p>Please complete all fields</p></div>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Company Name</label><span asp-validation-for="Name" class="text-danger"></span>
+                            <input asp-for="Name" class="form-control" />                            
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <!--Grid column-->
+                                <div class="col-md-5">
+                                    <div class="md-form mb-0">
+                                        <label for="ContactFirstName" class="">First name</label><span asp-validation-for="ContactFirstName" class="text-danger"></span>
+                                        <input asp-for="ContactFirstName" class="form-control" />                                        
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+                                <!--Grid column-->
+                                <div class="col-md-7">
+                                    <div class="md-form mb-0">
+                                        <label for="ContactLastName" class="">Last name</label><span asp-validation-for="ContactLastName" class="text-danger"></span>
+                                        <input asp-for="ContactLastName" class="form-control" />                                        
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save details" class="get-started-btn" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

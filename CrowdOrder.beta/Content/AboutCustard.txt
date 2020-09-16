@@ -1,0 +1,27 @@
+﻿<h3>SEO, PPC & Paid Social Media Advertising</h3>
+                        <p>
+                            Tailored SEO, PPC & SMM campaigns from an honest digital marketing agency
+                        </p>
+                        <p>
+                            "Get in front of your customers with flexible results-focused SEO, PPC and SMM campaigns from Custard. Rebuild your faith in the power of search marketing"
+                        </p>
+
+
+                        <h4>What you need to know:</h4>
+                        <ul>
+                            <li>Custard a boutique marketing firm based in Manchester that pride themselves on their integrity and ability to generate value for clients</li>
+                            <li>Custard were shortlisted for both the U.K Search Awards in 2019 and the Northern Digital Awards in 2020</li>
+                            <li>They've had some fantastic results across their PPC, SEO and Social Media Management which are showcased here</li>
+                        </ul>
+
+                        <h4>Discounted pricing:</h4>
+                        <ul>
+                            <li>Regardless of the service, Custard will offer you a 10% discount across all fees</li>
+                        </ul>
+
+                        <h4>Who is this service relevant for:</h4>
+                        <ul>
+                            <li>Any company looking to gain further traction / customers via any marketing channel</li>
+                            <li>Any company looking to refresh their website or improve its effectiveness at converting traffic</li>
+                            <li>Companies whose marketing budgets would allow for Custard's minimum monthly management fee of £500+VAT for paid social and search services or £2,000 for SEO related management services</li>
+                        </ul>

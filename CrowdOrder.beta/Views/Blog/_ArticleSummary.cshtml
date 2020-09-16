@@ -1,0 +1,22 @@
+@model CrowdOrder.beta.Models.Article
+@using CrowdOrder.beta.Infrastructure;
+
+<div class="row article-summary">
+    <div class="col-md-4">
+        <profile-picture profile="@Model.Author" size-px="40" />
+        <p class="text-center author-name">
+            @(Model.Author.Email ?? Model.Author.UserName)
+        </p>
+        <p class="text-center">
+            @Model.CreatedDate.ToString("dd MMM yyyy")
+        </p>
+    </div>
+    <div class="col-md-8">
+        <h4>
+            <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")">@Model.Title</a>
+        </h4>
+        <blockquote>
+            <p>@Model.Abstract</p>
+        </blockquote>
+    </div>
+</div>
