@@ -111,6 +111,15 @@ namespace CrowdOrder.beta.Data
                             H1 = "CRM Services, Offers and Discounts",
                             Body = "Retaining customer data is so important in today's world for businesses. Find the best solutions here with our carefully selected partners."
                         },
+                        new SubCategory()
+                        {
+                            Name="Branding Services",
+                            Url = "marketing-services-offers-discounts/branding-services",
+                            Title = "Branding Services, Offers and Discounts",
+                            MetaDescription = "Do you want your branding to reflect your professionalism and how unique your business is? Look no further than Crowd Order’s Branding partners.",
+                            H1 = "Branding Services, Offers and Discounts",
+                            Body = "Do you want your branding to reflect your professionalism and how unique your business is? Look no further than Crowd Order’s Branding partners."
+                        }
                     }
                 },
                 new Category()
@@ -176,6 +185,15 @@ namespace CrowdOrder.beta.Data
                             MetaDescription = "Do you need Life Assurance and Pension Services for your business? Our partners can steer you in the right direction.",
                             H1 = "Regulated Advice Services, Offers and Discounts",
                             Body = "Do you need Life Assurance and Pension Services for your business? Our partners can steer you in the right direction."
+                        },
+                        new SubCategory()
+                        {
+                            Name = "Payment Solutions",
+                            Url = "financial-accountancy-offers-discounts/payment-solutions",
+                            Title = "Payment Solutions, Offers and Discounts",
+                            MetaDescription = "Do you need a safe and secure solution to taking online payments? Take a look at Crowd Order’s excellent payment solution partners and explore their small-business friendly offers.",
+                            H1 = "Payment Solutions, Offers and Discounts",
+                            Body = "Do you need a safe and secure solution to taking online payments? Take a look at Crowd Order’s excellent payment solution partners and explore their small-business friendly offers."
                         },
                     }
                 },

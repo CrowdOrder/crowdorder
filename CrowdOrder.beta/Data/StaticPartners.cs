@@ -540,7 +540,7 @@ namespace CrowdOrder.beta.Data
                 "Your company<ul><li>Has acknowledged they are open to paying a monthly management fee of £500 for Paid Search related services</li><li>OR has acknowledged they are open to paying a monthly management fee of £500 for Paid Social related services </li><li>OR has acknowledged they are open to paying a monthly management fee of £2,000 for SEO related services</li></ul>"
                 );
             
-            CreatePartner(context, "Glorious creative", "Social Media and Influencer Marketing Services", "Branding Agency", "Bespoke", "small-business-start-up-services/glorious-creative", "Glorious Creative - Start Up and SME Services", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets.", "Glorious Creative", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets. To find out more about Glorious Creative, click on the ‘Click here for offers’ button.", "glorious_creative_logo.jpg", "", "Mark Ross", "mark@gloriouscreative.co.uk", "https://www.gloriouscreative.co.uk/",
+            CreatePartner(context, "Glorious creative", "Branding Services", "Branding Agency", "Bespoke", "small-business-start-up-services/glorious-creative", "Glorious Creative - Start Up and SME Services", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets.", "Glorious Creative", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets. To find out more about Glorious Creative, click on the ‘Click here for offers’ button.", "glorious_creative_logo.jpg", "", "Mark Ross", "mark@gloriouscreative.co.uk", "https://www.gloriouscreative.co.uk/",
                 "<h3>" +
                             "Branding and Design Services" +
                         "</h3>" +
@@ -578,9 +578,9 @@ namespace CrowdOrder.beta.Data
                             "</li>" +
                         "</ul>"
                 );
-           
-            //CreatePartner(context, "Opayo", "Accounting and Bookkeeping Services", "Payment Processing Services", "Bespoke", "small-business-start-up-services/opayo", "Opayo - Start Up and SME Services", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more.", "Opayo", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more. To find out more about Opayo, click on the ‘Click here for offers’ button.", "sage_pay_logo.png", "https://www.sagepaylabs.com/SSO/login.jsp?application=LeadHandover", "", "");
-           
+
+            //CreatePartner(context, "Opayo", "Accounting and Bookkeeping Services", "Payment Solutions", "Bespoke", "small-business-start-up-services/opayo", "Opayo - Start Up and SME Services", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more.", "Opayo", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more. To find out more about Opayo, click on the ‘Click here for offers’ button.", "sage_pay_logo.png", "https://www.sagepaylabs.com/SSO/login.jsp?application=LeadHandover", "", "");
+
             CreatePartner(context, "Wrike", "Project Management Software", "Workflow Management Software", "10%", "small-business-start-up-services/wrike", "Wrike - Start Up and SME Services", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more.", "Wrike", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more. To find out more about Wrike, click on the ‘Click here for offers’ button.", "wrike_logo.jpg", "", "Jose Maroto", "jose.maroto@team.wrike.com", "https://www.wrike.com/",
                 " <h3>" +
                             "Workflow Management & Collaboration Software" +
@@ -634,8 +634,56 @@ namespace CrowdOrder.beta.Data
                         "</ul>"
                 );
            
-            CreatePartner(context, "Kiss Flow", "Cloud-Based IT Services", "Workflow Management Software", "10%", "small-business-start-up-services/kiss-flow", "Kiss Flow - Start Up and SME Services", "", "", "", "kissflow_logo.png", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral", "", "");
-           
+            CreatePartner(context, "Kiss Flow", "Cloud-Based IT Services", "Workflow Management Software", "10%", "small-business-start-up-services/kiss-flow", "Kiss Flow - Start Up and SME Services", "", "", "", "kissflow_logo.png", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral", "", "", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral",
+                " <h3>" +
+                            "Kissflow" +
+                        "</h3>" +                        
+                        "<p>" +
+                            "<strong>" +
+                                 "Don't trust us. Trust 10,000+ digital leaders. The most advanced companies in the world use Kissflow as their digital workplace partner." +
+                            "</strong>" +
+                        "</p>" +
+                        "<h4>What you need to know:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Kissflow is a cloud-based forms automation that automates business processes and tracks performance across collaboration, HR, Procurement and more." +
+                            "</li>" +
+                            "<li>" +
+                                "Their software automates and simplifies these processes within a single solution, so you have enough time for other time intensive projects to help grow your business." +
+                            "</li>" +
+                            "<li>Over 10,000 digital leaders are already successfully using Kissflow from companies such as Uber, Pepsi and Domino’s.</li>" +
+                        "</ul>" +
+                        "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Kissflow offer three different pricing structures, depending on what solutions you would like:" +
+                                "<ul>" +
+                                    "<li>" +
+                                        "Starter" +
+                                    "</li>" +
+                                    "<li>" +
+                                        "Growing" +
+                                    "</li>" +
+                                    "<li>" +
+                                        "Enterprise" +
+                                    "</li>" +
+                                "</ul>" +
+                            "</li>" +
+                            "<li>" +
+                                "Kissflow offer all Crowd Order users a discount for all implementation and set-up fees, regardless of which package you choose." +
+                            "</li>" +
+                            "<li>" +
+                                "We encourage our users to reach out to Kissflow to receive a quote and to take advantage of their offer of a two-week free trial." +
+                            "</li>" +
+                        "</ul>" +
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Any company that employs more than 100 employees" +
+                            "</li>       " +
+                        "</ul>");
+
+
         }
         public static void CreatePartner(ApplicationDbContext context, string name, string subCategoryName, string serviceName, string serviceOffer,
             string url, string title, string meta, string h1, string body, string logoFileName = "", string connectUrl = "", string mainContact = null, string mainContactEmail = null, string siteUrl = "", string about = "", string qualifyingCriteria = "")

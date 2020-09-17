@@ -731,3 +731,4 @@ C:\DEV\In Progress\Crowdorder\git\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdO
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.dll
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.pdb
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.genruntimeconfig.cache
+C:\DEV\In Progress\Crowdorder\git\CrowdOrder.Test\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\CrowdOrderbetaAppService - Web Deploy\profile.arm.json
