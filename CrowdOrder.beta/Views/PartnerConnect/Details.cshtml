@@ -35,48 +35,56 @@
                 <h1>Thank you for selecting @Model.PartnerConnection.Service.Partner.Name</h1>
                 <p></p>
             </div>
-            <div class="row">                
-                @if (Model.PartnerConnection.Service.PartnerSignupType == CrowdOrder.beta.Data.DataHelpers.PartnerSignupType.Url)
-                {
+
+            @if (Model.PartnerConnection.Service.PartnerSignupType == CrowdOrder.beta.Data.DataHelpers.PartnerSignupType.Url)
+            {
+                <div class="row">
                     <p>You will be redirected in 5 seconds to their website</p>
-                }
-                else
-                {
-                    <p>Your details have been sent to @Model.PartnerConnection.Service.Partner.Name who will contact you in due course</p>
-                    <div>
-                        <h3>You may also be interested in</h3>                
-                        <div class="row">
-                            @foreach (var item in Model.Suggestions)
-                            {
-                                <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                                    <div class="entry">
-
-                                        <div class="entry-img">
-                                            <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{item.Partner.LogoUrl}")" alt="" class="img-fluid">
-                                        </div>
-
-                                        <h2 class="entry-title">
-                                            @Html.DisplayFor(modelItem => item.Partner.Title)
-                                        </h2>
-
-                                        <div class="entry-content">
-                                            <p>
-                                                @Html.DisplayFor(modelItem => item.Title)
-                                            </p>
-                                            <div class="read-more">
-                                                <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, item.Partner.Url)">Details</a>
-                                            </div>
-                                        </div>
-
-                                    </div><!-- End blog entry -->
-                                </div>
-                            }
-                        </div>
-                    </div>
-                }
                 </div>
+            }
+            else
+            {
+                <div class="row">
+                    <p>Your details have been sent to @Model.PartnerConnection.Service.Partner.Name who will contact you in due course</p>
+                </div>
+            }
         </div>
     </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h3>You may also be interested in</h3>
+                    <div class="row">
+                        @foreach (var item in Model.Suggestions)
+                        {
+                            <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                                <div class="entry">
 
+                                    <div class="entry-img">
+                                        <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{item.Partner.LogoUrl}")" alt="" class="img-fluid">
+                                    </div>
+
+                                    <h2 class="entry-title">
+                                        @Html.DisplayFor(modelItem => item.Partner.Title)
+                                    </h2>
+
+                                    <div class="entry-content">
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </p>
+                                        <div class="read-more">
+                                            <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, item.Partner.Url)">Details</a>
+                                        </div>
+                                    </div>
+
+                                </div><!-- End blog entry -->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 

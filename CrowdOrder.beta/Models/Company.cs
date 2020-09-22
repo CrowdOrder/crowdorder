@@ -16,6 +16,9 @@ namespace CrowdOrder.beta.Models
         public string ContactFirstName { get; set; }
         public string ContactLastName { get; set; }
         public string Url { get; set; }
+        
+        [Required(ErrorMessage = " * ")]
+        [RegularExpression(@"^(?:(?!@gmail|@hotmail|@googlemail|@live).)*$\r?\n?", ErrorMessage =" Please do not use your personal email(hotmail. gmail etc)")]
         public string Email { get; set; }
         public string Address { get; set; }
 

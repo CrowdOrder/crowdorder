@@ -10,7 +10,7 @@ namespace CrowdOrder.beta.Data
     {
         public static void Create(ApplicationDbContext context)
         {
-            CreatePartner(context, "Vat4U", "Accounting and Bookkeeping Services", "Online VAT Reclaim", "10%", "small-business-start-up-services/vat4u", "VAT4U - Start Up and SME Services", "VAT4U provides the most advanced technology to maximise your VAT recovery, helping you to recover VAT on travel expenses and supplier invoices.", "VAT4U", "VAT4U provides the most advanced technology to maximise your VAT recovery, helping you to recover VAT on travel expenses and supplier invoices. To find out more about VAT4U, click on the ‘Click here for offers’ button." , "Vat4u_logo.png", "", "Ann Jones", "ajones@vat4u.com", "https://www.vat4u.com/",
+            CreatePartner(context, "Vat4U", "Accounting and Bookkeeping Services", "Online VAT Reclaim", "10%", "small-business-start-up-services/vat4u", "VAT4U", "VAT4U provides the most advanced technology to maximise your VAT recovery, helping you to recover VAT on travel expenses and supplier invoices.", "VAT4U", "VAT4U provides the most advanced technology to maximise your VAT recovery, helping you to recover VAT on travel expenses and supplier invoices. To find out more about VAT4U, click on the ‘Click here for offers’ button." , "Vat4u_logo.png", "", "Ann Jones", "ajones@vat4u.com", "https://www.vat4u.com/",
                 "<h3>" +
                             "VAT Reclaim Services" +
                         "</h3>" +
@@ -32,12 +32,6 @@ namespace CrowdOrder.beta.Data
                                 "Established in more than 15 countries, VAT4U is capable of offering truly global coverage" +
                             "</li>" +
                         "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>The VAT4U fee is based on a percentage of the VAT claimed</li>" +
-                            "<li>Typically, VAT4U charge 5 or 20% of the VAT recovered, depending on which service you choose</li>" +
-                            "<li>VAT4U offer Crowd Order users a 10% discount</li>" +
-                        "</ul>" +
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>Companies who have a travel or cross border spend</li>" +
@@ -48,10 +42,16 @@ namespace CrowdOrder.beta.Data
                                 "Companies who are not in the Tour Operators Margin Scheme" +
                             "</li>" +
                         "</ul>",
-                "Your company<ul><li>Is not VAT exempt</li><li>Is not part of the tour operators margin scheme</li><li>Has a cross border or travel spend</li></ul>"
+                "Your company<ul><li>Is not VAT exempt</li><li>Is not part of the tour operators margin scheme</li><li>Has a cross border or travel spend</li></ul>",
+                "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>The VAT4U fee is based on a percentage of the VAT claimed</li>" +
+                            "<li>Typically, VAT4U charge 5 or 20% of the VAT recovered, depending on which service you choose</li>" +
+                            "<li>VAT4U offer Crowd Order users a 10% discount</li>" +
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "Recoup Capital", "Accounting and Bookkeeping Services", "R&D Tax Credit Reclaim", "10%", "small-business-start-up-services/recoup-capital", "Recoup Capital - Start Up and SME Services", "Recoup Capital are Research & Development tax specialists, working with a panel of the UK’s most reputable accountancy firms, to advise with R&D tax relief claims. This is a must have service for innovative small businesses and startups.", "Recoup Capital", "Recoup Capital are Research & Development tax specialists, working with a panel of the UK’s most reputable accountancy firms, to advise with R&D tax relief claims. This is a must have service for innovative small businesses and startups. To find out more about Digital Next, click on the ‘Click here for offers’ button.", "recoup_capital_logo.png", "", "James Turley", "james@recoupcapital.co.uk", "https://recoupcapital.co.uk/", 
+            CreatePartner(context, "Recoup Capital", "Accounting and Bookkeeping Services", "R&D Tax Credit Reclaim", "10%", "small-business-start-up-services/recoup-capital", "Recoup Capital", "Recoup Capital are Research & Development tax specialists, working with a panel of the UK’s most reputable accountancy firms, to advise with R&D tax relief claims. This is a must have service for innovative small businesses and startups.", "Recoup Capital", "Recoup Capital are Research & Development tax specialists, working with a panel of the UK’s most reputable accountancy firms, to advise with R&D tax relief claims. This is a must have service for innovative small businesses and startups. To find out more about Digital Next, click on the ‘Click here for offers’ button.", "recoup_capital_logo.png", "", "James Turley", "james@recoupcapital.co.uk", "https://recoupcapital.co.uk/", 
                 "<h3>" +
                             "R&D Tax Credit Reclaim Services" +
                         "</h3>" +
@@ -69,8 +69,15 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "They offer a no obligation free consultation" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                       
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Companies that invest money into new or existing products, processes and services" +
+                            "</li>" +
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>The Recoup Capital fee is based on a % of the re-claimed amount</li>" +
                             "<li>" +
@@ -79,16 +86,10 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Recoup Capital offer Crowd Order users a 10% discount, reducing this amount to 22.5%" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Companies that invest money into new or existing products, processes and services" +
-                            "</li>" +
                         "</ul>"
                 );
 
-            CreatePartner(context, "Registered address", "Registered Address Provider", "Registered Address Provider", "10%", "small-business-start-up-services/registered-address", "Registered Address - Start Up and SME Services", "Are you hoping to start a small business or startup company and don’t have a company formed or physical address yet? Registered Address can help give a professional look to your business at a low cost.", "Registered Address", "Are you hoping to start a small business or startup company and don’t have a company formed or physical address yet? Registered Address can help give a professional look to your business at a low cost. To find out more about Registered Address, click on the ‘Click here for offers’ button.", "registered_address_new_logo.jpg", "https://www.registeredaddress.co.uk", "", "", "https://www.registeredaddress.co.uk/",
+            CreatePartner(context, "Registered address", "Registered Address Provider", "Registered Address Provider", "10%", "small-business-start-up-services/registered-address", "Registered Addres", "Are you hoping to start a small business or startup company and don’t have a company formed or physical address yet? Registered Address can help give a professional look to your business at a low cost.", "Registered Address", "Are you hoping to start a small business or startup company and don’t have a company formed or physical address yet? Registered Address can help give a professional look to your business at a low cost. To find out more about Registered Address, click on the ‘Click here for offers’ button.", "registered_address_new_logo.jpg", "https://www.registeredaddress.co.uk", "", "", "https://www.registeredaddress.co.uk/",
                 "<h3>" +
                             "Registered Address & Business Formation Services" +
                         "</h3>" +
@@ -120,8 +121,15 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                "They have a 4.7 star review across nearly a thousand review on Trust Pilot" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                       
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Any company looking to present a professional image by having an address in a premium location" +
+                            "</li>" +
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>Registered Address offer annual use of premium office address from £24.95 - 99 per year</li>" +
                             "<li>" +
@@ -130,16 +138,10 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Simply enter this code at the checkout: CRD15P" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Any company looking to present a professional image by having an address in a premium location" +
-                            "</li>" +
                         "</ul>"
                 );
 
-            CreatePartner(context, "Smart PA", "Outsourced Administration & PA Services", "Outsourced Administration & PA Services", "5%", "small-business-start-up-services/smartpa", "SmartPA - Start Up and SME Services", "SmartPA help you delegate time consuming tasks to Virtual Assistants to enable you to concentrate on what really matters to your business. SmartPA’s Virtual Assistants can assist with tasks ranging from Admin, Marketing and Business Support.", "SmartPA", "SmartPA help you delegate time consuming tasks to Virtual Assistants to enable you to concentrate on what really matters to your business. SmartPA’s Virtual Assistants can assist with tasks ranging from Admin, Marketing and Business Support. To find out more about SmartPA, click on the ‘Click here for offers’ button.", "smart_pa_logo.png", "", "Team", "marketing@smart-pa.com", "https://www.smart-pa.com/uk/",
+            CreatePartner(context, "Smart PA", "Outsourced Administration & PA Services", "Outsourced Administration & PA Services", "5%", "small-business-start-up-services/smartpa", "SmartPA", "SmartPA help you delegate time consuming tasks to Virtual Assistants to enable you to concentrate on what really matters to your business. SmartPA’s Virtual Assistants can assist with tasks ranging from Admin, Marketing and Business Support.", "SmartPA", "SmartPA help you delegate time consuming tasks to Virtual Assistants to enable you to concentrate on what really matters to your business. SmartPA’s Virtual Assistants can assist with tasks ranging from Admin, Marketing and Business Support. To find out more about SmartPA, click on the ‘Click here for offers’ button.", "smart_pa_logo.png", "", "Team", "marketing@smart-pa.com", "https://www.smart-pa.com/uk/",
                 "<h3>" +
                             "Virtual PA & Administrative Support" +
                         "</h3>" +
@@ -177,8 +179,18 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "No sign-up costs or overheads" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                       
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Individuals and entrepreneurs" +
+                            "</li>" +
+                            "<li>Small and medium-sized businesses</li>" +
+                            "<li>Large corporations and government bodies</li>" +
+                            "<li>Anyone looking to streamline their processes, cut costs and increase efficiency</li>" +
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>" +
                                 "SmartPA offer 5 pricing tiers:" +
@@ -203,20 +215,11 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "SmartPA offer Crowd Order users a 5% discount for the first 3 months" +
                             "</li>                            " +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Individuals and entrepreneurs" +
-                            "</li>" +
-                            "<li>Small and medium-sized businesses</li>" +
-                            "<li>Large corporations and government bodies</li>" +
-                            "<li>Anyone looking to streamline their processes, cut costs and increase efficiency</li>" +
-                        "</ul>"
+                        "</ul>" 
                 );
 
 
-            CreatePartner(context, "Pipedrive", "Website Design Services", "CRM", "20%", "small-business-start-up-services/pipedrive", "Pipedrive - Start Up and SME Services", "Pipedrive is one of the top sales CRM offerings on the market. Pipedrive allows you to manage leads and deals, track communications, automate time consuming tasks and report on progress.", "Pipedrive", "Pipedrive is one of the top sales CRM offerings on the market. Pipedrive allows you to manage leads and deals, track communications, automate time consuming tasks and report on progress. To find out more about Pipedrive, click on the ‘Click here for offers’ button.", "pipedrive_logo.png", "https://www.pipedrive.com/en/register?campaign=crowdorder", "", "", "https://www.pipedrive.com/en/register?campaign=crowdorder",
+            CreatePartner(context, "Pipedrive", "CRM Services", "CRM", "20%", "small-business-start-up-services/pipedrive", "Pipedrive", "Pipedrive is one of the top sales CRM offerings on the market. Pipedrive allows you to manage leads and deals, track communications, automate time consuming tasks and report on progress.", "Pipedrive", "Pipedrive is one of the top sales CRM offerings on the market. Pipedrive allows you to manage leads and deals, track communications, automate time consuming tasks and report on progress. To find out more about Pipedrive, click on the ‘Click here for offers’ button.", "pipedrive_logo.png", "https://www.pipedrive.com/en/register?campaign=crowdorder", "", "", "https://www.pipedrive.com/en/register?campaign=crowdorder",
                 "<h3>" +
                             "Company Information:" +
                         "</h3>" +
@@ -247,30 +250,7 @@ namespace CrowdOrder.beta.Data
                                     "</li>" +
                                 "</ul>" +
                             "</li>       " +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Pipedrive offers Crowd Order customers a 20% discount on any package, in addition to a free trial" +
-                            "</li>" +
-                            "<li>" +
-                                "Pipedrive offers four plans, each with varying functionality:" +
-                                "<ul>" +
-                                    "<li>" +
-                                        "Essential: 		£12.50 per user, per month" +
-                                    "</li>" +
-                                    "<li>" +
-                                        "Advanced: 		£24.90 per user, per month" +
-                                    "</li>" +
-                                    "<li>" +
-                                        "Professional: 	£49.90 per user, per month" +
-                                    "</li>" +
-                                    "<li>" +
-                                        "Enterprise: 	£99.00 per user, per month" +
-                                    "</li>                                    " +
-                                "</ul>" +
-                            "</li>" +
-                        "</ul>" +
+                        "</ul>" +                       
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>" +
@@ -293,10 +273,34 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Pipedrive offer a package for all companies, big or small and on average, users of Pipedrive see a 28% increase in closing rates after the first year." +
                             "</li>" +
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Pipedrive offers Crowd Order customers a 20% discount on any package, in addition to a free trial" +
+                            "</li>" +
+                            "<li>" +
+                                "Pipedrive offers four plans, each with varying functionality:" +
+                                "<ul>" +
+                                    "<li>" +
+                                        "Essential: 		£12.50 per user, per month" +
+                                    "</li>" +
+                                    "<li>" +
+                                        "Advanced: 		£24.90 per user, per month" +
+                                    "</li>" +
+                                    "<li>" +
+                                        "Professional: 	£49.90 per user, per month" +
+                                    "</li>" +
+                                    "<li>" +
+                                        "Enterprise: 	£99.00 per user, per month" +
+                                    "</li>                                    " +
+                                "</ul>" +
+                            "</li>" +
                         "</ul>"
                 );
             
-            CreatePartner(context, "Staff treats", "HR Services", "Employee Benefits", "10%", "small-business-start-up-services/staff-treats", "Staff Treats - Start Up and SME Services", "Staff Treats are a fantastic company that provide startups and SME’s with employee benefits that are usually reserved for the large corporations and businesses. Some of the top benefits include discounts with high street shops, half price cinema tickets and even cheaper mobile phone plans.", "Staff Treats", "Staff Treats are a fantastic company that provide startups and SME’s with employee benefits that are usually reserved for the large corporations and businesses. Some of the top benefits include discounts with high street shops, half price cinema tickets and even cheaper mobile phone plans. To find out more about Byrd, click on the ‘Click here for offers’ button.", "staff_treats_logo.png", "", "James Solomon", "James.Solomon@xexec.com", "https://www.stafftreats.com/",
+            CreatePartner(context, "Staff treats", "HR Services", "Employee Benefits", "10%", "small-business-start-up-services/staff-treats", "Staff Treats", "Staff Treats are a fantastic company that provide startups and SME’s with employee benefits that are usually reserved for the large corporations and businesses. Some of the top benefits include discounts with high street shops, half price cinema tickets and even cheaper mobile phone plans.", "Staff Treats", "Staff Treats are a fantastic company that provide startups and SME’s with employee benefits that are usually reserved for the large corporations and businesses. Some of the top benefits include discounts with high street shops, half price cinema tickets and even cheaper mobile phone plans. To find out more about Byrd, click on the ‘Click here for offers’ button.", "staff_treats_logo.png", "", "James Solomon", "James.Solomon@xexec.com", "https://www.stafftreats.com/",
                 " <h3>" +
                             "Employee Benefits" +
                         "</h3>" +
@@ -315,8 +319,15 @@ namespace CrowdOrder.beta.Data
                                 "Benefits include Cinema, Shopping, Mobile Phone Bills, Travel, Supermarkets and Gadgets" +
                             "</li>" +
                             "<li>Instant access available </li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                       
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Any company, large or small, who want to show their appreciation to their staff" +
+                            "</li>" +
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>" +
                                 "Staff Treats offer three different pricing structures, depending on what benefits you would like:" +
@@ -335,16 +346,10 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Staff Treats offer all Crowd Order users a 10% discount on the above pricing" +
                             "</li>                            " +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Any company, large or small, who want to show their appreciation to their staff" +
-                            "</li>" +
-                        "</ul>"
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "Personio", "HR Services", "HR & Payroll Software", "50%", "small-business-start-up-services/personio", "Personio - Start Up and SME Services", "Personio is an innovative software company that allows small business owners to digitalize and simplify the lengthy HR processes. The software can help save time in several areas including recruitment, onboarding management, employee data management and even payroll.", "Personio", "Personio is an innovative software company that allows small business owners to digitalize and simplify the lengthy HR processes. The software can help save time in several areas including recruitment, onboarding management, employee data management and even payroll. To find out more about Personio, click on the ‘Click here for offers’ button.", "personio_logo.png", "", "Moritz Rumstadt", "moritz.rumstadt@personio.de", "https://www.personio.com/",
+            CreatePartner(context, "Personio", "HR Services", "HR & Payroll Software", "50%", "small-business-start-up-services/personio", "Personio", "Personio is an innovative software company that allows small business owners to digitalize and simplify the lengthy HR processes. The software can help save time in several areas including recruitment, onboarding management, employee data management and even payroll.", "Personio", "Personio is an innovative software company that allows small business owners to digitalize and simplify the lengthy HR processes. The software can help save time in several areas including recruitment, onboarding management, employee data management and even payroll. To find out more about Personio, click on the ‘Click here for offers’ button.", "personio_logo.png", "", "Moritz Rumstadt", "moritz.rumstadt@personio.de", "https://www.personio.com/",
                 "<h3>" +
                             "Employee Benefits" +
                         "</h3>" +
@@ -362,8 +367,15 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Nearly 2,000 customers in more than 40 countries are already successfully using Personio" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                      
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Any company that employs less than 2,000 personnel" +
+                            "</li>" +
+                        "</ul>",
+                "",
+                  "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>" +
                                 "Personio offer three different pricing structures, depending on what solutions you would like:" +
@@ -381,18 +393,60 @@ namespace CrowdOrder.beta.Data
                                 "Personio offer all Crowd Order users a 50% discount for all implementation and set-up fees, regardless of which package you choose" +
                             "</li>" +
                             "<li>We encourage our users to reach out to Personio to receive a quote and to take advantage of their offer of a two-week free trial</li>" +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Any company that employs less than 2,000 personnel" +
-                            "</li>" +
-                        "</ul>"
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "You At Work", "HR Services", "Employee Benefits", "TBC", "small-business-start-up-services/you-at-work", "", "", "", "", "You_at_work_logo.png", "", "Neil Bowen", "neil.bowen@youatwork.com");
+            CreatePartner(context, "You At Work", "HR Services", "Employee Benefits", "TBC", "small-business-start-up-services/you-at-work", "You at Work", "You at Work are a great company that provide startups and SME’s with employee benefits across health, financial and wellbeing. Click here to find out more.", "You at Work", "You at Work are a great company that provide startups and SME’s with employee benefits across health, financial and wellbeing. Benefits include health screening, gym memberships and loans. To find out more about You at Work, click on the ‘Click here for offers’ button.", "You_at_work_logo.png", "", "Neil Bowen", "neil.bowen@youatwork.com", "https://www.youatwork.com/",
+                " <h3>" +
+                    "Employee Benefits" +
+                "</h3>" +
+                "<p>" +
+                    "Protect the physical and emotional wellbeing of your employees" +                    
+                "</p>" +
+                "<p>" +
+                    "Employee Benefits, Employee Wellbeing, Employee Discounts and Reward & Recognition. " +
+                    "Software and benefits that are all about you and keeping your employees engaged, happy and well." +
+                "</p>" +
+                "<h4>What you need to know:</h4>" +
+                "<ul>" +
+                    "<li>" +
+                        "You at Work provide the employee benefits to companies such as Apple, EE and Costa" +
+                    "</li>" +
+                    "<li>" +
+                        "Benefits include Health, Financial and Wellbeing and Employee Discounts" +
+                    "</li>" +
+                    "<li>" +
+                        "Health benefits include Health Screening, Health Cash Plans and GP Helpline" +
+                    "</li>" +
+                    "<li>" +
+                        "Financial benefits include Holiday Trading, Workplace ISA’s and Loans" +
+                    "</li>" +
+                    "<li>" +
+                        "Wellbeing benefits include Car Benefit Scheme, Cycle to Work and Gym Memberships" +
+                    "</li>" +
+                    "<li>" +
+                        "Access to discounts at" +
+                    "</li>" +
+                    "<li>" +
+                        "Instant access available" +
+                    "</li>" +
+                "</ul>" +               
+                "<h4>Who is this service relevant for:</h4>" +
+                "<ul>" +
+                    "<li>" +
+                        "Any company, large or small, who want to give their staff industry leading benefits" +
+                    "</li>" +
+                "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
+                "<ul>" +
+                    "<li>" +
+                        "For pricing, please connect to the partner below for a personalised quote" +
+                    "</li>" +
+                "</ul>"
+                );
             
-            CreatePartner(context, "Synergy retail support", "Procurement Logistics Services", "Fulfillment & 3rd Party Logistics", "Bespoke", "small-business-start-up-services/synergy-retail-services", "Synergy Retail Support - Start Up and SME Services", "Synergy Retail Support is a trusted 3PL & fulfilment partner. Services include Fulfilment, 3PL Logistics, Fashion Logistics and Co-Packing. They would be a great fulfilment partner for small businesses.", "Synergy Retail Support", "Synergy Retail Support is a trusted 3PL & fulfilment partner. Services include Fulfilment, 3PL Logistics, Fashion Logistics and Co-Packing. They would be a great fulfilment partner for small businesses. To find out more about Synergy Retail Support, click on the ‘Click here for offers’ button.", "synergy_retail_support_white_logo.png", "", "Gary Rees", "gary.rees@synergyretailsupport.co.uk", "https://synergyretailsupport.co.uk/",
+            CreatePartner(context, "Synergy retail support", "Procurement Logistics Services", "Fulfillment & 3rd Party Logistics", "Bespoke", "small-business-start-up-services/synergy-retail-services", "Synergy Retail Support", "Synergy Retail Support is a trusted 3PL & fulfilment partner. Services include Fulfilment, 3PL Logistics, Fashion Logistics and Co-Packing. They would be a great fulfilment partner for small businesses.", "Synergy Retail Support", "Synergy Retail Support is a trusted 3PL & fulfilment partner. Services include Fulfilment, 3PL Logistics, Fashion Logistics and Co-Packing. They would be a great fulfilment partner for small businesses. To find out more about Synergy Retail Support, click on the ‘Click here for offers’ button.", "synergy_retail_support_white_logo.png", "", "Gary Rees", "gary.rees@synergyretailsupport.co.uk", "https://synergyretailsupport.co.uk/",
                 " <h3>" +
                             "Fulfilment and Third Party Logistics" +
                         "</h3>" +
@@ -415,16 +469,7 @@ namespace CrowdOrder.beta.Data
                                     "<li>Barcode Adding</li>" +
                                 "</ul>                         " +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Synergy Retail Support offer a bespoke pricing solution so we encourage our users to speak to their Managing Director, Gary Rees, to receive a quote" +
-                            "</li>" +
-                            "<li>" +
-                                "Crowd Order users receive a great rate so be sure to use the button below to connect" +
-                            "</li>                            " +
-                        "</ul>" +
+                        "</ul>" +                        
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>" +
@@ -435,11 +480,20 @@ namespace CrowdOrder.beta.Data
                                 "Fashion businesses" +
                             "</li>" +
                         "</ul>",
-                "Your company <ul><li>Must have revenue of over £1m per annum</li></ul>"
+                "Your company <ul><li>Must have revenue of over £1m per annum</li></ul>",
+                "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Synergy Retail Support offer a bespoke pricing solution so we encourage our users to speak to their Managing Director, Gary Rees, to receive a quote" +
+                            "</li>" +
+                            "<li>" +
+                                "Crowd Order users receive a great rate so be sure to use the button below to connect" +
+                            "</li>                            " +
+                        "</ul>" 
                 );
 
 
-            CreatePartner(context, "Get byrd", "Procurement Logistics Services", "Fulfillment & 3rd Party Logistics", "Bespoke", "small-business-start-up-services/byrd", "Byrd - Start Up and SME Services", "Byrd is a smart all-in-one fulfilment and logistics solution that can seamlessly help your startup or small business get your products to customers safely and quickly. Byrd pride themselves on boarding businesses quickly and at a price that is great for startups or small businesses.", "Byrd", "Byrd is a smart all-in-one fulfilment and logistics solution that can seamlessly help your startup or small business get your products to customers safely and quickly. Byrd pride themselves on boarding businesses quickly and at a price that is great for startups or small businesses. To find out more about Byrd, click on the ‘Click here for offers’ button.", "byrd_logo.png", "", "Christopher Erdmann", "christopher.erdmann@getbyrd.com", "https://getbyrd.com/en/",
+            CreatePartner(context, "Get byrd", "Procurement Logistics Services", "Fulfillment & 3rd Party Logistics", "Bespoke", "small-business-start-up-services/byrd", "Byrd", "Byrd is a smart all-in-one fulfilment and logistics solution that can seamlessly help your startup or small business get your products to customers safely and quickly. Byrd pride themselves on boarding businesses quickly and at a price that is great for startups or small businesses.", "Byrd", "Byrd is a smart all-in-one fulfilment and logistics solution that can seamlessly help your startup or small business get your products to customers safely and quickly. Byrd pride themselves on boarding businesses quickly and at a price that is great for startups or small businesses. To find out more about Byrd, click on the ‘Click here for offers’ button.", "byrd_logo.png", "", "Christopher Erdmann", "christopher.erdmann@getbyrd.com", "https://getbyrd.com/en/",
                 " <h3>" +
                             "Fulfilment and Third Party Logistics" +
                         "</h3>" +
@@ -466,12 +520,7 @@ namespace CrowdOrder.beta.Data
                                     "<li>Returns Handling</li>" +
                                 "</ul>" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>Get Byrd offer a bespoke pricing solution so we encourage our users to reach out to their knowledgeable team to receive a quote</li>" +
-                            "<li>Crowd Order users receive a great rate so be sure to use the button below to connect</li>" +
-                        "</ul>" +
+                        "</ul>" +                        
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>" +
@@ -481,10 +530,15 @@ namespace CrowdOrder.beta.Data
                                 "E-commerce businesses" +
                             "</li>" +
                         "</ul>",
-                "Your company <ul><li>Must ship over 200 units per month</li></ul>"
+                "Your company <ul><li>Must ship over 200 units per month</li></ul>",
+                "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>Get Byrd offer a bespoke pricing solution so we encourage our users to reach out to their knowledgeable team to receive a quote</li>" +
+                            "<li>Crowd Order users receive a great rate so be sure to use the button below to connect</li>" +
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "Digital next", "Content Marketing Services", "Digital Marketing Agency", "15%", "small-business-start-up-services/digital-next", "Digital Next - Start Up and SME Services", "Digital Next are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising, Web Design and Digital PR. Digital Next have experience of working with top brands and startups across various industries.", "Digital Next", "Digital Next are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising, Web Design and Digital PR. Digital Next have experience of working with top brands and startups across various industries. To find out more about Digital Next, click on the ‘Click here for offers’ button.", "digital_next_logo.jpg", "", "Jade Merabi", "jade@digitalnext.co.uk", "https://digitalnext.co.uk/",
+            CreatePartner(context, "Digital next", "Content Marketing Services", "Digital Marketing Agency", "15%", "small-business-start-up-services/digital-next", "Digital Nex", "Digital Next are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising, Web Design and Digital PR. Digital Next have experience of working with top brands and startups across various industries.", "Digital Next", "Digital Next are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising, Web Design and Digital PR. Digital Next have experience of working with top brands and startups across various industries. To find out more about Digital Next, click on the ‘Click here for offers’ button.", "digital_next_logo.jpg", "", "Jade Merabi", "jade@digitalnext.co.uk", "https://digitalnext.co.uk/",
                 "<h3>" +
                             "SEO, PPC, Paid Social Media Advertising& Web Design" +
                         "</h3>" +
@@ -500,21 +554,22 @@ namespace CrowdOrder.beta.Data
                                 "Digital next were listed as one of the top 100 growing tech companies and achieved significant press after the work they did for EE" +
                             "</li>" +
                             "<li>Regardless of your sector or marketing requirement, Digital Next can likely help as they offer a broad range of services across PPC, SEO, Social Media Management, Email Marketing, Web Design and much more</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>When it comes to PPC, Digital Next normally charge 20% of your marketing spend, but Crowd Order users are only charged 17%</li>" +
-                            "<li>Similarly, to have them manage your Social Media Marketing would normally cost 30% of your spend, but our users only pay 25%</li>" +
-                            "<li>Their SEO and Web Design pricing is bespoke to each client, but they aim to offer a similar 15% discount to our users</li>" +
-                        "</ul>" +
+                        "</ul>" +                       
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>Any company looking to gain further traction / customers via any marketing channel</li>" +
                             "<li>Any company looking to refresh their website or improve its effectiveness at converting traffic</li>" +
-                        "</ul>"
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>When it comes to PPC, Digital Next normally charge 20% of your marketing spend, but Crowd Order users are only charged 17%</li>" +
+                            "<li>Similarly, to have them manage your Social Media Marketing would normally cost 30% of your spend, but our users only pay 25%</li>" +
+                            "<li>Their SEO and Web Design pricing is bespoke to each client, but they aim to offer a similar 15% discount to our users</li>" +
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "Custard", "Content Marketing Services", "Digital Marketing Agency", "10%", "small-business-start-up-services/custard", "Custard - Start Up and SME Services", "Custard are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising and Social Media Management. Custard have experience of working with top brands and startups across various industries.", "Custard", "Custard are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising and Social Media Management. Custard have experience of working with top brands and startups across various industries. To find out more about Custard, click on the ‘Click here for offers’ button.", "custard_logo.jpg", "", "Alex Duthie", "alex@custard.co.uk", "https://www.custard.co.uk/",
+            CreatePartner(context, "Custard", "Content Marketing Services", "Digital Marketing Agency", "10%", "small-business-start-up-services/custard", "Custard", "Custard are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising and Social Media Management. Custard have experience of working with top brands and startups across various industries.", "Custard", "Custard are a digital marketing agency that specialize in Search Engine Optimisation (SEO), Pay-Per-Click (PPC) advertising and Social Media Management. Custard have experience of working with top brands and startups across various industries. To find out more about Custard, click on the ‘Click here for offers’ button.", "custard_logo.jpg", "", "Alex Duthie", "alex@custard.co.uk", "https://www.custard.co.uk/",
                 "<h3>SEO, PPC & Paid Social Media Advertising</h3>" +
                         "<p> " +
                             "Tailored SEO, PPC & SMM campaigns from an honest digital marketing agency" +
@@ -526,21 +581,21 @@ namespace CrowdOrder.beta.Data
                             "<li>Custard a boutique marketing firm based in Manchester that pride themselves on their integrity and ability to generate value for clients</li>" +
                             "<li>Custard were shortlisted for both the U.K Search Awards in 2019 and the Northern Digital Awards in 2020</li>" +
                             "<li>They've had some fantastic results across their PPC, SEO and Social Media Management which are showcased here</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>Regardless of the service, Custard will offer you a 10% discount across all fees</li>" +
-                        "</ul>" +
+                        "</ul>" +                       
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>Any company looking to gain further traction / customers via any marketing channel</li>" +
                             "<li>Any company looking to refresh their website or improve its effectiveness at converting traffic</li>" +
                             "<li>Companies whose marketing budgets would allow for Custard's minimum monthly management fee of £500+VAT for paid social and search services or £2,000 for SEO related management services</li>" +
                         "</ul>",
-                "Your company<ul><li>Has acknowledged they are open to paying a monthly management fee of £500 for Paid Search related services</li><li>OR has acknowledged they are open to paying a monthly management fee of £500 for Paid Social related services </li><li>OR has acknowledged they are open to paying a monthly management fee of £2,000 for SEO related services</li></ul>"
+                "Your company<ul><li>Has acknowledged they are open to paying a monthly management fee of £500 for Paid Search related services</li><li>OR has acknowledged they are open to paying a monthly management fee of £500 for Paid Social related services </li><li>OR has acknowledged they are open to paying a monthly management fee of £2,000 for SEO related services</li></ul>",
+                 "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>Regardless of the service, Custard will offer you a 10% discount across all fees</li>" +
+                        "</ul>" 
                 );
             
-            CreatePartner(context, "Glorious creative", "Branding Services", "Branding Agency", "Bespoke", "small-business-start-up-services/glorious-creative", "Glorious Creative - Start Up and SME Services", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets.", "Glorious Creative", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets. To find out more about Glorious Creative, click on the ‘Click here for offers’ button.", "glorious_creative_logo.jpg", "", "Mark Ross", "mark@gloriouscreative.co.uk", "https://www.gloriouscreative.co.uk/",
+            CreatePartner(context, "Glorious creative", "Branding Services", "Branding Agency", "Bespoke", "small-business-start-up-services/glorious-creative", "Glorious Creative", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets.", "Glorious Creative", "Glorious Creative are an award-winning branding agency who specialize in helping businesses tell their brand story through creative. Services range from building a brand tone of voice, creative advertising and building brand assets. To find out more about Glorious Creative, click on the ‘Click here for offers’ button.", "glorious_creative_logo.jpg", "", "Mark Ross", "mark@gloriouscreative.co.uk", "https://www.gloriouscreative.co.uk/",
                 "<h3>" +
                             "Branding and Design Services" +
                         "</h3>" +
@@ -555,16 +610,7 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Clients include names such as Dunlop, Balfour Beatty and The TATE Gallery" +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Glorious Creative offer a bespoke pricing model and as such, we encourage our users to reach out the knowledgable team there and brainstorm ideas" +
-                            "</li>" +
-                            "<li>" +
-                                "Given that pricing is bespoke, the team work on a best efforts basis to reduce costs for our client base and so far, we have heard great things!" +
-                            "</li>" +
-                        "</ul>" +
+                        "</ul>" +                       
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>" +
@@ -576,12 +622,22 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "Companies about to embark upon a new marketing campaign" +
                             "</li>" +
-                        "</ul>"
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Glorious Creative offer a bespoke pricing model and as such, we encourage our users to reach out the knowledgable team there and brainstorm ideas" +
+                            "</li>" +
+                            "<li>" +
+                                "Given that pricing is bespoke, the team work on a best efforts basis to reduce costs for our client base and so far, we have heard great things!" +
+                            "</li>" +
+                        "</ul>" 
                 );
 
-            //CreatePartner(context, "Opayo", "Accounting and Bookkeeping Services", "Payment Solutions", "Bespoke", "small-business-start-up-services/opayo", "Opayo - Start Up and SME Services", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more.", "Opayo", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more. To find out more about Opayo, click on the ‘Click here for offers’ button.", "sage_pay_logo.png", "https://www.sagepaylabs.com/SSO/login.jsp?application=LeadHandover", "", "");
+            //CreatePartner(context, "Opayo", "Accounting and Bookkeeping Services", "Payment Solutions", "Bespoke", "small-business-start-up-services/opayo", "Opayo", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more.", "Opayo", "Opayo are a secure payments provider who work with merchants of all sizes with the might of Sage behind them. Their range of services include online payments, card terminals, point of sale solutions and many more. To find out more about Opayo, click on the ‘Click here for offers’ button.", "sage_pay_logo.png", "https://www.sagepaylabs.com/SSO/login.jsp?application=LeadHandover", "", "");
 
-            CreatePartner(context, "Wrike", "Project Management Software", "Workflow Management Software", "10%", "small-business-start-up-services/wrike", "Wrike - Start Up and SME Services", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more.", "Wrike", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more. To find out more about Wrike, click on the ‘Click here for offers’ button.", "wrike_logo.jpg", "", "Jose Maroto", "jose.maroto@team.wrike.com", "https://www.wrike.com/",
+            CreatePartner(context, "Wrike", "Project Management Software", "Workflow Management Software", "10%", "small-business-start-up-services/wrike", "Wrike", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more.", "Wrike", "Wrike is a top project management tool that allows team members from all over the world collaborate and keep on top of projects across multiple business areas including Finance, Marketing and many more. To find out more about Wrike, click on the ‘Click here for offers’ button.", "wrike_logo.jpg", "", "Jose Maroto", "jose.maroto@team.wrike.com", "https://www.wrike.com/",
                 " <h3>" +
                             "Workflow Management & Collaboration Software" +
                         "</h3>" +
@@ -602,16 +658,7 @@ namespace CrowdOrder.beta.Data
                                 "The software has a long range of integration capabilities, including Salesforce, Microsoft Teams  and Tableau" +
                             "</li>" +
                             "<li>They offer a free trial!</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "The Wrike fees range from $9.80 - 40.00 USD per user, per month, depending on the package you choose" +
-                            "</li>" +
-                            "<li>" +
-                                "Wrike offer Crowd Order users a 10% discount, regardless of the package" +
-                            "</li>                            " +
-                        "</ul>" +
+                        "</ul>" +                       
                         "<h4>Who is this service relevant for:</h4>" +
                         "<ul>" +
                             "<li>" +
@@ -631,10 +678,20 @@ namespace CrowdOrder.beta.Data
                                     "</li>" +
                                 "</ul>" +
                             "</li>       " +
-                        "</ul>"
+                        "</ul>",
+                "",
+                 "<h4>Discounted pricing:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "The Wrike fees range from $9.80 - 40.00 USD per user, per month, depending on the package you choose" +
+                            "</li>" +
+                            "<li>" +
+                                "Wrike offer Crowd Order users a 10% discount, regardless of the package" +
+                            "</li>                            " +
+                        "</ul>" 
                 );
            
-            CreatePartner(context, "Kiss Flow", "Cloud-Based IT Services", "Workflow Management Software", "10%", "small-business-start-up-services/kiss-flow", "Kiss Flow - Start Up and SME Services", "", "", "", "kissflow_logo.png", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral", "", "", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral",
+            CreatePartner(context, "KissFlow", "Project Management Software", "Project Management Software", "10%", "small-business-start-up-services/kiss-flow", "KissFlow", "Kissflow is a cloud-based forms automation that automates business processes and tracks performance across collaboration, HR, Procurement and more. Click here to learn more.", "Kissflow", "Kissflow is a cloud-based forms automation that automates business processes and tracks performance across collaboration, HR, Procurement and more. Their software automates and simplifies these processes within a single solution, so you have enough time for other time intensive projects to help grow your business. To find out more about Kissflow, click on the ‘Click here for offers’ button.", "kissflow_logo.png", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral", "", "", "https://kissflow.com/?utm_kf_source=KFPartners&utm_medium=crowdorder&utm_campaign=customerreferral",
                 " <h3>" +
                             "Kissflow" +
                         "</h3>" +                        
@@ -652,8 +709,15 @@ namespace CrowdOrder.beta.Data
                                 "Their software automates and simplifies these processes within a single solution, so you have enough time for other time intensive projects to help grow your business." +
                             "</li>" +
                             "<li>Over 10,000 digital leaders are already successfully using Kissflow from companies such as Uber, Pepsi and Domino’s.</li>" +
-                        "</ul>" +
-                        "<h4>Discounted pricing:</h4>" +
+                        "</ul>" +                        
+                        "<h4>Who is this service relevant for:</h4>" +
+                        "<ul>" +
+                            "<li>" +
+                                "Any company that employs more than 100 employees" +
+                            "</li>       " +
+                        "</ul>",
+                "",
+                "<h4>Discounted pricing:</h4>" +
                         "<ul>" +
                             "<li>" +
                                 "Kissflow offer three different pricing structures, depending on what solutions you would like:" +
@@ -675,18 +739,13 @@ namespace CrowdOrder.beta.Data
                             "<li>" +
                                 "We encourage our users to reach out to Kissflow to receive a quote and to take advantage of their offer of a two-week free trial." +
                             "</li>" +
-                        "</ul>" +
-                        "<h4>Who is this service relevant for:</h4>" +
-                        "<ul>" +
-                            "<li>" +
-                                "Any company that employs more than 100 employees" +
-                            "</li>       " +
-                        "</ul>");
+                        "</ul>" 
+            );
 
 
         }
         public static void CreatePartner(ApplicationDbContext context, string name, string subCategoryName, string serviceName, string serviceOffer,
-            string url, string title, string meta, string h1, string body, string logoFileName = "", string connectUrl = "", string mainContact = null, string mainContactEmail = null, string siteUrl = "", string about = "", string qualifyingCriteria = "")
+            string url, string title, string meta, string h1, string body, string logoFileName = "", string connectUrl = "", string mainContact = null, string mainContactEmail = null, string siteUrl = "", string about = "", string qualifyingCriteria = "", string discountPricing = "")
         {
             var subCategory = context.SubCategorys.Where(x => x.Name == subCategoryName).FirstOrDefault();
             var partner = new Partner()
@@ -702,7 +761,8 @@ namespace CrowdOrder.beta.Data
                 DefaultPartnerSignupType = (connectUrl != "" ? DataHelpers.PartnerSignupType.Url : DataHelpers.PartnerSignupType.Email),
                 MainContact = mainContact,
                 MainContactEmail = mainContactEmail,
-                About = about
+                About = about,
+                DiscountPricing = discountPricing
             };
             var service = new Service()
             {

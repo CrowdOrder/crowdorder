@@ -78,9 +78,8 @@ namespace CrowdOrder.beta.Controllers
                     //send email to partner
                     var connectMsg = $"I'd like to introduce you to {company.ContactFirstName} from {company.Name} who is interested in exploring the rates you offer to Crowd Order's users.";
                     var connectGreeting = $"Hi {connect.Service.Partner.MainContact}";
-                    ((EmailSender)_emailSender).SendEmailAsync(email, "Introduction"
-                        , connectMsg, "Visit Crowd Order", "https://www.crowdorder.co.uk", connectGreeting
-                        );
+                    ((EmailSender)_emailSender).SendEmailAsync(email, "New introduction from Crowd Order"
+                        , connectMsg, "Visit Crowd Order", "https://www.crowdorder.co.uk", connectGreeting, EmailSender.EmailTemplate.PartnerPlain);
 
                 }
             }

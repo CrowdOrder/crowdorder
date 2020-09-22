@@ -16,6 +16,7 @@ namespace CrowdOrder.beta.Models
         public string LogoUrl { get; set; }
         public string SiteUrl { get; set; }
         public PartnerSignupType DefaultPartnerSignupType { get; set; }
+        public string DiscountPricing { get; set; }
         public string Notes { get; set; }
         public List<Service> Services { get; set; }
         public bool? InActive { get; set; }

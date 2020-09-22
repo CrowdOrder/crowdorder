@@ -43,6 +43,9 @@ namespace CrowdOrder.beta.Data
                 partner.MainContactEmail = model.MainContactEmail;
                 partner.MainContactTel = model.MainContactTel;
                 partner.Notes = model.Notes;
+                partner.DiscountPricing = model.DiscountPricing;
+                partner.About = model.About;
+                partner.DefaultPartnerSignupType = model.DefaultPartnerSignupType;
                 _context.Partners.Update(partner);
                 _context.SaveChanges();
                 return true;

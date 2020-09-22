@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using CrowdOrder.beta.Models;
 using System.Security.Claims;
 using CrowdOrder.beta.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CrowdOrder.beta.Infrastructure;
 
 namespace CrowdOrder.beta.Controllers
 {
@@ -15,11 +17,14 @@ namespace CrowdOrder.beta.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly CompanyRepository _companyRepository;
+        private readonly IEmailSender _emailSender;
 
-        public HomeController(ILogger<HomeController> logger, CompanyRepository companyRepository)
+        public HomeController(ILogger<HomeController> logger, CompanyRepository companyRepository,
+            IEmailSender emailSender)
         {
             _logger = logger;
             _companyRepository = companyRepository;
+            this._emailSender = emailSender;
         }
 
         public IActionResult Index()
@@ -41,7 +46,16 @@ namespace CrowdOrder.beta.Controllers
         }
         public IActionResult Company()
         {
-            return View();
+            var userEmail =  User.FindFirstValue(ClaimTypes.Name);
+            var banned = new List<string> { "@hotmail", "@gmail", "@googlemail", "@live" };
+
+            var result = banned.Any(w => userEmail.Contains(w));
+            var model = new Company();
+            if (!result)
+            {
+                model.Email = userEmail;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -53,6 +67,15 @@ namespace CrowdOrder.beta.Controllers
             bool success = _companyRepository.Upsert(ref model);
             if (success)
             {
+                //send a thank you signup email
+                //send email to user
+                var msg = "";
+                
+                var greeting = $"Hi {model.ContactFirstName},";
+                
+                ((EmailSender)_emailSender).SendEmailAsync(User.Identity.Name, "Welcome to Crowd Order"
+                    , msg, "Explore Exclusive Rates", "https://www.crowdorder.co.uk", greeting, EmailSender.EmailTemplate.Welcome);
+
                 return RedirectToAction("Index");
             }
 

@@ -43,6 +43,15 @@ input[type="checkbox"]:checked ~ .connectbtn {
 .validation-summary-valid p, .validation-summary-valid ul {
     display: none;
 }
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #df7861;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #df7861;
+    border-color: #df7861;
+}
 /*######################################################CROWD ORDER ADDED END###############################################################################*/
 /*--------------------------------------------------------------
 # Back to top button

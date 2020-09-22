@@ -47,15 +47,15 @@
 
                                 <div class="entry-content">
                                     <p>
-                                        @Html.DisplayFor(modelItem => item.Title)
+                                        @Html.DisplayFor(modelItem => item.Partner.Body)
                                     </p>
                                     <div class="read-more">
-                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, item.Partner.Url)">Details</a>
+                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, item.Partner.Url)">Click here for offers</a>
                                     </div>
                                 </div>
 
                             </div><!-- End blog entry -->
-                        </div>
+                        </div>                      
                     }
                 </div>
             </div>

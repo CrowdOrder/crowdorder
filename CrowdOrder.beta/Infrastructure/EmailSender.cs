@@ -12,6 +12,12 @@ namespace CrowdOrder.beta.Infrastructure
 {
     public class EmailSender : IEmailSender
     {
+        public enum EmailTemplate
+        {
+            Generic = 0,
+            Welcome = 1,
+            PartnerPlain = 2
+        }
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
         {
             Options = optionsAccessor.Value;
@@ -24,12 +30,12 @@ namespace CrowdOrder.beta.Infrastructure
             return Execute(Options.SendGridKey, subject, message, email);
         }
 
-        public Task SendEmailAsync(string email, string subject, string message, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "")
+        public Task SendEmailAsync(string email, string subject, string message, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
         {
-            return Execute(Options.SendGridKey, subject, message, email, ctaButtonText, ctaButtonUrl, greeting);
+            return Execute(Options.SendGridKey, subject, message, email, ctaButtonText, ctaButtonUrl, greeting, template);
         }
 
-        public Task Execute(string apiKey, string subject, string message, string email, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "")
+        public Task Execute(string apiKey, string subject, string message, string email, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
         {
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage();
@@ -46,7 +52,21 @@ namespace CrowdOrder.beta.Infrastructure
             //msg.PlainTextContent = "email stuff";
             msg.SetFrom(new EmailAddress(Options.SendGridUser, "Crowd Order Team"));
             msg.AddTo(new EmailAddress(email));
-            msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+            switch (template)
+            {
+                case EmailTemplate.Generic:
+                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    break;
+                case EmailTemplate.Welcome:
+                    msg.SetTemplateId("d-e432d3abc3214fbea849d1ea2fbf64fc");
+                    break;
+                case EmailTemplate.PartnerPlain:
+                    msg.SetTemplateId("d-ef6ac52e63a24b8f9ca5c660da9fd267");                    
+                    break;
+                default:
+                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    break;
+            }
             msg.SetTemplateData(dynamicTemplateData);
 
             // Disable click tracking.

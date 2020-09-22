@@ -65,12 +65,12 @@
                                 if (cat.SubCategories.Count > 0)
                                 {
                                     <li class="drop-down">
-                                        <a href="@cat.Url">@cat.Name</a>
+                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, cat.Url)">@cat.Name</a>
                                         <ul>
                                             @foreach (var sub in cat.SubCategories)
                                             {
                                                 <li>
-                                                    <a href="@sub.Url">@sub.Name</a>
+                                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, sub.Url)">@sub.Name</a>
                                                 </li>
                                             }
                                         </ul>
@@ -93,11 +93,15 @@
                         <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Account</a></li>
                         <li><a asp-area="Identity" asp-page="/Account/Logout" asp-page-handler="Post" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" title="logout">Logout</a></li>
                     }
+                    else
+                    {
+                        <li><a asp-area="Identity" asp-page="/Account/Login" asp-page-handler="Post" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" title="login">Login</a></li>
+                    }
                 </ul>
             </nav><!-- .nav-menu -->
             @if (!SignInManager.IsSignedIn(User))
             {
-                <a asp-area="Identity" asp-page="/Account/Login" class="get-started-btn ml-auto">Get Started</a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn ml-auto">Get started</a>
             }
 
 

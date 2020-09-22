@@ -51,6 +51,12 @@
                         <div class="entry-content">
                             <markdown source="@Model.About"></markdown>
                         </div>
+                        @if (SignInManager.IsSignedIn(User)) 
+                        { 
+                            <div class="entry-content">
+                                <markdown source="@Model.DiscountPricing"></markdown>
+                            </div>
+                        }
                         <div class="entry-content">
                             @if (SignInManager.IsSignedIn(User))
                             {

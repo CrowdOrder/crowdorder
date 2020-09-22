@@ -43,6 +43,15 @@ input[type="checkbox"]:checked ~ .connectbtn {
 .validation-summary-valid p, .validation-summary-valid ul {
     display: none;
 }
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #df7861;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #df7861;
+    border-color: #df7861;
+}
 /*######################################################CROWD ORDER ADDED END###############################################################################*/
 /*--------------------------------------------------------------
 # Back to top button
@@ -424,8 +433,11 @@ input[type="checkbox"]:checked ~ .connectbtn {
         -webkit-animation-delay: 0.4s;
         animation-delay: 0.4s;
         margin: 0 auto 30px auto;
-        color: #444444;
+        color: #444444;        
     }
+        #hero p.largerfont {
+            font-size: x-large;
+        }
 
     #hero .carousel-inner .carousel-item {
         transition-property: opacity;
@@ -668,7 +680,6 @@ section {
     font-size: 48px;
     line-height: 60px;
     margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
 .about .content h3 {

@@ -101,6 +101,7 @@ namespace CrowdOrder.beta.Migrations
                     LogoUrl = table.Column<string>(nullable: true),
                     SiteUrl = table.Column<string>(nullable: true),
                     DefaultPartnerSignupType = table.Column<int>(nullable: false),
+                    DiscountPricing = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     InActive = table.Column<bool>(nullable: true)
                 },

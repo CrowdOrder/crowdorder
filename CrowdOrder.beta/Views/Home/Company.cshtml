@@ -12,7 +12,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h1>Company Details</h1>
+                <h1>Your Company Details</h1>
                 <ol>
                     <li><a href="index.html">Home</a></li>
                     <li>Company Details</li>
@@ -29,33 +29,41 @@
                     <form asp-action="Company">
                         <p>To enable us to provide you with our offers and discounts, please provide the following essential information.</p>
                         <hr />
-                        <div asp-validation-summary="All" class="text-danger" ><p>Please complete all fields</p></div>
+                        <div asp-validation-summary="None" class="text-danger"><p>Please complete all fields</p></div>
 
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label">Company Name</label><span asp-validation-for="Name" class="text-danger"></span>
-                            <input asp-for="Name" class="form-control" />                            
+                            <input asp-for="Name" class="form-control" />
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <!--Grid column-->
                                 <div class="col-md-5">
                                     <div class="md-form mb-0">
-                                        <label for="ContactFirstName" class="">First name</label><span asp-validation-for="ContactFirstName" class="text-danger"></span>
-                                        <input asp-for="ContactFirstName" class="form-control" />                                        
+                                        <label for="ContactFirstName" class="">Your first name</label><span asp-validation-for="ContactFirstName" class="text-danger"></span>
+                                        <input asp-for="ContactFirstName" class="form-control" />
                                     </div>
                                 </div>
                                 <!--Grid column-->
                                 <!--Grid column-->
                                 <div class="col-md-7">
                                     <div class="md-form mb-0">
-                                        <label for="ContactLastName" class="">Last name</label><span asp-validation-for="ContactLastName" class="text-danger"></span>
-                                        <input asp-for="ContactLastName" class="form-control" />                                        
+                                        <label for="ContactLastName" class="">Your last name</label><span asp-validation-for="ContactLastName" class="text-danger"></span>
+                                        <input asp-for="ContactLastName" class="form-control" />
                                     </div>
                                 </div>
                                 <!--Grid column-->
 
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <p><i>Our partners ask for your company email to validate your offers, please do not use your personal email address (hotmail, gmail etc)</i></p>
+                            <label asp-for="Email" class="control-label">Your company email address</label><span asp-validation-for="Email" class="text-danger"></span>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Url" class="control-label">Company website</label><span asp-validation-for="Url" class="text-danger"></span>
+                            <input asp-for="Url" class="form-control" />
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Save details" class="get-started-btn" />

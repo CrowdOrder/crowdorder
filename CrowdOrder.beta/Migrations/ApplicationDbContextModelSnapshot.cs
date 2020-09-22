@@ -157,6 +157,9 @@ namespace CrowdOrder.beta.Migrations
                     b.Property<int>("DefaultPartnerSignupType")
                         .HasColumnType("int");
 
+                    b.Property<string>("DiscountPricing")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("H1")
                         .HasColumnType("nvarchar(max)");
 

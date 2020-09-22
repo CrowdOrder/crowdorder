@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdOrder.beta.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200916110351_initial")]
+    [Migration("20200921100633_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,6 +158,9 @@ namespace CrowdOrder.beta.Migrations
 
                     b.Property<int>("DefaultPartnerSignupType")
                         .HasColumnType("int");
+
+                    b.Property<string>("DiscountPricing")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("H1")
                         .HasColumnType("nvarchar(max)");
