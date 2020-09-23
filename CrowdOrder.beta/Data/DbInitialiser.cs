@@ -296,7 +296,7 @@ namespace CrowdOrder.beta.Data
                             Name = "Hosting Services",
                             Url = "web-design-development-services-offers-discounts/website-design/hosting",
                             Title = "Hosting Services, Offers and Discounts",
-                            MetaDescription = "You're going to need some good hosting is you're getting lots of visitors to your website. Find some cracking deasl here.",
+                            MetaDescription = "You're going to need some good hosting is you're getting lots of visitors to your website. Find some cracking deals here.",
                             H1 = "Hosting Services, Offers and Discounts",
                             Body = "You're going to need some good hosting is you're getting lots of visitors to your website. Find some cracking deasl here."
                         },
@@ -413,7 +413,7 @@ namespace CrowdOrder.beta.Data
                             Name = "Registered Address Provider",
                             Url = "business-operations-services-offers-discounts/registered-address-provider",
                             Title = "Registered Address Provider, Offers and Discounts",
-                            MetaDescription = "",
+                            MetaDescription = "A Registered Address can help give a professional look to your business at a low cost.Take a look at our Registered Address Providers here.",
                             H1 = "Registered Address Provider, Offers and Discounts",
                             Body = "[content needed]"
                         },
@@ -422,9 +422,9 @@ namespace CrowdOrder.beta.Data
                             Name = "Outsourced Administration & PA Services",
                             Url = "business-operations-services-offers-discounts/outsourced-administration-pa-services",
                             Title = "Outsourced Administration & PA Services, Offers and Discounts",
-                            MetaDescription = "",
+                            MetaDescription = "Are you looking for administrative help or a virtual personal assistant? Take a look at our Administration and PA service providers here.",
                             H1 = "Outsourced Administration & PA Services, Offers and Discounts",
-                            Body = "[content needed]"
+                            Body = "Are you looking for administrative help or a virtual personal assistant? Take a look at our Administration and PA service providers here."
                         }
                     }
                 },

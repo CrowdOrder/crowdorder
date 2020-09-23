@@ -1,0 +1,809 @@
+﻿<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Details - Crowd Order</title>
+
+
+    <!-- Favicons -->
+    <link href="https://localhost:5001/favicon.png" rel="icon">
+    <link href="https://localhost:5001/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="https://localhost:5001/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="https://localhost:5001/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="https://localhost:5001/css/site.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Sailor - v2.2.0
+    * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <style type="text/css" data-fbcssmodules="css:fb.css.basecss:fb.css.dialog css:fb.css.iframewidget">
+        .fb_hidden {
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+
+        .fb_reposition {
+            overflow: hidden;
+            position: relative
+        }
+
+        .fb_invisible {
+            display: none
+        }
+
+        .fb_reset {
+            background: none;
+            border: 0;
+            border-spacing: 0;
+            color: #000;
+            cursor: auto;
+            direction: ltr;
+            font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height: 1;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: normal;
+            word-spacing: normal
+        }
+
+            .fb_reset > div {
+                overflow: hidden
+            }
+
+        @keyframes fb_transform {
+            from {
+                opacity: 0;
+                transform: scale(.95)
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .fb_animate {
+            animation: fb_transform .3s forwards
+        }
+
+        .fb_dialog {
+            background: rgba(82, 82, 82, .7);
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+
+        .fb_dialog_advanced {
+            border-radius: 8px;
+            padding: 10px
+        }
+
+        .fb_dialog_content {
+            background: #fff;
+            color: #373737
+        }
+
+        .fb_dialog_close_icon {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
+            cursor: pointer;
+            display: block;
+            height: 15px;
+            position: absolute;
+            right: 18px;
+            top: 17px;
+            width: 15px
+        }
+
+        .fb_dialog_mobile .fb_dialog_close_icon {
+            left: 5px;
+            right: auto;
+            top: 5px
+        }
+
+        .fb_dialog_padding {
+            background-color: transparent;
+            position: absolute;
+            width: 1px;
+            z-index: -1
+        }
+
+        .fb_dialog_close_icon:hover {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent
+        }
+
+        .fb_dialog_close_icon:active {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent
+        }
+
+        .fb_dialog_iframe {
+            line-height: 0
+        }
+
+        .fb_dialog_content .dialog_title {
+            background: #6d84b4;
+            border: 1px solid #365899;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0
+        }
+
+            .fb_dialog_content .dialog_title > span {
+                background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+                float: left;
+                padding: 5px 0 7px 26px
+            }
+
+        body.fb_hidden {
+            height: 100%;
+            left: 0;
+            margin: 0;
+            overflow: visible;
+            position: absolute;
+            top: -10000px;
+            transform: none;
+            width: 100%
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
+            min-height: 100%;
+            min-width: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 10001
+        }
+
+            .fb_dialog.fb_dialog_mobile.loading.centered {
+                background: none;
+                height: auto;
+                min-height: initial;
+                min-width: initial;
+                width: auto
+            }
+
+                .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+                    width: 100%
+                }
+
+                .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+                    background: none
+                }
+
+        .loading.centered #fb_dialog_loader_close {
+            clear: both;
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            padding-top: 20px
+        }
+
+        #fb-root #fb_dialog_ipad_overlay {
+            background: rgba(0, 0, 0, .4);
+            bottom: 0;
+            left: 0;
+            min-height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 10000
+        }
+
+            #fb-root #fb_dialog_ipad_overlay.hidden {
+                display: none
+            }
+
+        .fb_dialog.fb_dialog_mobile.loading iframe {
+            visibility: hidden
+        }
+
+        .fb_dialog_mobile .fb_dialog_iframe {
+            position: sticky;
+            top: 0
+        }
+
+        .fb_dialog_content .dialog_header {
+            background: linear-gradient(from(#738aba), to(#2c4987));
+            border-bottom: 1px solid;
+            border-color: #043b87;
+            box-shadow: white 0 1px 1px -1px inset;
+            color: #fff;
+            font: bold 14px Helvetica, sans-serif;
+            text-overflow: ellipsis;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+            .fb_dialog_content .dialog_header table {
+                height: 43px;
+                width: 100%
+            }
+
+            .fb_dialog_content .dialog_header td.header_left {
+                font-size: 12px;
+                padding-left: 5px;
+                vertical-align: middle;
+                width: 60px
+            }
+
+            .fb_dialog_content .dialog_header td.header_right {
+                font-size: 12px;
+                padding-right: 5px;
+                vertical-align: middle;
+                width: 60px
+            }
+
+        .fb_dialog_content .touchable_button {
+            background: linear-gradient(from(#4267B2), to(#2a4887));
+            background-clip: padding-box;
+            border: 1px solid #29487d;
+            border-radius: 3px;
+            display: inline-block;
+            line-height: 18px;
+            margin-top: 3px;
+            max-width: 85px;
+            padding: 4px 12px;
+            position: relative
+        }
+
+        .fb_dialog_content .dialog_header .touchable_button input {
+            background: none;
+            border: none;
+            color: #fff;
+            font: bold 12px Helvetica, sans-serif;
+            margin: 2px -12px;
+            padding: 2px 6px 3px 6px;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+        }
+
+        .fb_dialog_content .dialog_header .header_center {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle
+        }
+
+        .fb_dialog_content .dialog_content {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
+            border: 1px solid #4a4a4a;
+            border-bottom: 0;
+            border-top: 0;
+            height: 150px
+        }
+
+        .fb_dialog_content .dialog_footer {
+            background: #f5f6f7;
+            border: 1px solid #4a4a4a;
+            border-top-color: #ccc;
+            height: 40px
+        }
+
+        #fb_dialog_loader_close {
+            float: left
+        }
+
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_button {
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+        }
+
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+            visibility: hidden
+        }
+
+        #fb_dialog_loader_spinner {
+            animation: rotateSpinner 1.2s linear infinite;
+            background-color: transparent;
+            background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            height: 24px;
+            width: 24px
+        }
+
+        @keyframes rotateSpinner {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .fb_iframe_widget {
+            display: inline-block;
+            position: relative
+        }
+
+            .fb_iframe_widget span {
+                display: inline-block;
+                position: relative;
+                text-align: justify
+            }
+
+            .fb_iframe_widget iframe {
+                position: absolute
+            }
+
+        .fb_iframe_widget_fluid_desktop, .fb_iframe_widget_fluid_desktop span, .fb_iframe_widget_fluid_desktop iframe {
+            max-width: 100%
+        }
+
+            .fb_iframe_widget_fluid_desktop iframe {
+                min-width: 220px;
+                position: relative
+            }
+
+        .fb_iframe_widget_lift {
+            z-index: 1
+        }
+
+        .fb_iframe_widget_fluid {
+            display: inline
+        }
+
+            .fb_iframe_widget_fluid span {
+                width: 100%
+            }
+    </style>
+</head>
+<body>
+    <button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
+    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+    <script src="https://connect.facebook.net/en_US/sdk.js?hash=2912e0385d9e0bc65b6e698345a99395&amp;ua=modern_es6" async="" crossorigin="anonymous"></script>
+    <script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v8.0&amp;appId=295782441715653&amp;autoLogAppEvents=1" nonce="5I6lEwAi"></script>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+
+            <a class="logo" href="/"><img src="/Logo100.png" alt="" class="img-fluid"></a>
+
+            <nav class="nav-menu d-none d-lg-block">
+
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="https://localhost:5001/about-us">About Us</a></li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/small-business-start-up-services">Services</a>
+                        <ul>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/hr-people-services-offers-discounts">HR and People Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/hr-people-services-offers-discounts/HR">HR Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/business-operations-services-offers-discounts">Business and Operations Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/business-operations-services-offers-discounts/registered-address-provider">Registered Address Provider</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://localhost:5001/business-operations-services-offers-discounts/outsourced-administration-pa-services">Outsourced Administration &amp; PA Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/project-management-services-offers-discounts">Project Management Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/project-management-services-offers-discounts/project-management-software">Project Management Software</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/logistics-services-offers-discounts">Logistics Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/logistics-services-offers-discounts/procurement-logistics">Procurement Logistics Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/marketing-services-offers-discounts">Marketing Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/marketing-services-offers-discounts/content-marketing">Content Marketing Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://localhost:5001/marketing-services-offers-discounts/CRM">CRM Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://localhost:5001/marketing-services-offers-discounts/branding-services">Branding Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="https://localhost:5001/financial-accountancy-offers-discounts">Financial and Accountancy Services</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://localhost:5001/financial-accountancy-offers-discounts/accounting-bookkeeping">Accounting and Bookkeeping Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="https://localhost:5001/small-business-start-up-blogs-guides">Blogs &amp; Guides</a></li>
+
+
+                    <li><a title="Manage" href="/Identity/Account/Manage">My Account</a></li>
+                    <li><a title="logout" href="/Identity/Account/Logout?returnUrl=%2F&amp;handler=Post">Logout</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+
+
+        </div>
+    </header><!-- End Header -->
+
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Start Up and Small Business Blog and Guides</h1>
+                    <ol>
+                        <li><a href="https://localhost:5001/">Home</a></li>
+                        <li><a href="https://localhost:5001//small-business-start-up-blogs-guides"></a>Blogs &amp; Guides</li>
+                        <li>Blog</li>
+                    </ol>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+
+                        <article class="entry entry-single">
+                            <h1 class="entry-title">
+                                11 Reasons to Hire a Virtual Assistant
+                            </h1>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="icofont-user"></i>ben.mcaskell@crowdorder.co.uk</li>
+                                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">22 Sep 2020</time></li>
+                                </ul>
+                            </div>
+
+                            <div class="entry-content">
+                                <div class="markdown-contents">
+                                    <h3>What is a Virtual Assistant?</h3>
+                                    <p>
+                                        A <a href="https://www.crowdorder.co.uk/business-operations-services-offers-discounts/outsourced-administration-pa-services">Virtual Assistant</a> is a contractor who can help with a variety of services for their clients including but not limited to data entry, market research and customer service. Virtual Assistant’s work from anywhere in the world and can help with the time-consuming tasks that keeps a business owner away from the projects that drive business growth.
+                                    </p>
+                                    <img src="../../img/blogs/Virtual_Assistant.png" style="max-width:100%"/>
+                                    <h3>Drive Business Growth with a Virtual Assistant</h3>
+                                    <p>
+                                        When starting your own business, it can be difficult to do everything yourself of with a small team. Bringing on some extra resource to do deal with the day-to-day tasks that take you away from building the business can be worth its weight in gold.
+                                    </p>
+                                    <h3>Access to The Best Talent</h3>
+                                    <p>
+                                        You can find some really talented Virtual Assistants out there that can help with a range of tasks. Once a Virtual Assistant understands your business, they can take a lot of the weight off your shoulders.
+                                    </p>
+                                    <p>
+                                        With your VA being able to work anywhere in the world, you can access a much larger pool of talent and find the best person for your business, regardless of their geographical location.
+                                    </p>
+                                    <p>
+                                        You can also get some highly competitive prices with our Virtual Assistant partners, so it won’t affect your bottom line as much a full-time employee might do.
+                                    </p>
+                                    <p>
+                                        After a few months, you will even find that your Virtual Assistant has just become a part of your team.
+                                    </p>
+                                    <h3>Decreased Operational Costs</h3>
+                                    <p>
+                                        Virtual Assistants can really help keep the costs of running your business down. Use your virtual assistant to cut down on operational expenditures. Using a Virtual Assistant can help you save on office spaces, equipment and even savings on taxes.
+                                    </p>
+                                    <p>
+                                        Virtual Assistants can also work extremely flexibly so their workloads can be tailored to your business.
+                                    </p>
+                                    <h3>Reduced Workload</h3>
+                                    <p>
+                                        As an owner of a start up business, you can really get overwhelmed with the huge number of tasks that need to be done to keep the business running and growing. Virtual Assistants can be multi-skilled and can help your business in the following areas:
+                                    </p>
+                                    <ul>
+                                        <li>Market Research</li>
+                                        <li>Data Entry</li>
+                                        <li>Email Management</li>
+                                        <li><a href="https://www.crowdorder.co.uk/marketing-services-offers-discounts">Online Marketing</a></li>
+                                        <li>Scheduling</li>
+                                        <li>Call Answering</li>
+                                        <li>Search Engine Optimization</li>
+                                        <li>Web Development</li>
+                                        <li>Content Writing</li>
+                                        <li>Transcription</li>
+                                    </ul>
+                                    <p>
+                                        Reducing the amount of time, you spend on these areas can help you work on more strategic areas of your business.
+                                    </p>
+                                    <h3>Focus on The Core Operations</h3>
+                                    <p>
+                                        As a business owner, you need to focus on your core business functions. You need to think about what you can’t do yourself and tasks that you need assistance with. These areas are where a great Virtual Assistant can help.
+                                    </p>
+                                    <h3>24/7 Availability and Flexible Working</h3>
+                                    <p>
+                                        We live in a connected, globalized world so it’s important that your business is always available to customers. Virtual Assistants can work the times that you can’t and ensure your business always has someone on the clock.
+                                    </p>
+                                    <p>
+                                        It can be a great feeling to know you can switch off on your down time safe in the knowledge that your business is running smoothly.
+                                    </p>
+                                    <h3>Billing by the Hour</h3>
+                                    <p>
+                                        Virtual Assistants can work by the hour, so you are always getting the best value for money. You don’t need to pay for sick days or vacation meaning you only pay for deliverables that are useful to your business.
+                                    </p>
+                                    <h3>Improve Your Online Presence</h3>
+                                    <p>
+                                        Many Virtual Assistants are experienced when it comes promoting businesses online.
+                                    </p>
+                                    <p>
+                                        VA’s can help with:
+                                        <ul>
+                                            <li>Prompt responses to consumer queries</li>
+                                            <li>Creation of engaging content</li>
+                                            <li>Promotional posts and activities</li>
+                                        </ul>
+                                        Managing social media profile and creating takes a lot of time and effort and VA can manage your community and ensure your business is front of mind with people who may want to use your services.
+                                    </p>
+                                    <h3>Scalability in Operations</h3>
+                                    <p>
+                                        As a growing business, you may find that there are times where you need to scale resource quickly and a VA can be a good way to get that extra resource quickly and at a great price.
+                                    </p>
+                                    <p>
+                                        The additional manpower can help you manage the extra workload and ensure your customers are happy.
+                                    </p>
+                                    <h3>Efficient Customer Handling</h3>
+                                    <p>
+                                        Customers can ask questions at any time and want issues resolved quickly. VA’s can help with customer service channels such as the website chatbots, telephony and social media.
+                                    </p>
+                                    <h3>Give Yourself More Leisure Time</h3>
+                                    <p>
+                                        Having a virtual assistant on your side allows you to have more leisure time and switch off from the day-to-day of your business. It’s so important to have a work-life balance and a Virtual Assistant can help you to build your business without affecting your personal life and health.
+                                    </p>
+                                    <h3>Connect with Crowd Order Virtual Assistant Partners</h3>
+                                    <p>
+                                        If your start up or small business is growing rapidly and the day-to-day is getting more overwhelming by the day, take a look at Crowd Order’s top <a href="https://www.crowdorder.co.uk/business-operations-services-offers-discounts/outsourced-administration-pa-services">Virtual Assistant partners</a> and find the perfect VA to help your business move forward.
+                                    </p>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="entry-footer clearfix">
+                                <div class="float-left">
+                                </div>
+
+                                <div class="float-right share">
+                                    <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
+                                    <a href="" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                    <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                                </div>
+
+                            </div>
+
+                        </article><!-- End blog entry -->
+
+
+
+
+                    </div><!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <div class="sidebar-item recent-posts">
+                                <div class="post-item clearfix">
+                                    <h4><a href="https://localhost:5001/small-business-start-up-blogs-guides//this-is-the-url">This is the title </a></h4>
+                                    <time datetime="2020-01-01">22 Sep 2020</time>
+                                </div>
+
+                            </div><!-- End sidebar recent posts-->
+
+                        </div><!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
+
+                </div>
+
+            </div>
+        </section><!-- End Blog Section -->
+
+    </main><!-- End #main -->
+
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>Crowd Order</h3>
+                            <p>
+                                24 Holborn Viaduct <br>
+                                London, England, EC1A 2BN<br><br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="https://twitter.com/CrowdOrder" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="https://www.facebook.com/crowdorder" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="https://linkedin.com/company/crowdorder" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/Home/About">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/small-business-start-up-services">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/Home/Terms">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/Home/Privacy">Privacy policy</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                © Copyright <strong><span>Crowd Order Ltd</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="https://localhost:5001/vendor/jquery/jquery.min.js"></script>
+    <script src="https://localhost:5001/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://localhost:5001/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="https://localhost:5001/vendor/php-email-form/validate.js"></script>
+    <script src="https://localhost:5001/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="https://localhost:5001/vendor/venobox/venobox.min.js"></script>
+    <script src="https://localhost:5001/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="https://localhost:5001/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="https://localhost:5001/js/main.js"></script><nav class="mobile-nav d-lg-none">
+
+        <ul>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="https://localhost:5001/about-us">About Us</a></li>
+            <li class="drop-down">
+                <a href="https://localhost:5001/small-business-start-up-services">Services</a>
+                <ul>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/hr-people-services-offers-discounts">HR and People Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/hr-people-services-offers-discounts/HR">HR Services</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/business-operations-services-offers-discounts">Business and Operations Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/business-operations-services-offers-discounts/registered-address-provider">Registered Address Provider</a>
+                            </li>
+                            <li>
+                                <a href="https://localhost:5001/business-operations-services-offers-discounts/outsourced-administration-pa-services">Outsourced Administration &amp; PA Services</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/project-management-services-offers-discounts">Project Management Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/project-management-services-offers-discounts/project-management-software">Project Management Software</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/logistics-services-offers-discounts">Logistics Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/logistics-services-offers-discounts/procurement-logistics">Procurement Logistics Services</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/marketing-services-offers-discounts">Marketing Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/marketing-services-offers-discounts/content-marketing">Content Marketing Services</a>
+                            </li>
+                            <li>
+                                <a href="https://localhost:5001/marketing-services-offers-discounts/CRM">CRM Services</a>
+                            </li>
+                            <li>
+                                <a href="https://localhost:5001/marketing-services-offers-discounts/branding-services">Branding Services</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="https://localhost:5001/financial-accountancy-offers-discounts">Financial and Accountancy Services</a>
+                        <ul>
+                            <li>
+                                <a href="https://localhost:5001/financial-accountancy-offers-discounts/accounting-bookkeeping">Accounting and Bookkeeping Services</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="https://localhost:5001/small-business-start-up-blogs-guides">Blogs &amp; Guides</a></li>
+
+
+            <li><a title="Manage" href="/Identity/Account/Manage">My Account</a></li>
+            <li><a title="logout" href="/Identity/Account/Logout?returnUrl=%2F&amp;handler=Post">Logout</a></li>
+        </ul>
+    </nav><div class="mobile-nav-overly"></div>
+
+
+
+</body>
+</html>

@@ -32,25 +32,36 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: auto;
     margin-left: auto;
 }
+
 input[type="checkbox"]:checked ~ .connectbtn {
     opacity: 1;
     max-height: 100px; /* little bit of a magic number :( */
     overflow: visible;
 }
-.isDisabled{
+
+.isDisabled {
     opacity: 0;
 }
+
 .validation-summary-valid p, .validation-summary-valid ul {
     display: none;
 }
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #df7861;
 }
+
 .btn-primary {
     color: #fff;
     background-color: #df7861;
     border-color: #df7861;
+}
+
+@media (max-width: 992px) {
+    .hideSmall {
+        display: none;
+    }
 }
 /*######################################################CROWD ORDER ADDED END###############################################################################*/
 /*--------------------------------------------------------------
@@ -236,6 +247,7 @@ input[type="checkbox"]:checked ~ .connectbtn {
         content: "\ea9d";
     }
 }
+
 .alreadyTakenUp {
     background: #df7861;
     color: #fff;
@@ -270,6 +282,7 @@ input[type="checkbox"]:checked ~ .connectbtn {
         padding: 6px 18px;
     }
 }
+
 
 /* Mobile Navigation */
 .mobile-nav-toggle {
@@ -433,8 +446,9 @@ input[type="checkbox"]:checked ~ .connectbtn {
         -webkit-animation-delay: 0.4s;
         animation-delay: 0.4s;
         margin: 0 auto 30px auto;
-        color: #444444;        
+        color: #444444;
     }
+
         #hero p.largerfont {
             font-size: x-large;
         }
@@ -656,6 +670,10 @@ section {
             display: block !important;
         }
 
+        .breadcrumbs .container {
+            margin-top: 20px;
+        }
+
         .breadcrumbs h2 {
             margin-bottom: 10px;
         }
@@ -672,9 +690,10 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-#about{
-    padding-top:20px;
+#about {
+    padding-top: 20px;
 }
+
 .about .content h2 {
     font-weight: 700;
     font-size: 48px;
@@ -1503,7 +1522,7 @@ section {
 # Blog
 --------------------------------------------------------------*/
 .blog {
-    padding: 40px 0 40px 0;
+    padding: 40px 5px 40px 5px;
 }
 
     .blog .entry {
@@ -1644,7 +1663,7 @@ section {
             }
 
         .blog .entry .entry-footer {
-            margin-top:20px;
+            margin-top: 20px;
             padding-top: 10px;
             border-top: 1px solid #e6e6e6;
         }
@@ -1658,6 +1677,7 @@ section {
                 color: #a4afba;
                 transition: 0.3s;
             }
+
                 .blog .entry .entry-footer a .get-started-btn {
                     color: #a4afba;
                     transition: 0.3s;
@@ -2256,7 +2276,7 @@ a.nav-login {
         color: rgba(0,0,0,.5);
         background-color: #df7861;
         border-color: #ecdfc8;*/ /*set the color you want here*/
-    /*}
+/*}
 .dropdown-menu{
     min-width: 20rem
 }
@@ -2301,8 +2321,8 @@ button.accept-policy {
 }
 
 body {*/
-  /* Margin bottom by footer height */
-  /*margin-bottom: 60px;
+/* Margin bottom by footer height */
+/*margin-bottom: 60px;
 }
 .footer {
   position: absolute;
@@ -2393,8 +2413,8 @@ select {
 
 /* Hide/rearrange for smaller screens */
 /*@media screen and (max-width: 767px) {*/
-    /* Hide captions */
-    /*.carousel-caption {
+/* Hide captions */
+/*.carousel-caption {
         display: none
     }
 }*/
