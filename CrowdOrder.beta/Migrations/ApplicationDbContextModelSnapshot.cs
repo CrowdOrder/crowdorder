@@ -56,6 +56,9 @@ namespace CrowdOrder.beta.Migrations
                     b.Property<string>("AuthorId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Contents")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -124,6 +127,7 @@ namespace CrowdOrder.beta.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

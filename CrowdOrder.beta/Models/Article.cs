@@ -19,7 +19,9 @@ namespace CrowdOrder.beta.Models
         [Required]
         public string Contents { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string AuthorName { get; set; }
         public string AuthorId { get; set; }
         public virtual IdentityUser Author { get; set; }
+
     }
 }

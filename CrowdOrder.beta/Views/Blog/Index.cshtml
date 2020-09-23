@@ -54,7 +54,7 @@
 
                             <div class="entry-meta">
                                 <ul>
-                                    <li class="d-flex align-items-center"><i class="icofont-user"></i>@(article.Author.Email ?? article.Author.UserName)</li>
+                                    <li class="d-flex align-items-center"><i class="icofont-user"></i>@(article.AuthorName ?? article.Author.UserName)</li>
                                     <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i><time datetime="2020-01-01">@article.CreatedDate.ToString("dd MMM yyyy")</time></li>
                                 </ul>
                             </div>

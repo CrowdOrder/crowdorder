@@ -119,7 +119,6 @@
                             @foreach (var item in Model.Services)
                             {
                         <div class="post-item clearfix">
-                            <img src="assets/img/business-6.jpg" alt="">
                             <h4> @Html.DisplayFor(modelItem => item.Title)</h4>
                             <p>
                                 @if (SignInManager.IsSignedIn(User))

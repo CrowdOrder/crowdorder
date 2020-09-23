@@ -39,7 +39,7 @@
 
                         <div class="entry-meta">
                             <ul>
-                                <li class="d-flex align-items-center"><i class="icofont-user"></i>@(Model.Author.Email ?? Model.Author.UserName)</li>
+                                <li class="d-flex align-items-center"><i class="icofont-user"></i>@(Model.AuthorName ?? Model.Author.UserName)</li>
                                 <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>                                
                             </ul>
                         </div>

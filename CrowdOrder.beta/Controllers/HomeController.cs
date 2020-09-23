@@ -10,6 +10,8 @@ using System.Security.Claims;
 using CrowdOrder.beta.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using CrowdOrder.beta.Infrastructure;
+using Microsoft.AspNetCore.Diagnostics;
+using System.IO;
 
 namespace CrowdOrder.beta.Controllers
 {
@@ -40,7 +42,7 @@ namespace CrowdOrder.beta.Controllers
                     return RedirectToAction("Company");
                 }
             }
-            
+
 
             return View();
         }
@@ -97,7 +99,21 @@ namespace CrowdOrder.beta.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            // Get the details of the exception that occurred
+            var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if (exceptionFeature != null)
+            {
+                // Get which route the exception occurred at
+                //string routeWhereExceptionOccurred = exceptionFeature.Path;
+
+                // Get the exception that occurred
+                Exception exceptionThatOccurred = exceptionFeature.Error;
+
+                _logger.LogError(exceptionThatOccurred, exceptionThatOccurred.Message);
+            }
+
+            return View();
         }
 
         public IActionResult About()
