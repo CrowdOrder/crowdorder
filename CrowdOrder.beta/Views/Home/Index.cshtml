@@ -36,57 +36,60 @@
 <main id="main">
     <!-- ======= Who Section ======= -->
     <section id="who" class="about">
-        <div class="container">
+        <div class="home-container">
+            <div class="container">
 
-            <div class="row content">
-                <div class="col-lg-6  pt-4 pt-lg-0">
-                    <h2>Who we are</h2>
-                    <p>Crowd Order is the only marketplace where companies are prepared to offer their products and services at exclusive rates to start-ups and small businesses</p>
-                    <a href="about-us" class="get-started-btn animate__animated animate__fadeInUp scrollto">Learn more</a>
-                </div>
-                <div class="col-lg-6 hideSmall">
-                    <img src="~/Who we are400.png" />
+                <div class="row content">
+                    <div class="col-lg-6  pt-4 pt-lg-0">
+                        <h2>Who we are</h2>
+                        <p>Crowd Order is the only marketplace where companies are prepared to offer their products and services at exclusive rates to start-ups and small businesses</p>
+                        <a href="about-us" class="get-started-btn animate__animated animate__fadeInUp scrollto">Learn more</a>
+                    </div>
+                    <div class="col-lg-6 hideSmall">
+                        <img src="~/Who we are400.png" />
+                    </div>
                 </div>
             </div>
-
         </div>
-    </section><!-- End Who Section -->
+</section><!-- End Who Section -->
     <!-- ======= what Section ======= -->
     <section id="what" class="about">
-        <div class="container">
+        <div class="home-container">
+            <div class="container">
 
-            <div class="row content">
-                <div class="col-lg-6  pt-4 pt-lg-0 hideSmall" >
-                    <img src="~/commerce400.png" />
-                </div>
-                <div class="col-lg-6">
-                    <h2>What we do</h2>
-                    <p>
-                        We find companies that are ready and willing to offer you a reduced rate to help your start-up or small businesses access premium products and services at affordable prices. Essentially, Crowd Order aggregates the buying power of all of its users to secure a rate that anyone can take advantage of
-                    </p>
-                    <p>
-                        It’s completely free to join Crowd Order and takes less than a minute to get started
-                    </p>
-                    <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Get started</a>
+                <div class="row content">
+                    <div class="col-lg-6  pt-4 pt-lg-0 hideSmall">
+                        <img src="~/commerce400.png" />
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>What we do</h2>
+                        <p>
+                            We find companies that are ready and willing to offer you a reduced rate to help your start-up or small businesses access premium products and services at affordable prices. Essentially, Crowd Order aggregates the buying power of all of its users to secure a rate that anyone can take advantage of
+                        </p>
+                        <p>
+                            It’s completely free to join Crowd Order and takes less than a minute to get started
+                        </p>
+                        <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Get started</a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section><!-- End About Section -->
     <!-- ======= available Section ======= -->
     <section id="available" class="about">
-        <div class="container">
-            <div class="row content">
-                <div class="col-lg-6">
-                    <h2>What's available</h2>
-                    <p>Are you looking for a new software solution? A marketing or design agency to work on your brand? To discover new ways to save on tax? Perhaps to improve your finance function? Or maybe to outsource admin or other operations? Whatever you need, we have a partner ready to offer you an exclusive rate</p>
-                    <a href="/small-business-start-up-services" class="get-started-btn animate__animated animate__fadeInUp scrollto">View all offers</a>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
-                    <img src="~/What's available500.png" />
+        <div class="home-container">
+            <div class="container">
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <h2>What's available</h2>
+                        <p>Are you looking for a new software solution? A marketing or design agency to work on your brand? To discover new ways to save on tax? Perhaps to improve your finance function? Or maybe to outsource admin or other operations? Whatever you need, we have a partner ready to offer you an exclusive rate</p>
+                        <a href="/small-business-start-up-services" class="get-started-btn animate__animated animate__fadeInUp scrollto">View all offers</a>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
+                        <img src="~/What's available500.png" />
+                    </div>
                 </div>
             </div>
-
         </div>
     </section><!-- End Whats Section -->
     <!-- ======= Partners Section ======= -->
@@ -132,7 +135,7 @@
                 <h2>Our Blog</h2>
                 <p>Latest information from our team</p>
             </div>
-
+            
             <div class="row">
                 @foreach (var item in siteDataService.GetLatestBlogs(2))
                 {
@@ -144,6 +147,7 @@
                             <div class="icon-box">
                                 <i class="icofont-computer"></i>
                                 <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
+                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")" style="max-width:100%" />
                                 <p>@item.Abstract</p>
                             </div>
                         </div>
@@ -154,6 +158,7 @@
                             <div class="icon-box">
                                 <i class="icofont-computer"></i>
                                 <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
+                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")"  style="max-width:100%"  />
                                 <p>@item.Abstract</p>
                             </div>
                         </div>

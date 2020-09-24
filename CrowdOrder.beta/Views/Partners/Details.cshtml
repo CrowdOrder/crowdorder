@@ -60,7 +60,7 @@
                         <div class="entry-content">
                             @if (SignInManager.IsSignedIn(User))
                             {
-                                if (ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)Model.Services[0].Id))
+                                if (Model.DefaultPartnerSignupType != CrowdOrder.beta.Data.DataHelpers.PartnerSignupType.Url && ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)Model.Services[0].Id))
                                 {
                                     <p class="alreadyTakenUp"><strong>You have already received this offer</strong></p>
                                 }
@@ -132,7 +132,7 @@
                             </p>
                             @if (SignInManager.IsSignedIn(User))
                             {
-                                if (ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)item.Id))
+                                if (Model.DefaultPartnerSignupType != CrowdOrder.beta.Data.DataHelpers.PartnerSignupType.Url && ConnectService.IsUserAlreadyConnected(User.FindFirstValue(ClaimTypes.NameIdentifier), (int)item.Id))
                                 {
                                     <p class="alreadyTakenUp"><strong>You have already received this offer</strong></p>
                                 }

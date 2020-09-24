@@ -16,6 +16,7 @@ namespace CrowdOrder.beta.Models
         public string Title { get; set; }
         [Required]
         public string Abstract { get; set; }
+        public string MainImagePath { get; set; }
         [Required]
         public string Contents { get; set; }
         public DateTime CreatedDate { get; set; }
