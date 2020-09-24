@@ -16,7 +16,9 @@ namespace CrowdOrder.beta.Infrastructure
         {
             Generic = 0,
             Welcome = 1,
-            PartnerPlain = 2
+            PartnerPlain = 2,
+            ConnectionEmail = 3
+
         }
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
         {
@@ -33,6 +35,51 @@ namespace CrowdOrder.beta.Infrastructure
         public Task SendEmailAsync(string email, string subject, string message, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
         {
             return Execute(Options.SendGridKey, subject, message, email, ctaButtonText, ctaButtonUrl, greeting, template);
+        }
+
+        public Task SendEmailAsync(List<string> recipients, ExampleTemplateData data, EmailTemplate template = EmailTemplate.Generic)
+        {
+            return Execute(Options.SendGridKey, data, recipients, template);
+        }
+
+        public Task Execute(string apiKey, ExampleTemplateData dynamicTemplateData, List<string> recipients, EmailTemplate template = EmailTemplate.Generic)
+        {
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage();
+
+          
+            //msg.PlainTextContent = "email stuff";
+            msg.SetFrom(new EmailAddress(Options.SendGridUserMike, "Mike Patrick"));
+            foreach(var person in recipients)
+            {
+                msg.AddTo(new EmailAddress(person));
+            }
+            
+            switch (template)
+            {
+                case EmailTemplate.Generic:
+                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    break;
+                case EmailTemplate.Welcome:
+                    msg.SetTemplateId("d-e432d3abc3214fbea849d1ea2fbf64fc");
+                    break;
+                case EmailTemplate.PartnerPlain:
+                    msg.SetTemplateId("d-ef6ac52e63a24b8f9ca5c660da9fd267");
+                    break;
+                case EmailTemplate.ConnectionEmail:
+                    msg.SetTemplateId("d-c8f648d493ef43f49c27692542bd3923");
+                    break;
+                default:
+                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    break;
+            }
+            msg.SetTemplateData(dynamicTemplateData);
+
+            // Disable click tracking.
+            // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
+            msg.SetClickTracking(false, false);
+
+            return client.SendEmailAsync(msg);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
@@ -96,5 +143,12 @@ namespace CrowdOrder.beta.Infrastructure
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
+        
+        [JsonProperty("body")]
+        public string Body { get; set; }
+        [JsonProperty("body2")]
+        public string Body2 { get; set; }
+        [JsonProperty("greeting2")]
+        public string Greeting2 { get; set; }
     }
 }

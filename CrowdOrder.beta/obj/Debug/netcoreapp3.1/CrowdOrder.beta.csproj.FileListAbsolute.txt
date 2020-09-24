@@ -681,3 +681,4 @@ C:\DEV\In Progress\Crowdorder\git\CrowdOrder.beta\bin\Debug\netcoreapp3.1\Serilo
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.csproj.CoreCompileInputs.cache
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.MvcApplicationPartsAssemblyInfo.cs
 C:\DEV\In Progress\Crowdorder\git\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.MvcApplicationPartsAssemblyInfo.cache
+C:\DEV\In Progress\Crowdorder\git\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.csprojAssemblyReference.cache

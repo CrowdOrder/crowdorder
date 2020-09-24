@@ -44,13 +44,12 @@
                     <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
                         <article class="entry">
 
-                            <div class="entry-img">
-                                <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
-                            </div>
-
                             <h2 class="entry-title">
                                 <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{article.Url}")">@article.Title</a>
                             </h2>
+                            <div class="entry-img">
+                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{article.MainImagePath}")" class="img-fluid" />
+                            </div>
 
                             <div class="entry-meta">
                                 <ul>

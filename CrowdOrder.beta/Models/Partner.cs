@@ -11,6 +11,7 @@ namespace CrowdOrder.beta.Models
     {
         public string About { get; set; }
         public string MainContact { get; set; }
+        public string MainContactInformalName { get; set; }
         public string MainContactEmail { get; set; }
         public string MainContactTel { get; set; }
         public string LogoUrl { get; set; }

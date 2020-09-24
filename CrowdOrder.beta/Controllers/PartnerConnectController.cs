@@ -65,21 +65,26 @@ namespace CrowdOrder.beta.Controllers
                 if (service.PartnerSignupType == DataHelpers.PartnerSignupType.Email)
                 {
                     //send email to user
-                    var msg = $"This is just an email to confirm that we’ve just connected you to our Partner, {connect.Service.Partner.Name}, as you requested. "
-                        + $"We’ll leave you to discuss your business requirements directly with them, but rest assured that you will now automatically receive the {connect.Service.DiscountOffer} discount should you decide to start working with {connect.Service.Partner.Name}."
-                        + "Best of luck and thanks for your using Crowd Order!";
-                    var greeting = $"Hi {company.ContactFirstName},";
-                    ((EmailSender)_emailSender).SendEmailAsync(User.Identity.Name, "Crowd Order Connection"
-                        , msg, "Visit Crowd Order", "https://www.crowdorder.co.uk", greeting
-                        );
-
-                    //Override emails and dont send to partner if set in appsettings
                     var email = _configuration["OverrideConnectionEmails"] != "" ? _configuration["OverrideConnectionEmails"] : connect.Service.Partner.MainContactEmail;
-                    //send email to partner
-                    var connectMsg = $"I'd like to introduce you to {company.ContactFirstName} from {company.Name} who is interested in exploring the rates you offer to Crowd Order's users.";
-                    var connectGreeting = $"Hi {connect.Service.Partner.MainContact}";
-                    ((EmailSender)_emailSender).SendEmailAsync(email, "New introduction from Crowd Order"
-                        , connectMsg, "Visit Crowd Order", "https://www.crowdorder.co.uk", connectGreeting, EmailSender.EmailTemplate.PartnerPlain);
+                    var recipients = new List<string>() { email, User.Identity.Name };
+                    var greeting = $"Hi {connect.Service.Partner.MainContactInformalName},";
+                    var body = $"I'd like to introduce you to {company.ContactFirstName} from {company.Name} who is interested in exploring the rates you offer to Crowd Order's users.";
+
+                    var greeting2 = $"Hi {company.ContactFirstName},";
+                    var body2 = $"Please meet {connect.Service.Partner.MainContact} from {connect.Service.Partner.Name} who is well placed to talk you through their offering in more detail. " +
+                        $"I'm sure {connect.Service.Partner.MainContactInformalName}  will reach out shortly to introduce themselves properly and thanks again for using Crowd Order. ";
+
+
+                    var dynamicTemplateData = new ExampleTemplateData
+                    {                       
+                        Subject = "Connection request",
+                        Greeting = greeting,
+                        Body = body,
+                        Greeting2 = greeting2,
+                        Body2 = body2
+                    };
+
+                    ((EmailSender)_emailSender).SendEmailAsync(recipients, dynamicTemplateData, EmailSender.EmailTemplate.ConnectionEmail);
 
                 }
             }

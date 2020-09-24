@@ -12,6 +12,11 @@ namespace CrowdOrder.beta.Infrastructure
             get { return "noreply@crowdorder.co.uk"; }
             set { } 
         }
+        public string SendGridUserMike
+        {
+            get { return "mike.patrick@crowdorder.co.uk"; }
+            set { }
+        }
         public string SendGridKey
         {
             get { return "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"; }
