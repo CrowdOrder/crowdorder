@@ -27,8 +27,10 @@ namespace CrowdOrder.beta
                .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
-
-            CreateDbIfNotExists(host);
+            
+            
+            //Commented out as not needed in production
+            //CreateDbIfNotExists(host);
             host.Run();
         }
 

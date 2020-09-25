@@ -1,4 +1,5 @@
 ﻿@model CrowdOrder.beta.Models.Article
+@using System.Web
 @using Microsoft.AspNetCore.Identity
 @using CrowdOrder.beta.Infrastructure;
 @inject SignInManager<IdentityUser> SignInManager
@@ -54,9 +55,9 @@
                             </div>
 
                             <div class="float-right share">
-                                <a href="http://www.twitter.com/share?url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)" title="Share on Twitter" class="twitter-share-button"><i class="icofont-twitter"></i></a>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)&amp;src=sdkpreparse" title="Share on Facebook"><i class="icofont-facebook"></i></a>
-                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)&title=&summary=&source=" title="Share on LinkedIn"><i class="icofont-linkedin"></i></a>
+                                <a href="http://www.twitter.com/share?url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")" title="Share on Twitter" class="twitter-share-button"><i class="icofont-twitter"></i></a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")&amp;src=sdkpreparse" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")" title="Share on LinkedIn"><i class="icofont-linkedin"></i></a>
                             </div>
 
                         </div>
