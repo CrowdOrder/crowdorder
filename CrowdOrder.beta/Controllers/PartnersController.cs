@@ -21,9 +21,10 @@ namespace CrowdOrder.beta.Controllers
             _logger = logger;
             _partnerRepository = partnerRepository;
         }
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            return View();
+            var model = _partnerRepository.ListAll();
+            return View(model);
         }
         public ActionResult Details(int id)
         {
@@ -37,6 +38,15 @@ namespace CrowdOrder.beta.Controllers
             //var model = _partnerRepository.FindById(1);
             return View(model);
         }
-
+        public IActionResult Edit(int id)
+        {
+            var model = _partnerRepository.FindById(id);
+            return View(model);
+        }
+        public IActionResult Create()
+        {
+            var model = new Partner();
+            return View(model);
+        }
     }
 }

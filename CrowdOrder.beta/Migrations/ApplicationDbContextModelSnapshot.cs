@@ -66,7 +66,11 @@ namespace CrowdOrder.beta.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool?>("InActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("MainImagePath")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -74,6 +78,7 @@ namespace CrowdOrder.beta.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleId");

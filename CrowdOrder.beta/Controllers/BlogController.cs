@@ -14,21 +14,21 @@ namespace CrowdOrder.beta.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public BlogController(ApplicationDbContext context)
+        private readonly ArticlesRepository _repo;
+
+        public BlogController(ArticlesRepository repo )
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Articles
-        public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Articles.Include(a => a.Author);
-            return View(await applicationDbContext.ToListAsync());
+        public IActionResult Index()
+        {            
+            return View(_repo.GetAllActive());
         }
 
         // GET: Articles/Details/5
-        public async Task<IActionResult> Details(string? id)
+        public IActionResult Details(string? id)
         {
             //is this a direct link to Details/int or from rewrite?
             var articleId = 0;
@@ -45,16 +45,12 @@ namespace CrowdOrder.beta.Controllers
                 }
                 else
                 {
-                    article = await _context.Articles
-                        .Include(a => a.Author)
-                        .FirstOrDefaultAsync(m => m.Url == id);
+                    article = _repo.FindByUrl(id); 
                 }
             }
             else
             {
-                article = await _context.Articles
-                    .Include(a => a.Author)
-                    .FirstOrDefaultAsync(m => m.ArticleId == articleId);
+                article = _repo.FindById(int.Parse(id));
             }
 
             
@@ -70,7 +66,7 @@ namespace CrowdOrder.beta.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
+            //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -79,34 +75,36 @@ namespace CrowdOrder.beta.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticleId,Title,Url,Abstract,Contents,CreatedDate,AuthorId")] Article article)
+        public IActionResult Create([Bind("ArticleId,Title,Url,Abstract,Contents,CreatedDate,AuthorId,MainImagePath,AuthorName")] Article article)
         {
             if (ModelState.IsValid)
             {
                 article.AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 article.CreatedDate = DateTime.Now;
-                _context.Add(article);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                article.InActive = true;
+                _repo.Add(article);
+                
+                return RedirectToAction("BlogList", "Admin");
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
+            //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
             return View(article);
         }
 
         // GET: Articles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var article = await _context.Articles.FindAsync(id);
+            var article = _repo.FindById(id);
+            article.InActive = article.InActive == true;
             if (article == null)
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
+            //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
             return View(article);
         }
 
@@ -115,23 +113,18 @@ namespace CrowdOrder.beta.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Title,Abstract,Contents,CreatedDate,AuthorId")] Article article)
+        public IActionResult Edit(int id, [Bind("ArticleId,Title,Abstract,Contents,CreatedDate,AuthorId,Url,MainImagePath,InActive")] Article article)
         {
-            if (id != article.ArticleId)
-            {
-                return NotFound();
-            }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(article);
-                    await _context.SaveChangesAsync();
+                    _repo.Update(article);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ArticleExists(article.ArticleId))
+                    if (!_repo.ArticleExists(article.ArticleId))
                     {
                         return NotFound();
                     }
@@ -142,44 +135,42 @@ namespace CrowdOrder.beta.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
+            //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", article.AuthorId);
             return View(article);
         }
 
-        // GET: Articles/Delete/5
-        [Authorize]
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        public IActionResult Publish(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var article = await _context.Articles
-                .Include(a => a.Author)
-                .FirstOrDefaultAsync(m => m.ArticleId == id);
-            if (article == null)
-            {
-                return NotFound();
-            }
-
-            return View(article);
+            _repo.Publish(id);
+            return RedirectToAction("index");
         }
 
-        // POST: Articles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var article = await _context.Articles.FindAsync(id);
-            _context.Articles.Remove(article);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// GET: Articles/Delete/5
+        //[Authorize]
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        private bool ArticleExists(int id)
-        {
-            return _context.Articles.Any(e => e.ArticleId == id);
-        }
+        //    _repo.SetInActive(id);
+
+        //    return View(article);
+        //}
+
+        //// POST: Articles/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var article = await _context.Articles.FindAsync(id);
+        //    _context.Articles.Remove(article);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+
     }
 }

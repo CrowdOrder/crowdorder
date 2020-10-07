@@ -22,7 +22,7 @@ namespace CrowdOrder.beta.Data
 
         internal List<PartnerConnection> ListAll()
         {
-            var data = _context.PartnerConnections.ToList();
+            var data = _context.PartnerConnections.Include(x => x.Service).ThenInclude(p => p.Partner).ToList();
             return data;
         }
 

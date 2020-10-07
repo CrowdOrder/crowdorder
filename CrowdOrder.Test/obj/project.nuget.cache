@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v6HsnOattknjwY3b1PYT1mAhKIqPjU64CU3jpmPapuWWgE27PVv/SN1zbLKyYrx0GRJ1nur0E9u9jhK2/kJanA==",
+  "dgSpecHash": "cbjlnRrvWs1wxuH8jq/R6KVFrFYGSVKCsdvWzfZ8kxk1mzTxfXtc987+wNwQtJvkg0PxF2CHJUPQYej4xtBk2g==",
   "success": true,
-  "projectFilePath": "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.Test\\CrowdOrder.Test.csproj",
+  "projectFilePath": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.Test\\CrowdOrder.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BenMc\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\markdown\\2.2.1\\markdown.2.2.1.nupkg.sha512",

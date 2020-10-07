@@ -8,6 +8,12 @@
 @{
     ViewData["Title"] = "Details";
 }
+@section metatags{
+    <meta property='og:title' content='@Model.Title' />
+    <meta property='og:image' content='//media.example.com/ 1234567.jpg' />
+    <meta property='og:description' content='@Model.Abstract' />
+    <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
+}
 
 <main id="main">
 
@@ -41,7 +47,7 @@
                         <div class="entry-meta">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="icofont-user"></i>@(Model.AuthorName ?? Model.Author.UserName)</li>
-                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>                                
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>
                             </ul>
                         </div>
 
@@ -64,14 +70,14 @@
 
                     </article><!-- End blog entry -->
 
-                   
+
 
 
                 </div><!-- End blog entries list -->
 
                 <div class="col-lg-4">
 
-                    <div class="sidebar">                       
+                    <div class="sidebar">
 
                         <h3 class="sidebar-title">Recent Posts</h3>
                         <div class="sidebar-item recent-posts">

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TIBFA57xJaGNodaZsoyyTYz5ekvwUSzoqCa9PqXMQtHayS+qxTbaMcAUH+hyMpxKZqD1SiU+o8pvEUSOeJ1gNQ==",
+  "dgSpecHash": "Z36XQc9c/oAnSfBiZVtG1/heplwuKRxUo9qsjWURwuM0S9CC8REOZH4c46Ec17DO+JJAgoM3df1eSy4Vjb0jCQ==",
   "success": true,
-  "projectFilePath": "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
+  "projectFilePath": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BenMc\\.nuget\\packages\\markdown\\2.2.1\\markdown.2.2.1.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.7\\microsoft.aspnetcore.cryptography.internal.3.1.7.nupkg.sha512",

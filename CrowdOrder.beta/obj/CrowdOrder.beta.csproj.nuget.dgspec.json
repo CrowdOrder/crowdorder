@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\CrowdOrder.beta.csproj": {}
+    "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj": {}
   },
   "projects": {
-    "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\CrowdOrder.beta.csproj": {
+    "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
+        "projectUniqueName": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
         "projectName": "CrowdOrder.beta",
-        "projectPath": "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
+        "projectPath": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
         "packagesPath": "C:\\Users\\BenMc\\.nuget\\packages\\",
-        "outputPath": "C:\\DEV\\In Progress\\Crowdorder\\git\\CrowdOrder.beta\\obj\\",
+        "outputPath": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

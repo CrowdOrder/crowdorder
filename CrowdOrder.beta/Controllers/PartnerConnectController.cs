@@ -38,7 +38,8 @@ namespace CrowdOrder.beta.Controllers
         // GET: PartnerConnectController
         public ActionResult Index()
         {
-            return View();
+            var data = _partnerConnectionRepository.ListAll();
+            return View(data);
         }
 
         // GET: PartnerConnectController/Details/5

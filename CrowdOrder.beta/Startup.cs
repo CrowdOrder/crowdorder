@@ -16,6 +16,8 @@ using Microsoft.Extensions.Caching.Memory;
 using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace CrowdOrder.beta
 {
@@ -51,6 +53,11 @@ namespace CrowdOrder.beta
             services.AddSingleton<Cache>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            // To list physical files from a path provided by configuration:
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\blogs");
+            var physicalProvider = new PhysicalFileProvider(filePath);
+
+            services.AddSingleton<IFileProvider>(physicalProvider);
 
 
         }
@@ -58,17 +65,17 @@ namespace CrowdOrder.beta
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IMemoryCache cache, IWebHostEnvironment env, ApplicationDbContext context)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseStatusCodePages();
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                //The default HSTS value is 30 days.You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
-            //}
+            }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
