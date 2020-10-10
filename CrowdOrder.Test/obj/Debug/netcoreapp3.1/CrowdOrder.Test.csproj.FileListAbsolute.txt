@@ -1014,3 +1014,10 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\obj\Debug\netcoreapp3.
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.pdb
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\obj\Debug\netcoreapp3.1\CrowdOrder.Test.genruntimeconfig.cache
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll

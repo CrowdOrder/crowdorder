@@ -15,14 +15,16 @@ namespace CrowdOrder.beta.Infrastructure
         private readonly CategoryRepository _categoryRepository;
         private readonly ServicesRepository _servicesRepository;
         private readonly ArticlesRepository _articlesRepository;
+        private readonly PartnerRepository _partnerRepository;
 
         public SiteDataService(ILogger<SiteDataService> logger, 
-            CategoryRepository categoryRepository, ServicesRepository servicesRepository, ArticlesRepository articlesRepository)
+            CategoryRepository categoryRepository, ServicesRepository servicesRepository, ArticlesRepository articlesRepository, PartnerRepository partnerRepository)
         {
             _logger = logger;
             _categoryRepository = categoryRepository;
             _servicesRepository = servicesRepository;
             _articlesRepository = articlesRepository;
+            this._partnerRepository = partnerRepository;
         }
         public List<Service> GetSuggestedService(int howMany, int subcategoryId, int? omit)
         {
@@ -53,6 +55,11 @@ namespace CrowdOrder.beta.Infrastructure
         public List<Article> GetLatestBlogs(int count)
         {
             var data = _articlesRepository.GetLatestBlogs(count);
+            return data;
+        }
+        public List<Partner> GetPartnerLogos()
+        {
+            var data = _partnerRepository.ListAll();
             return data;
         }
     }

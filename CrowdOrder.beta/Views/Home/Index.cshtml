@@ -1,4 +1,5 @@
 ﻿@using CrowdOrder.beta.Infrastructure;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject SiteDataService siteDataService
 
 @{
@@ -18,7 +19,7 @@
                                 <p class="animate__animated animate__fadeInUp largerfont">
                                     The only marketplace where companies offer exclusive rates to start-ups and small businesses
                                 </p>
-                                <a  asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Join Crowd Order for free</a>
+                                <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Join Crowd Order for free</a>
                                 <p class="animate__animated animate__fadeInUp" style="margin-top:20px;">
                                     Everything your business needs at an attractive price
                                 </p>
@@ -38,7 +39,6 @@
     <section id="who" class="about">
         <div class="home-container">
             <div class="container">
-
                 <div class="row content">
                     <div class="col-lg-6  pt-4 pt-lg-0">
                         <h2>Who we are</h2>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-</section><!-- End Who Section -->
+    </section><!-- End Who Section -->
     <!-- ======= what Section ======= -->
     <section id="what" class="about">
         <div class="home-container">
@@ -94,36 +94,14 @@
     </section><!-- End Whats Section -->
     <!-- ======= Partners Section ======= -->
     <section id="clients" class="clients section-bg">
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="partners/byrd_logo.png" class="img-fluid" alt="">
+        <div class="home-container">
+            <div class="container">
+                <div class="row content">
+                    <div class="row">
+                        @Html.LogoCarousel(siteDataService.GetPartnerLogos())
+                    </div>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/partners/Custard_logo.jpg" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/partners/Digital_Next_logo.jpg" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/partners/Glorious_Creative_logo.jpg" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/partners/kissflow_logo.png" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="~/partners/pipedrive_logo.png" class="img-fluid" alt="">
-                </div>
-
             </div>
-
         </div>
     </section><!-- End Clients Section -->
     <!-- ======= blog Section ======= -->
@@ -135,7 +113,7 @@
                 <h2>Our Blog</h2>
                 <p>Latest information from our team</p>
             </div>
-            
+
             <div class="row">
                 @foreach (var item in siteDataService.GetLatestBlogs(2))
                 {
@@ -158,7 +136,7 @@
                             <div class="icon-box">
                                 <i class="icofont-computer"></i>
                                 <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
-                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")"  style="max-width:100%"  />
+                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")" style="max-width:100%" />
                                 <p>@item.Abstract</p>
                             </div>
                         </div>
@@ -169,11 +147,3 @@
         </div>
     </section><!-- End Services Section -->
 </main><!-- End #main -->
-
-
-
-
-
-
-
-

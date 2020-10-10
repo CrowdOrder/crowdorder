@@ -12,6 +12,14 @@
 
   <ItemGroup>
     <None Include="Views\Shared\Components\LatestArticles\Default.cshtml" />
+    <None Include="wwwroot\slick\config.rb" />
+    <None Include="wwwroot\slick\fonts\slick.svg" />
+    <None Include="wwwroot\slick\slick-theme.less" />
+    <None Include="wwwroot\slick\slick-theme.scss" />
+    <None Include="wwwroot\slick\slick.js" />
+    <None Include="wwwroot\slick\slick.less" />
+    <None Include="wwwroot\slick\slick.min.js" />
+    <None Include="wwwroot\slick\slick.scss" />
     <None Include="wwwroot\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\vendor\bootstrap\css\bootstrap-reboot.css.map" />
@@ -51,6 +59,7 @@
 
   <ItemGroup>
     <PackageReference Include="Markdown" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.7" />
