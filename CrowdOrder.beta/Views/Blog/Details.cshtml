@@ -10,7 +10,7 @@
 }
 @section metatags{
     <meta property='og:title' content='@Model.Title' />
-    <meta property='og:image' content='//media.example.com/ 1234567.jpg' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{Model.MainImagePath}")' />
     <meta property='og:description' content='@Model.Abstract' />
     <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
 }

@@ -59,7 +59,7 @@ namespace CrowdOrder.beta.Infrastructure
         }
         public List<Partner> GetPartnerLogos()
         {
-            var data = _partnerRepository.ListAll();
+            var data = _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).ToList();
             return data;
         }
     }
