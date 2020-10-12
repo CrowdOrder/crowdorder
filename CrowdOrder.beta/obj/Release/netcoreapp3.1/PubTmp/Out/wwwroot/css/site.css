@@ -2262,6 +2262,7 @@ input[type="checkbox"]:checked ~ .connectbtn {
         height: 300px;
         background-size: cover;
         background-position: center center;
+        vertical-align:middle !important;
     }
 }
 .carousel-control-next,

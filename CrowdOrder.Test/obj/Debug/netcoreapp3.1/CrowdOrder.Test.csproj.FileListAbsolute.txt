@@ -1021,3 +1021,6 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.Test\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

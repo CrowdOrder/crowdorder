@@ -960,3 +960,6 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\System.Web.WebPages.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\MailKit.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\MimeKit.dll
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\BouncyCastle.Crypto.dll
