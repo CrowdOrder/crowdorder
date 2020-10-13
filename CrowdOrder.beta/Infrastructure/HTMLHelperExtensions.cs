@@ -12,7 +12,7 @@ namespace CrowdOrder.beta.Infrastructure
         public static IHtmlContent LogoCarousel(this IHtmlHelper htmlHelper, List<Partner> partners)
         {   
             StringBuilder html = new StringBuilder();
-            html.Append("<div id = \"recipeCarousel\" class=\"carousel slide w - 100\" data-ride=\"carousel\"><div class=\"carousel-inner w-100\" role=\"listbox\"><div class=\"carousel-item row no-gutters active\">");
+            html.Append("<div id = \"recipeCarousel\" class=\"carousel slide w - 100\" data-ride=\"carousel\"><div class=\"carousel-inner w-100\" role=\"listbox\"  style=\"height: 100%;\"><div class=\"carousel-item row no-gutters active\">");
             int counter = 0;
             foreach(var item in partners)
             {

@@ -13,6 +13,11 @@
     <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{Model.MainImagePath}")' />
     <meta property='og:description' content='@Model.Abstract' />
     <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
+    <meta name=”twitter:card” content='summary' />
+    <meta name=”twitter:site” content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
+    <meta name=”twitter:title” content=”@Model.Title” />
+    <meta name=”twitter:description” content=”@Model.Abstract” />
+    <meta name=”twitter:image” content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{Model.MainImagePath}")' />
 }
 
 <main id="main">
@@ -25,7 +30,7 @@
                 <h1>Start Up and Small Business Blog and Guides</h1>
                 <ol>
                     <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
-                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "/small-business-start-up-blogs-guides")"></a>Blogs &amp; Guides</li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-blogs-guides")">Blogs &amp; Guides</a></li>
                     <li>Blog</li>
                 </ol>
             </div>
