@@ -963,4 +963,3 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Debug\netcoreapp3.
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.MvcApplicationPartsAssemblyInfo.cs
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.MvcApplicationPartsAssemblyInfo.cache
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Debug\netcoreapp3.1\MailKit.dll
-C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Debug\netcoreapp3.1\CrowdOrder.beta.csprojAssemblyReference.cache
