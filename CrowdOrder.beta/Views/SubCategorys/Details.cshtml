@@ -6,6 +6,15 @@
 @section metatags
 {
     <meta name="description" content="@Model.MetaDescription" />
+    <meta property='og:title' content='Crowd Order' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta property='og:description' content='@Model.MetaDescription' />
+    <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)' />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)' />
+    <meta name='twitter:title' content='Crowd Order' />
+    <meta name='twitter:description' content='@Model.MetaDescription' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
 }
 
 <main id="main">
@@ -55,7 +64,7 @@
                                 </div>
 
                             </div><!-- End blog entry -->
-                        </div>                      
+                        </div>
                     }
                 </div>
             </div>

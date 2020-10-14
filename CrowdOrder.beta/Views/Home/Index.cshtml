@@ -5,6 +5,17 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@section metatags{
+    <meta property='og:title' content='Crowd Order' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta property='og:description' content='The only marketplace where companies offer exclusive rates to start-ups and small businesses' />
+    <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")' />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")' />
+    <meta name='twitter:title' content='Crowd Order' />
+    <meta name='twitter:description' content='The only marketplace where companies offer exclusive rates to start-ups and small businesses' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+}
 <section id="hero" class="section-bg">
     <div id="heroCarousel" class="slide carousel-fade">
         <div class="carousel-inner" role="listbox">
@@ -97,7 +108,7 @@
         <div class="home-container">
             <div class="container">
                 <div class="row content">
-                    <div class="row" style="padding: 20px;">                        
+                    <div class="row" style="padding: 20px;">
                         @foreach (var logo in siteDataService.GetPartnerLogos())
                         {
                             <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
