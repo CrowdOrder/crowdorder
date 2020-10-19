@@ -90,10 +90,13 @@
                         </div>
                         @if (Model.InActive == true)
                         {
-                        <div class="col-md-offset-2 col-md-10">
-                            <button asp-controller="blog" asp-action="Publish" asp-route-id="@Model.ArticleId" class="btn-primary">Publish</button>
-                        </div>
+                            <div class="col-md-offset-2 col-md-10">
+                                <button asp-controller="blog" asp-action="Publish" asp-route-id="@Model.ArticleId" class="btn-primary">Publish</button>
+                            </div>
                         }
+                        <input type="hidden" asp-for="ArticleId" />
+                        <input type="hidden" asp-for="AuthorId" />
+                        <input type="hidden" asp-for="CreatedDate" />
                     </div>
                 </div>
             </form>

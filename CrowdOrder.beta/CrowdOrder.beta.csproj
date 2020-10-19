@@ -11,7 +11,42 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Emails\ConnectionConfirm.txt" />
+    <Content Remove="wwwroot\Emails\Generic.html" />
+    <Content Remove="wwwroot\Emails\Introductory_Email.txt" />
+    <Content Remove="wwwroot\Emails\Plain.html" />
+    <Content Remove="wwwroot\Emails\PlainConnect.html" />
+    <Content Remove="wwwroot\Emails\RegistrationConfirm.txt" />
+    <Content Remove="wwwroot\Emails\Welcome.html" />
+    <Content Remove="wwwroot\Emails\Welcome.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Shared\Components\LatestArticles\Default.cshtml" />
+    <None Include="wwwroot\Emails\ConnectionConfirm.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Generic.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Introductory_Email.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Plain.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\PlainConnect.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\RegistrationConfirm.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Welcome.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Welcome.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\slick\config.rb" />
     <None Include="wwwroot\slick\fonts\slick.svg" />
     <None Include="wwwroot\slick\slick-theme.less" />
@@ -77,6 +112,37 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.5.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="email.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\ConnectionConfirm.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\Generic.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\Introductory_Email.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\Plain.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\PlainConnect.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\RegistrationConfirm.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\Welcome.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Emails\Welcome.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

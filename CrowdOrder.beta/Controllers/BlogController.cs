@@ -113,7 +113,7 @@ namespace CrowdOrder.beta.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("ArticleId,Title,Abstract,Contents,CreatedDate,AuthorId,Url,MainImagePath,InActive")] Article article)
+        public IActionResult Edit(int id, [Bind("ArticleId,Title,Abstract,Contents,CreatedDate,AuthorId,Url,MainImagePath,InActive, AuthorName")] Article article)
         {
             
             if (ModelState.IsValid)

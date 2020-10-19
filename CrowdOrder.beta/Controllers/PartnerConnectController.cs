@@ -76,7 +76,7 @@ namespace CrowdOrder.beta.Controllers
                         $"I'm sure {connect.Service.Partner.MainContactInformalName}  will reach out shortly to introduce themselves properly and thanks again for using Crowd Order. ";
 
 
-                    var dynamicTemplateData = new ExampleTemplateData
+                    var dynamicTemplateData = new EmailTemplateData
                     {                       
                         Subject = "Connection request",
                         Greeting = greeting,

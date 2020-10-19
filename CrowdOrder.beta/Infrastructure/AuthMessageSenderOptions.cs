@@ -7,17 +7,21 @@ namespace CrowdOrder.beta.Infrastructure
 {
     public class AuthMessageSenderOptions
     {
-        public string SendGridUser 
+        public string EmailUser 
         {
             get { return "noreply@crowdorder.co.uk"; }
             set { } 
         }
-        public string SendGridUserMike
+        public string EmailUserPassword
+        {
+            get { return "!QAZcrowdorder"; }
+        }
+        public string EmailUserMike
         {
             get { return "mike.patrick@crowdorder.co.uk"; }
             set { }
         }
-        public string SendGridKey
+        public string APIKey
         {
             get { return "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"; }
             set { }

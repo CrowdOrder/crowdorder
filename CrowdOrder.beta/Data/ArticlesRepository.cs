@@ -55,7 +55,7 @@ namespace CrowdOrder.beta.Data
         internal void Update(Article article)
         {
             _context.Update(article);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         internal void SetInActive(int? id)

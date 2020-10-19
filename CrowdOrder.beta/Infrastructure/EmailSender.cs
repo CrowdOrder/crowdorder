@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using MailKit.Security;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
+using MimeKit;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using System.IO;
+using CrowdOrder.beta.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CrowdOrder.beta.Infrastructure
 {
@@ -29,126 +36,89 @@ namespace CrowdOrder.beta.Infrastructure
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute(Options.SendGridKey, subject, message, email);
+            var data = new EmailTemplateData()
+            {
+                Subject = subject,
+                MainText = message
+            };
+            return Send(data, new List<string>() { email});
         }
 
         public Task SendEmailAsync(string email, string subject, string message, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
         {
-            return Execute(Options.SendGridKey, subject, message, email, ctaButtonText, ctaButtonUrl, greeting, template);
-        }
-
-        public Task SendEmailAsync(List<string> recipients, ExampleTemplateData data, EmailTemplate template = EmailTemplate.Generic)
-        {
-            return Execute(Options.SendGridKey, data, recipients, template);
-        }
-
-        public Task Execute(string apiKey, ExampleTemplateData dynamicTemplateData, List<string> recipients, EmailTemplate template = EmailTemplate.Generic)
-        {
-            var client = new SendGridClient(apiKey);
-            var msg = new SendGridMessage();
-
-          
-            //msg.PlainTextContent = "email stuff";
-            msg.SetFrom(new EmailAddress(Options.SendGridUserMike, "Mike Patrick"));
-            foreach(var person in recipients)
+            var data = new EmailTemplateData()
             {
-                msg.AddTo(new EmailAddress(person));
-            }
-            
-            switch (template)
-            {
-                case EmailTemplate.Generic:
-                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
-                    break;
-                case EmailTemplate.Welcome:
-                    msg.SetTemplateId("d-e432d3abc3214fbea849d1ea2fbf64fc");
-                    break;
-                case EmailTemplate.PartnerPlain:
-                    msg.SetTemplateId("d-ef6ac52e63a24b8f9ca5c660da9fd267");
-                    break;
-                case EmailTemplate.ConnectionEmail:
-                    msg.SetTemplateId("d-c8f648d493ef43f49c27692542bd3923");
-                    break;
-                default:
-                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
-                    break;
-            }
-            msg.SetTemplateData(dynamicTemplateData);
-
-            // Disable click tracking.
-            // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
-            msg.SetClickTracking(false, false);
-
-            return client.SendEmailAsync(msg);
-        }
-
-        public Task Execute(string apiKey, string subject, string message, string email, string ctaButtonText = "", string ctaButtonUrl = "", string greeting = "", EmailTemplate template = EmailTemplate.Generic)
-        {
-            var client = new SendGridClient(apiKey);
-            var msg = new SendGridMessage();
-            
-            var dynamicTemplateData = new ExampleTemplateData
-            {
-                H1 = subject,
+                Subject = subject,
+                MainText = message,
                 ButtonText = ctaButtonText,
                 ButtonUrl = ctaButtonUrl,
-                MainText = message,
-                Greeting = greeting,
-                Subject = subject
+                Greeting = greeting
             };
-            //msg.PlainTextContent = "email stuff";
-            msg.SetFrom(new EmailAddress(Options.SendGridUser, "Crowd Order Team"));
-            msg.AddTo(new EmailAddress(email));
+            return Send(data, new List<string>() { email }, template);
+        }
+
+        public Task SendEmailAsync(List<string> recipients, EmailTemplateData data, EmailTemplate template = EmailTemplate.Generic)
+        {
+            return Send(data, recipients, template);
+        }
+       
+        public Task Send(EmailTemplateData templateData, List<string> recipients, EmailTemplate template = EmailTemplate.Generic)
+        {           
+            var email = new MimeMessage();
+            email.Sender = MailboxAddress.Parse(Options.EmailUser);
+            foreach (var recipient in recipients)
+            {
+                email.To.Add(MailboxAddress.Parse(recipient));
+            }
+
+            email.Subject = templateData.Subject;
+            var builder = new BodyBuilder();
+            string filePath = Directory.GetCurrentDirectory();
             switch (template)
             {
                 case EmailTemplate.Generic:
-                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    filePath += @"\wwwroot\emails\Generic.html";
                     break;
                 case EmailTemplate.Welcome:
-                    msg.SetTemplateId("d-e432d3abc3214fbea849d1ea2fbf64fc");
+                    filePath += @"\wwwroot\emails\Welcome.html";
                     break;
                 case EmailTemplate.PartnerPlain:
-                    msg.SetTemplateId("d-ef6ac52e63a24b8f9ca5c660da9fd267");                    
+                    filePath += @"\wwwroot\emails\Plain.html";
+                    break;
+                case EmailTemplate.ConnectionEmail:
+                    filePath += @"\wwwroot\emails\PlainConnect.html";
                     break;
                 default:
-                    msg.SetTemplateId("d-b83a7f10c48c491f8026d5d1149bb502");
+                    filePath += @"\wwwroot\emails\generic.html";
                     break;
             }
-            msg.SetTemplateData(dynamicTemplateData);
+            StreamReader str = new StreamReader(filePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+            mailText = mailText
+                .Replace("{{h1}}", templateData.H1)
+                .Replace("{{maintext}}", templateData.MainText)
+                .Replace("{{buttontext}}", templateData.ButtonText)
+                .Replace("{{buttonurl}}", templateData.ButtonUrl)
+                .Replace("{{body}}", templateData.Body)
+                .Replace("{{body2}}", templateData.Body2)
+                .Replace("{{greeting}}", templateData.Greeting)
+                .Replace("{{greeting2}}", templateData.Greeting2);
 
-            // Disable click tracking.
-            // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
-            msg.SetClickTracking(false, false);
+            builder.TextBody = mailText;
+            builder.HtmlBody = mailText;
 
-            return client.SendEmailAsync(msg);
+            email.Body = builder.ToMessageBody();
+            using (var smtp = new MailKit.Net.Smtp.SmtpClient())
+            {
+                smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate(Options.EmailUser, Options.EmailUserPassword);
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+
+            return Task.FromResult(true);
+
         }
-    }
-    public class ExampleTemplateData
-    {
-
-        [JsonProperty("h1")]
-        public string H1 { get; set; }
-
-        [JsonProperty("maintext")]
-        public string MainText { get; set; }
-
-        [JsonProperty("buttontext")]
-        public string ButtonText { get; set; }
-
-        [JsonProperty("buttonurl")]
-        public string ButtonUrl { get; set; }
-
-        [JsonProperty("greeting")]
-        public string Greeting { get; set; }
-
-        [JsonProperty("subject")]
-        public string Subject { get; set; }
-        
-        [JsonProperty("body")]
-        public string Body { get; set; }
-        [JsonProperty("body2")]
-        public string Body2 { get; set; }
-        [JsonProperty("greeting2")]
-        public string Greeting2 { get; set; }
-    }
+    }   
 }

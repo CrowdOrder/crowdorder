@@ -2250,20 +2250,33 @@ input[type="checkbox"]:checked ~ .connectbtn {
 }
 
 @media (max-width: 992px) {
+    body{
+        margin: 0;
+    }
     .hideSmall {
         display: none;
     }
+    .homeSmallImgFix {
+        margin-left: 0;
+        padding-left: 0;
+    }
 }
-.adminmenu{
-    list-style-type:none;
+@media (min-width: 992px) {
+    .hideBig {
+        display: none;
+    }
 }
-.carousel-nav-icon {
-    height: 48px;
-    width: 48px;
-}
+    .adminmenu {
+        list-style-type: none;
+    }
 
-.carousel-item {
-    .col, .col-sm, .col-md{
+    .carousel-nav-icon {
+        height: 48px;
+        width: 48px;
+    }
+
+    .carousel-item {
+        .col, .col-sm, .col-md{
         margin: 8px;
         height: 300px;
         background-size: cover;

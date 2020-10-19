@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
 
 namespace CrowdOrder.beta
 {
@@ -77,7 +79,20 @@ namespace CrowdOrder.beta
             app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromDays(30)
+                    };
+
+                }
+            });
 
             app.UseRewriter(UrlRewriteService.GetOptions(context));
 
