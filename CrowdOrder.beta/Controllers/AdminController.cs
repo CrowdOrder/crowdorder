@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
 using CrowdOrder.beta.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,18 +14,22 @@ using Microsoft.Extensions.Logging;
 
 namespace CrowdOrder.beta.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ILogger<ServicesController> _logger;
         private readonly PartnerRepository _partnerRepository;
+        private readonly AffiliatesRepository _affiliateRepository;
+
         public IDirectoryContents PhysicalFiles { get; private set; }
         private readonly IFileProvider _fileProvider;
         private readonly ApplicationDbContext _context;
         public AdminController(ILogger<ServicesController> logger, 
-            PartnerRepository partnerRepository, ApplicationDbContext context, IFileProvider fileProvider)
+            PartnerRepository partnerRepository, AffiliatesRepository affiliateRepository, ApplicationDbContext context, IFileProvider fileProvider)
         {
             _logger = logger;
             _partnerRepository = partnerRepository;
+            _affiliateRepository = affiliateRepository;
             _fileProvider = fileProvider;
             _context = context;
         }
@@ -84,6 +89,7 @@ namespace CrowdOrder.beta.Controllers
             var model = _partnerRepository.ListAll();
             return View(model);
         }
+
         public IActionResult Details(string id)
         {
             var model = _partnerRepository.FindById(int.Parse(id));

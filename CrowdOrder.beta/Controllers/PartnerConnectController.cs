@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
 using CrowdOrder.beta.Infrastructure;
+using CrowdOrder.beta.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -67,7 +68,8 @@ namespace CrowdOrder.beta.Controllers
                 {
                     //send email to user
                     var email = _configuration["OverrideConnectionEmails"] != "" ? _configuration["OverrideConnectionEmails"] : connect.Service.Partner.MainContactEmail;
-                    var recipients = new List<string>() { email, User.Identity.Name };
+                    var mike = _configuration["OverrideConnectionEmails"] != "" ? _configuration["OverrideConnectionEmails"] : "mike.patrick@crowdorder.co.uk";
+                    var recipients = new List<string>() { email, User.Identity.Name, mike };
                     var greeting = $"Hi {connect.Service.Partner.MainContactInformalName},";
                     var body = $"I'd like to introduce you to {company.ContactFirstName} from {company.Name} who is interested in exploring the rates you offer to Crowd Order's users.";
 

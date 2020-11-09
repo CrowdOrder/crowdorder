@@ -22,6 +22,8 @@ namespace CrowdOrder.beta.Data
         public DbSet<PartnerConnection> PartnerConnections {get;set;}
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Affiliate> Affiliates { get; set; }
+        public DbSet<SignUp> Signups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

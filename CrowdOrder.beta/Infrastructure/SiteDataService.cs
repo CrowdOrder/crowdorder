@@ -1,5 +1,6 @@
 ﻿using CrowdOrder.beta.Data;
 using CrowdOrder.beta.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,9 +19,10 @@ namespace CrowdOrder.beta.Infrastructure
         private readonly ServicesRepository _servicesRepository;
         private readonly ArticlesRepository _articlesRepository;
         private readonly PartnerRepository _partnerRepository;
+        private readonly SubCategoryRepository _subCategoryRepository;
 
         public SiteDataService(ILogger<SiteDataService> logger, IConfiguration configuration,
-            CategoryRepository categoryRepository, ServicesRepository servicesRepository, ArticlesRepository articlesRepository, PartnerRepository partnerRepository)
+            CategoryRepository categoryRepository, ServicesRepository servicesRepository, ArticlesRepository articlesRepository, PartnerRepository partnerRepository, SubCategoryRepository subCategoryRepository)
         {
             _logger = logger;
             _configuration = configuration;
@@ -28,6 +30,7 @@ namespace CrowdOrder.beta.Infrastructure
             _servicesRepository = servicesRepository;
             _articlesRepository = articlesRepository;
             _partnerRepository = partnerRepository;
+            _subCategoryRepository = subCategoryRepository;
         }
         public List<Service> GetSuggestedService(int howMany, int subcategoryId, int? omit)
         {
@@ -72,6 +75,16 @@ namespace CrowdOrder.beta.Infrastructure
                 return _configuration["Environment"].ToLower() == "dev";
             }
             
+        }
+
+        public List<SelectListItem> GetSubCategoriesSelectList()
+        {
+
+            return _subCategoryRepository.ListAll().Select(a => new SelectListItem
+            {
+                Value = ((int)a.Id).ToString(),
+                Text = $"{a.Category.Name}-{a.Name}"
+            }).OrderBy(o => o.Text).ToList();
         }
     }
 }

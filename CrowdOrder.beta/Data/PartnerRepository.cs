@@ -39,6 +39,7 @@ namespace CrowdOrder.beta.Data
                 var partner = FindById((int)model.Id);
                 partner.MainContact = model.MainContact;
                 partner.Name = model.Name;
+                partner.Body = model.Body;
                 partner.Url = model.Url;
                 partner.MainContactEmail = model.MainContactEmail;
                 partner.MainContactTel = model.MainContactTel;
@@ -56,6 +57,13 @@ namespace CrowdOrder.beta.Data
                 _context.SaveChanges();
                 return true;
             }
+        }
+
+        internal void SetActive(int id)
+        {
+            var partner = FindById(id);
+            partner.InActive = false;
+            Upsert(ref partner);
         }
     }
 }

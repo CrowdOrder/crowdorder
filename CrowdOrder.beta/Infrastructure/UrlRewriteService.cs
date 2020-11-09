@@ -93,5 +93,9 @@ namespace CrowdOrder.beta.Infrastructure
         {
             return $"https://{root}/{input}";
         }
+        public static string AffiliatesUrl(string root, string input)
+        {
+            return $"https://{root}?w={input}";
+        }
     }
 }

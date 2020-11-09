@@ -1,4 +1,5 @@
 ﻿using CrowdOrder.beta.Data;
+using CrowdOrder.beta.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

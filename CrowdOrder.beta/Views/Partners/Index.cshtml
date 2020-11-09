@@ -34,25 +34,31 @@
                         <th>
                             @Html.DisplayNameFor(model => model.MainContact)
                         </th>
-
+                        <th>@Html.DisplayNameFor(model => model.InActive)</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MainContact)
-                            </td>
-
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MainContact)
+                        </td>
+                        <td>
+                            @if (item.InActive.HasValue && item.InActive.Value)
+                            {
+                                <input type="checkbox" checked />
+                                <a asp-action="Active" asp-route-id="@item.Id">Set Active</a>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

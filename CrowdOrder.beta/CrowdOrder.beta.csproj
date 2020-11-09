@@ -8,14 +8,25 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200909090924_addedArticles.cs" />
     <Compile Remove="Migrations\20200909090924_addedArticles.Designer.cs" />
+    <Compile Remove="Migrations\20201023070029_affiliates.cs" />
+    <Compile Remove="Migrations\20201023070029_affiliates.Designer.cs" />
+    <Compile Remove="Migrations\20201023071039_affiliates.cs" />
+    <Compile Remove="Migrations\20201023071039_affiliates.Designer.cs" />
+    <Compile Remove="Migrations\20201023071438_affiliates.cs" />
+    <Compile Remove="Migrations\20201023071438_affiliates.Designer.cs" />
+    <Compile Remove="Migrations\20201023072925_affiliates.cs" />
+    <Compile Remove="Migrations\20201023072925_affiliates.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\Emails\ConnectionConfirm.txt" />
     <Content Remove="wwwroot\Emails\Generic.html" />
+    <Content Remove="wwwroot\Emails\Generic.txt" />
     <Content Remove="wwwroot\Emails\Introductory_Email.txt" />
     <Content Remove="wwwroot\Emails\Plain.html" />
+    <Content Remove="wwwroot\Emails\Plain.txt" />
     <Content Remove="wwwroot\Emails\PlainConnect.html" />
+    <Content Remove="wwwroot\Emails\PlainConnect.txt" />
     <Content Remove="wwwroot\Emails\RegistrationConfirm.txt" />
     <Content Remove="wwwroot\Emails\Welcome.html" />
     <Content Remove="wwwroot\Emails\Welcome.txt" />
@@ -29,15 +40,18 @@
     <None Include="wwwroot\Emails\Generic.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\Emails\Generic.txt" />
     <None Include="wwwroot\Emails\Introductory_Email.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\Emails\Plain.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\Emails\Plain.txt" />
     <None Include="wwwroot\Emails\PlainConnect.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\Emails\PlainConnect.txt" />
     <None Include="wwwroot\Emails\RegistrationConfirm.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -116,9 +130,6 @@
 
 
   <ItemGroup>
-    <None Update="email.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Emails\ConnectionConfirm.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

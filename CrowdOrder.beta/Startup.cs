@@ -50,8 +50,11 @@ namespace CrowdOrder.beta
             services.AddScoped<SubCategoryRepository>();
             services.AddScoped<PartnerConnectionRepository>();
             services.AddScoped<ArticlesRepository>();
+            services.AddScoped<AffiliatesRepository>();
+            services.AddScoped<SignUpRepository>();
             services.AddScoped<SiteDataService>();
             services.AddScoped<PartnerConnectionsService>();
+            services.AddScoped<AffiliateService>();
             services.AddSingleton<Cache>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
@@ -60,6 +63,16 @@ namespace CrowdOrder.beta
             var physicalProvider = new PhysicalFileProvider(filePath);
 
             services.AddSingleton<IFileProvider>(physicalProvider);
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".crowdorder.session";
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
 
         }
@@ -98,8 +111,11 @@ namespace CrowdOrder.beta
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAffiliateMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
@@ -110,6 +126,8 @@ namespace CrowdOrder.beta
                     pattern: "blog/{*article}");
                 endpoints.MapRazorPages();
             });
+
+            
         }
     }
 }

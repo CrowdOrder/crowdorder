@@ -66,6 +66,7 @@ namespace CrowdOrder.beta.Infrastructure
         {           
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(Options.EmailUser);
+            email.Sender.Name = "Crowd Order Team";
             foreach (var recipient in recipients)
             {
                 email.To.Add(MailboxAddress.Parse(recipient));
@@ -73,26 +74,33 @@ namespace CrowdOrder.beta.Infrastructure
 
             email.Subject = templateData.Subject;
             var builder = new BodyBuilder();
-            string filePath = Directory.GetCurrentDirectory();
+            string tPath = Directory.GetCurrentDirectory();
+            var hPath = Directory.GetCurrentDirectory();
             switch (template)
             {
                 case EmailTemplate.Generic:
-                    filePath += @"\wwwroot\emails\Generic.html";
+                    hPath += @"\wwwroot\emails\Generic.html";
+                    tPath += @"\wwwroot\emails\Generic.txt";
                     break;
                 case EmailTemplate.Welcome:
-                    filePath += @"\wwwroot\emails\Welcome.html";
+                    hPath += @"\wwwroot\emails\Welcome.html";
+                    tPath += @"\wwwroot\emails\Welcome.txt";
                     break;
                 case EmailTemplate.PartnerPlain:
-                    filePath += @"\wwwroot\emails\Plain.html";
+                    hPath += @"\wwwroot\emails\Plain.html";
+                    tPath += @"\wwwroot\emails\Plain.txt";
                     break;
                 case EmailTemplate.ConnectionEmail:
-                    filePath += @"\wwwroot\emails\PlainConnect.html";
+                    hPath += @"\wwwroot\emails\PlainConnect.html";
+                    tPath += @"\wwwroot\emails\PlainConnect.txt";
                     break;
                 default:
-                    filePath += @"\wwwroot\emails\generic.html";
+                    hPath += @"\wwwroot\emails\generic.html";
+                    tPath += @"\wwwroot\emails\Generic.txt";
                     break;
             }
-            StreamReader str = new StreamReader(filePath);
+            //HTML
+            StreamReader str = new StreamReader(hPath);
             string mailText = str.ReadToEnd();
             str.Close();
             mailText = mailText
@@ -105,8 +113,26 @@ namespace CrowdOrder.beta.Infrastructure
                 .Replace("{{greeting}}", templateData.Greeting)
                 .Replace("{{greeting2}}", templateData.Greeting2);
 
-            builder.TextBody = mailText;
+            
             builder.HtmlBody = mailText;
+
+            //text
+            StreamReader str2 = new StreamReader(tPath);
+            string mailText2 = str2.ReadToEnd();
+            str2.Close();
+            mailText2 = mailText2
+                .Replace("{{h1}}", templateData.H1)
+                .Replace("{{maintext}}", templateData.MainText)
+                .Replace("{{buttontext}}", templateData.ButtonText)
+                .Replace("{{buttonurl}}", templateData.ButtonUrl)
+                .Replace("{{body}}", templateData.Body)
+                .Replace("{{body2}}", templateData.Body2)
+                .Replace("{{greeting}}", templateData.Greeting)
+                .Replace("{{greeting2}}", templateData.Greeting2);
+
+
+
+            builder.TextBody = mailText2;
 
             email.Body = builder.ToMessageBody();
             using (var smtp = new MailKit.Net.Smtp.SmtpClient())

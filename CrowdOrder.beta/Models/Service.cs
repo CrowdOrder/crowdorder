@@ -16,7 +16,9 @@ namespace CrowdOrder.beta.Models
 
         public PartnerSignupType PartnerSignupType { get; set; }
         public virtual Partner Partner{get;set;}
+        public int PartnerId { get; set; }
         
+        public int? SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
 
     }

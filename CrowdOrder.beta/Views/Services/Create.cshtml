@@ -1,0 +1,96 @@
+﻿@model CrowdOrder.beta.Models.Service
+@using CrowdOrder.beta.Infrastructure;
+@inject SiteDataService siteServiceData;
+@section head{
+    <script src="https://cdn.tiny.cloud/1/ewgcc720jfvovqy7x0za4szxp1t5hb5mue4lm71rrchlh8zy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'autolink lists media table ',
+        toolbar: 'addcomment showcomments casechange checklist code formatpainter permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Create service</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="~/Admin">Website Admin</a></li>
+                    <li>Partners - Service</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PartnerSignupType" class="control-label">Partner signup type</label>
+                    <select asp-for="PartnerSignupType" asp-items="Html.GetEnumSelectList<CrowdOrder.beta.Data.DataHelpers.PartnerSignupType>()" class="form-control"></select>
+                    <span asp-validation-for="PartnerSignupType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubCategoryId" class="control-label">Service sub-category</label>
+                    <select asp-for="SubCategoryId" asp-items="@siteServiceData.GetSubCategoriesSelectList()" class="form-control"></select>
+                    <span asp-validation-for="SubCategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DiscountOffer" class="control-label">Discount Offer (e.g. 10%)</label>
+                    <input asp-for="DiscountOffer" class="form-control" />
+                    <span asp-validation-for="DiscountOffer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="QualifyingCriteria" class="control-label">Qualifying criteria (leave blank if none)</label>
+                    <textarea asp-for="QualifyingCriteria" class="form-control" rows="20"></textarea>
+                    <span asp-validation-for="QualifyingCriteria" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConnectUrl" class="control-label">Url for connection</label>
+                    <input asp-for="ConnectUrl" class="form-control" />
+                    <span asp-validation-for="ConnectUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConnectContact" class="control-label">Connection contact</label>
+                    <input asp-for="ConnectContact" class="form-control" />
+                    <span asp-validation-for="ConnectContact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConnectEmail" class="control-label">Email for connection</label>
+                    <input asp-for="ConnectEmail" class="form-control" />
+                    <span asp-validation-for="ConnectEmail" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="PartnerId" />
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </section>
+</main>

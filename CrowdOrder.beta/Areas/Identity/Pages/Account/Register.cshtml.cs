@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,17 +25,19 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly AffiliateService _affiliatesService;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, AffiliateService affiliatesService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _affiliatesService = affiliatesService;
         }
 
         [BindProperty]
@@ -92,6 +95,12 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
                     await ((EmailSender)_emailSender).SendEmailAsync(Input.Email, "Please confirm your email",
                         $"Please confirm your account by clicking the button below.", "Confirm email", callbackUrl);
 
+                    //Affiliate links
+                    var affiliate = HttpContext.Session.GetString("affiliate");
+                    if (affiliate != "")
+                    {
+                        _affiliatesService.SignupWithAffiliateLink(affiliate, user);
+                    }
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

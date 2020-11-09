@@ -1,112 +1,221 @@
 ﻿@model CrowdOrder.beta.Models.Partner
-
+@using CrowdOrder.beta.Infrastructure;
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+@section head{
+    <script src="https://cdn.tiny.cloud/1/ewgcc720jfvovqy7x0za4szxp1t5hb5mue4lm71rrchlh8zy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'autolink lists media table ',
+        toolbar: 'addcomment showcomments casechange checklist code formatpainter permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
 
-<h4>Partner</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="About" class="control-label"></label>
-                <input asp-for="About" class="form-control" />
-                <span asp-validation-for="About" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MainContact" class="control-label"></label>
-                <input asp-for="MainContact" class="form-control" />
-                <span asp-validation-for="MainContact" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MainContactInformalName" class="control-label"></label>
-                <input asp-for="MainContactInformalName" class="form-control" />
-                <span asp-validation-for="MainContactInformalName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MainContactEmail" class="control-label"></label>
-                <input asp-for="MainContactEmail" class="form-control" />
-                <span asp-validation-for="MainContactEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MainContactTel" class="control-label"></label>
-                <input asp-for="MainContactTel" class="form-control" />
-                <span asp-validation-for="MainContactTel" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LogoUrl" class="control-label"></label>
-                <input asp-for="LogoUrl" class="form-control" />
-                <span asp-validation-for="LogoUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SiteUrl" class="control-label"></label>
-                <input asp-for="SiteUrl" class="form-control" />
-                <span asp-validation-for="SiteUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DefaultPartnerSignupType" class="control-label"></label>
-                <select asp-for="DefaultPartnerSignupType" class="form-control"></select>
-                <span asp-validation-for="DefaultPartnerSignupType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiscountPricing" class="control-label"></label>
-                <input asp-for="DiscountPricing" class="form-control" />
-                <span asp-validation-for="DiscountPricing" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InActive" class="control-label"></label>
-                <input asp-for="InActive" class="form-control" />
-                <span asp-validation-for="InActive" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Url" class="control-label"></label>
-                <input asp-for="Url" class="form-control" />
-                <span asp-validation-for="Url" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaDescription" class="control-label"></label>
-                <input asp-for="MetaDescription" class="form-control" />
-                <span asp-validation-for="MetaDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="H1" class="control-label"></label>
-                <input asp-for="H1" class="form-control" />
-                <span asp-validation-for="H1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
-                <span asp-validation-for="Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<main id="main">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
 
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Website Admin</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="~/Admin">Website Admin</a></li>
+                    <li>Partners</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Partner Name</label>
+                    <div class="col-md-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Page Title</label>
+                    <div class="col-md-10">
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MetaDescription" class="control-label">Page meta description</label>
+                    <div class="col-md-10">
+                        <input asp-for="MetaDescription" class="form-control" />
+                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="H1" class="control-label">Page H1</label>
+                    <div class="col-md-10">
+                        <input asp-for="H1" class="form-control" />
+                        <span asp-validation-for="H1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Body" class="control-label">Partner overview appearing in list pages</label>
+                    <div class="col-md-10">
+                        <input asp-for="Body" class="form-control" />
+                        <span asp-validation-for="Body" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About" class="control-label">Partner - About us</label>
+                    <div class="col-md-10">
+                        <textarea asp-for="About" class="form-control" rows="20"></textarea>
+                        <span asp-validation-for="About" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LogoUrl" class="control-label">Logo url e.g. partnername.png</label>
+                    <div class="col-md-10">
+                        <input asp-for="LogoUrl" class="form-control" />
+                        <span asp-validation-for="LogoUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SiteUrl" class="control-label">Url for partner company</label>
+                    <div class="col-md-10">
+                        <input asp-for="SiteUrl" class="form-control" />
+                        <span asp-validation-for="SiteUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DefaultPartnerSignupType" class="control-label">Signup type</label>
+                    <div class="col-md-10">
+                        <select asp-for="DefaultPartnerSignupType" asp-items="Html.GetEnumSelectList<CrowdOrder.beta.Data.DataHelpers.PartnerSignupType>()" class="form-control"></select>
+                        <span asp-validation-for="DefaultPartnerSignupType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DiscountPricing" class="control-label">Discount pricing text</label>
+                    <div class="col-md-10">
+                        <textarea asp-for="DiscountPricing" class="form-control" rows="20"></textarea>
+                        <span asp-validation-for="DiscountPricing" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Url" class="control-label">Crowd Order site URL (e.g. small-business-start-up-services/partnername)</label>
+                    <div class="col-md-10">
+                        <input asp-for="Url" class="form-control" />
+                        <span asp-validation-for="Url" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="MainContact" class="control-label">Main contact name</label>
+                    <div class="col-md-10">
+                        <input asp-for="MainContact" class="form-control" />
+                        <span asp-validation-for="MainContact" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainContactInformalName" class="control-label">Informal name used on email introduction</label>
+                    <div class="col-md-10">
+                        <input asp-for="MainContactInformalName" class="form-control" />
+                        <span asp-validation-for="MainContactInformalName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainContactEmail" class="control-label">Main contact email</label>
+                    <div class="col-md-10">
+                        <input asp-for="MainContactEmail" class="form-control" />
+                        <span asp-validation-for="MainContactEmail" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainContactTel" class="control-label">Main contact tel</label>
+                    <div class="col-md-10">
+                        <input asp-for="MainContactTel" class="form-control" />
+                        <span asp-validation-for="MainContactTel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Notes" class="control-label">Notes on partner</label>
+                    <div class="col-md-10">
+                        <input asp-for="Notes" class="form-control" />
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <section class="section-bg  col-md-10">
+                        <h3>Services</h3>
+                        <div>
+                            <a asp-controller="Services" asp-action="Create" asp-route-id="@Model.Id" class="btn">Add new service</a>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Services[0].Title)
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                    <th>
+                                        Offer
+                                    </th>
+                                    <th>
+                                        Contact
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Services)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PartnerSignupType)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DiscountOffer)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ConnectContact)
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </section>
+</main>

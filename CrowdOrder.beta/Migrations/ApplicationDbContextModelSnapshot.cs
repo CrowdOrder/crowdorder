@@ -19,27 +19,31 @@ namespace CrowdOrder.beta.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CrowdOrder.beta.Data.PartnerConnection", b =>
+            modelBuilder.Entity("CrowdOrder.beta.Models.Affiliate", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ServiceId")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telephone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("PartnerConnections");
+                    b.ToTable("Affiliates");
                 });
 
             modelBuilder.Entity("CrowdOrder.beta.Models.Article", b =>
@@ -216,6 +220,29 @@ namespace CrowdOrder.beta.Migrations
                     b.ToTable("Partners");
                 });
 
+            modelBuilder.Entity("CrowdOrder.beta.Models.PartnerConnection", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("PartnerConnections");
+                });
+
             modelBuilder.Entity("CrowdOrder.beta.Models.Service", b =>
                 {
                     b.Property<int?>("Id")
@@ -272,6 +299,34 @@ namespace CrowdOrder.beta.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Service");
+                });
+
+            modelBuilder.Entity("CrowdOrder.beta.Models.SignUp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AffiliateId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReconciledDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AffiliateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Signups");
                 });
 
             modelBuilder.Entity("CrowdOrder.beta.Models.SubCategory", b =>
@@ -509,18 +564,18 @@ namespace CrowdOrder.beta.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CrowdOrder.beta.Data.PartnerConnection", b =>
-                {
-                    b.HasOne("CrowdOrder.beta.Models.Service", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId");
-                });
-
             modelBuilder.Entity("CrowdOrder.beta.Models.Article", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
+                });
+
+            modelBuilder.Entity("CrowdOrder.beta.Models.PartnerConnection", b =>
+                {
+                    b.HasOne("CrowdOrder.beta.Models.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId");
                 });
 
             modelBuilder.Entity("CrowdOrder.beta.Models.Service", b =>
@@ -532,6 +587,17 @@ namespace CrowdOrder.beta.Migrations
                     b.HasOne("CrowdOrder.beta.Models.SubCategory", "SubCategory")
                         .WithMany("Services")
                         .HasForeignKey("SubCategoryId");
+                });
+
+            modelBuilder.Entity("CrowdOrder.beta.Models.SignUp", b =>
+                {
+                    b.HasOne("CrowdOrder.beta.Models.Affiliate", "Affiliate")
+                        .WithMany("Signups")
+                        .HasForeignKey("AffiliateId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("CrowdOrder.beta.Models.SubCategory", b =>

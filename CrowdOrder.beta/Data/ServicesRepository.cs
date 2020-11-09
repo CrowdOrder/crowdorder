@@ -38,6 +38,12 @@ namespace CrowdOrder.beta.Data
             return data;
         }
 
+        internal List<Service> FindByPartnerId(int id)
+        {
+            var data = _context.Service.Include(x => x.Partner).Where(s => s.Partner.Id == id).ToList();
+            return data;
+        }
+
         internal List<Category> MenuBuilder()
         {
             return _cache.Memoize(
@@ -49,6 +55,40 @@ namespace CrowdOrder.beta.Data
                 },
                 DateTime.UtcNow.TimeToMidnight()
                 );
+        }
+
+        internal Service CreateNew(int id)
+        {
+            var partner = _context.Partners.Find(id);
+            var service = new Service() { PartnerId = id, Partner = partner, PartnerSignupType = partner.DefaultPartnerSignupType };
+            return service;
+        }
+
+        internal bool Upsert(ref Service model)
+        {
+            var id = model.Id;
+            var service = _context.Service.Where(x => x.Id == id).FirstOrDefault();
+
+            if (service != null)
+            {
+                service.Title = model.Title;
+                service.PartnerSignupType = model.PartnerSignupType;
+                service.DiscountOffer = model.DiscountOffer;
+                service.QualifyingCriteria = model.QualifyingCriteria;
+                service.ConnectUrl = model.ConnectUrl;
+                service.ConnectContact = model.ConnectContact;
+                service.ConnectEmail = model.ConnectEmail;
+                service.SubCategoryId = model.SubCategoryId;
+                _context.Service.Update(service);
+                _context.SaveChanges();
+                return false;
+            }
+            else
+            {
+                _context.Service.Add(model);
+                _context.SaveChanges();
+                return true;
+            };
         }
     }
 }

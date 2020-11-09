@@ -35,5 +35,11 @@ namespace CrowdOrder.beta.Data
                 return data;
             }
         }
+
+        internal List<SubCategory> ListAll()
+        {
+            var data = _context.SubCategorys.Include(x => x.Category).ToList();
+            return data;         
+        }
     }
 }
