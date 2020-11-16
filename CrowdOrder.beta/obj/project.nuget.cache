@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vCuBj9N0ZhXj7NFXtven+YF7AsaFZ81OElSPaOa8Z0q+GRwUrn4ihC5g74z7nF8rwgKdkH1EWmNp0MJkGWDwRA==",
+  "dgSpecHash": "AWwlog0Z+//N0HR+GkDzAKmwGEhLPhmvTwT4N0j/7NqX9HNUyX/rq1g31ZosNjz1wWi6miMpZuZUuMX+ylmpbQ==",
   "success": true,
   "projectFilePath": "C:\\DEV\\In Progress\\Crowdorder\\git\\Develop\\CrowdOrder.beta\\CrowdOrder.beta.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.7\\microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
+    "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\3.1.10\\microsoft.aspnetcore.authentication.facebook.3.1.10.nupkg.sha512",
+    "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.10\\microsoft.aspnetcore.authentication.google.3.1.10.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.7\\microsoft.aspnetcore.cryptography.internal.3.1.7.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.7\\microsoft.aspnetcore.cryptography.keyderivation.3.1.7.nupkg.sha512",
     "C:\\Users\\BenMc\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.1\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.1.nupkg.sha512",

@@ -73,7 +73,18 @@ namespace CrowdOrder.beta
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+            services.AddAuthentication()
+                    .AddFacebook(options =>
+                    {
+                        options.AppId = "295782441715653";
+                        options.AppSecret = "cb9c354fc63671038978ffec883127a1";
+                    })
+                    .AddGoogle(opts =>
+                    {
+                        opts.ClientId = "111680795545-dq470akedcqtg424nllsd50svr8fm64o.apps.googleusercontent.com";
+                        opts.ClientSecret = "wxZ-xKA2N89n8SVmxX3j_9wm";
+                        opts.SignInScheme = IdentityConstants.ExternalScheme;
+                    });
 
         }
 
