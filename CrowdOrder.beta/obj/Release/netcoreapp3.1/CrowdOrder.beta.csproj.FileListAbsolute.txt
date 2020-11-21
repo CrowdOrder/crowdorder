@@ -988,4 +988,3 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Release\netcoreapp
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Release\netcoreapp3.1\Razor\Views\Services\PartnerServices.cshtml.g.cs
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Facebook.dll
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
-C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login2.cshtml.g.cs

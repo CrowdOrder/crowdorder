@@ -96,8 +96,13 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
             {
                 // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
+                var email = "";
+                if (info.LoginProvider == "Google")
+                {
+                    email = info.Principal.FindFirst(ClaimTypes.Email).Value;
+                }
 
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true };
+                var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
 
                 var uresult = await _userManager.CreateAsync(user);
                 if (uresult.Succeeded)

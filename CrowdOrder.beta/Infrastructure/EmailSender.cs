@@ -14,11 +14,13 @@ using MailKit.Net.Smtp;
 using System.IO;
 using CrowdOrder.beta.Data;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.Extensions.Configuration;
 
 namespace CrowdOrder.beta.Infrastructure
 {
     public class EmailSender : IEmailSender
     {
+        private readonly IConfiguration _configuration;
         public enum EmailTemplate
         {
             Generic = 0,
@@ -27,9 +29,10 @@ namespace CrowdOrder.beta.Infrastructure
             ConnectionEmail = 3
 
         }
-        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
+        public EmailSender(IConfiguration configuration, IOptions<AuthMessageSenderOptions> optionsAccessor)
         {
             Options = optionsAccessor.Value;
+            _configuration = configuration;
         }
 
         public AuthMessageSenderOptions Options { get; } //set only via Secret Manager
@@ -79,20 +82,20 @@ namespace CrowdOrder.beta.Infrastructure
             switch (template)
             {
                 case EmailTemplate.Generic:
-                    hPath += @"\wwwroot\emails\Generic.html";
-                    tPath += @"\wwwroot\emails\Generic.txt";
+                    hPath += _configuration["EmailPaths:Generic.html"].ToLower();
+                    tPath += _configuration["EmailPaths:Generic.txt"].ToLower();
                     break;
                 case EmailTemplate.Welcome:
-                    hPath += @"\wwwroot\emails\Welcome.html";
-                    tPath += @"\wwwroot\emails\Welcome.txt";
+                    hPath += _configuration["EmailPaths:Welcome.html"].ToLower();
+                    tPath += _configuration["EmailPaths:Welcome.txt"].ToLower();
                     break;
                 case EmailTemplate.PartnerPlain:
-                    hPath += @"\wwwroot\emails\Plain.html";
-                    tPath += @"\wwwroot\emails\Plain.txt";
+                    hPath += _configuration["EmailPaths:Plain.html"].ToLower();
+                    tPath += _configuration["EmailPaths:Plain.txt"].ToLower();
                     break;
                 case EmailTemplate.ConnectionEmail:
-                    hPath += @"\wwwroot\emails\PlainConnect.html";
-                    tPath += @"\wwwroot\emails\PlainConnect.txt";
+                    hPath += _configuration["EmailPaths:PlainConnect.html"].ToLower();
+                    tPath += _configuration["EmailPaths:PlainConnect.txt"].ToLower();
                     break;
                 default:
                     hPath += @"\wwwroot\emails\generic.html";
