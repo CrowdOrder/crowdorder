@@ -1,6 +1,11 @@
-﻿@using CrowdOrder.beta.Infrastructure;
+﻿@using Microsoft.AspNetCore.Identity
+@using CrowdOrder.beta.Infrastructure;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject SiteDataService siteDataService
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
 
 @{
     ViewData["Title"] = "Home Page";
@@ -29,8 +34,15 @@
                                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Crowd Order</span></h2>
                                 <p class="animate__animated animate__fadeInUp largerfont">
                                     The only marketplace where companies offer exclusive rates to start-ups and small businesses
-                                </p>                                
-                                <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Join Crowd Order for free</a>
+                                </p>
+                                @if (!SignInManager.IsSignedIn(User))
+                                {
+                                    <form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin"
+                                          asp-route-returnUrl="/" method="post">
+                                        <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Join Crowd Order for free</a>
+                                        <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started animate__animated animate__fadeInUp scrollto loginBtn--google">    </button>
+                                    </form>
+                                }
                                 <p class="animate__animated animate__fadeInUp" style="margin-top:20px;">
                                     Everything your business needs at an attractive price
                                 </p>

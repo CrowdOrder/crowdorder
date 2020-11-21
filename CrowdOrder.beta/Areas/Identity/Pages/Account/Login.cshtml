@@ -26,7 +26,7 @@
             <div class="form-row">
                 <div class="col-md-6">
                     <form id="account" method="post">
-                        <p>To log in, please either enter your details or click the relevant button to use your google or facebook account <br /> or if you do not already have an account, click 'Register as a new user'</p>
+                        <p>Please enter your details to log in or click 'Register as a new user' if you do not already have an account.</p>
                         <hr />
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group">
@@ -47,8 +47,9 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group login-page">
                             <button type="submit" class="get-started-btn">Log in</button>
+                            <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started loginBtn--google">    </button>
                         </div>
                         <div class="form-group">
                             <p>
@@ -60,7 +61,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 col-md-offset-2">
+                @*<div class="col-md-6 col-md-offset-2">
                     <section>
                         @{
                             if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -101,7 +102,7 @@
                             }
                         }
                     </section>
-                </div>
+                </div>*@
             </div>
         </div>
     </section>
