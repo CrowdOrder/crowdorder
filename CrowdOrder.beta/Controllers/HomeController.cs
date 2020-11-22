@@ -33,26 +33,26 @@ namespace CrowdOrder.beta.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                var company = _companyRepository.FindByUserId(Guid.Parse(id));
-                if (company == null)
-                {
-                    //user has not completed registration
-                    return RedirectToAction("Company");
-                }
+                //var company = _companyRepository.FindByUserId(Guid.Parse(id));
+                //if (company == null)
+                //{
+                //    //user has not completed registration
+                //    return RedirectToAction("Company");
+                //}
             }
 
 
             return View();
         }
-        public IActionResult Company()
-        {
+        public IActionResult Company(string returnUrl = "/")
+        {            
             var userEmail =  User.FindFirstValue(ClaimTypes.Name);
             var banned = new List<string> { "@hotmail", "@gmail", "@googlemail", "@live" };
 
             var result = banned.Any(w => userEmail.Contains(w));
-            var model = new Company();
+            var model = new CompanyVM() { ReturnUrl = returnUrl };
             if (!result)
             {
                 model.Email = userEmail;
@@ -61,12 +61,14 @@ namespace CrowdOrder.beta.Controllers
         }
 
         [HttpPost]
-        public IActionResult Company(Company model)
+        public IActionResult Company(CompanyVM model)
         {
             //Validate model
             //save model
+            var company = (Company)model;
+
             model.UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            bool success = _companyRepository.Upsert(ref model);
+            bool success = _companyRepository.Upsert(ref company);
             if (success)
             {
                 //send a thank you signup email
@@ -77,7 +79,10 @@ namespace CrowdOrder.beta.Controllers
                 
                 ((EmailSender)_emailSender).SendEmailAsync(User.Identity.Name, "Welcome to Crowd Order"
                     , msg, "Explore Exclusive Rates", "https://www.crowdorder.co.uk", greeting, EmailSender.EmailTemplate.Welcome);
-
+                if (model.ReturnUrl != "/")
+                {
+                    return Redirect(model.ReturnUrl);
+                }
                 return RedirectToAction("Index");
             }
 

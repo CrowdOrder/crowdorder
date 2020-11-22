@@ -51,7 +51,12 @@ namespace CrowdOrder.beta.Controllers
             var claim = User.FindFirst(ClaimTypes.NameIdentifier);
             var userId = Guid.Parse(claim.Value);
             var company = _companyRepository.FindByUserId(userId);
-            
+            if (company == null)
+            {
+                //user has not completed registration
+                return RedirectToAction("Company", "Home", new { returnUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.Path}" }) ;
+            }
+
             var connect = new PartnerConnection()
             {
                 Service = service,

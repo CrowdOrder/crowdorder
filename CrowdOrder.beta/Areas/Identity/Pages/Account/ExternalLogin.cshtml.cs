@@ -6,12 +6,15 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace CrowdOrder.beta.Areas.Identity.Pages.Account
@@ -23,17 +26,23 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly AffiliateService _affiliatesService;
 
         public ExternalLoginModel(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IConfiguration configuration, 
+            AffiliateService affiliatesService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
             _emailSender = emailSender;
+            _affiliatesService = affiliatesService;
+            _configuration = configuration;
         }
 
         [BindProperty]
@@ -101,15 +110,20 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
                 {
                     email = info.Principal.FindFirst(ClaimTypes.Email).Value;
                 }
-
+              
                 var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
-
+               
                 var uresult = await _userManager.CreateAsync(user);
                 if (uresult.Succeeded)
                 {
                     uresult = await _userManager.AddLoginAsync(user, info);
                     if (uresult.Succeeded)
                     {
+                        var affiliate = HttpContext.Session.GetString(_configuration["AffiliateKey"]);
+                        if (affiliate != "")
+                        {
+                            _affiliatesService.SignupWithAffiliateLink(affiliate, user);
+                        }
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
                         await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);
