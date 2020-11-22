@@ -22,9 +22,11 @@
     <Content Remove="wwwroot\Emails\ConnectionConfirm.txt" />
     <Content Remove="wwwroot\Emails\Generic.html" />
     <Content Remove="wwwroot\Emails\Generic.txt" />
+    <Content Remove="wwwroot\Emails\Generic2.txt" />
     <Content Remove="wwwroot\Emails\Introductory_Email.txt" />
     <Content Remove="wwwroot\Emails\Plain.html" />
     <Content Remove="wwwroot\Emails\Plain.txt" />
+    <Content Remove="wwwroot\Emails\Plain2.txt" />
     <Content Remove="wwwroot\Emails\PlainConnect.html" />
     <Content Remove="wwwroot\Emails\PlainConnect.txt" />
     <Content Remove="wwwroot\Emails\RegistrationConfirm.txt" />
@@ -37,21 +39,33 @@
     <None Include="wwwroot\Emails\ConnectionConfirm.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\Emails\Generic2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\Emails\Generic.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\Emails\Generic.txt" />
+    <None Include="wwwroot\Emails\Generic.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\Emails\Introductory_Email.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Emails\Plain2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\Emails\Plain.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\Emails\Plain.txt" />
+    <None Include="wwwroot\Emails\Plain.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\Emails\PlainConnect.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\Emails\PlainConnect.txt" />
+    <None Include="wwwroot\Emails\PlainConnect.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\Emails\RegistrationConfirm.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
