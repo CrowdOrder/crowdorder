@@ -86,5 +86,28 @@ namespace CrowdOrder.beta.Infrastructure
                 Text = $"{a.Category.Name}-{a.Name}"
             }).OrderBy(o => o.Text).ToList();
         }
+
+        //public List<Category> AffiliatesMenuData(string affiliates)
+        //{
+        //    var sc = _subCategoryRepository.ListAll();
+
+        //    var data = new List<Category>();
+        //    foreach (var sub in sc)
+        //    {
+        //        if (!data.Contains(sub.Category))
+        //        {
+        //            var cat = sub.Category;
+        //            cat.SubCategories = new List<SubCategory>();
+        //            cat.SubCategories.Add(sub);
+        //            data.Add(cat);
+        //        }
+        //        else
+        //        {
+        //            data.Find(x => x == sub.Category).SubCategories.Add(sub);
+        //        }
+        //    }
+
+        //    return data;
+        //}
     }
 }
