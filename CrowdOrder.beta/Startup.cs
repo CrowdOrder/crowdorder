@@ -52,6 +52,7 @@ namespace CrowdOrder.beta
             services.AddScoped<ArticlesRepository>();
             services.AddScoped<AffiliatesRepository>();
             services.AddScoped<SignUpRepository>();
+            services.AddScoped<IgnoresRepository>();
             services.AddScoped<SiteDataService>();
             services.AddScoped<PartnerConnectionsService>();
             services.AddScoped<AffiliateService>();

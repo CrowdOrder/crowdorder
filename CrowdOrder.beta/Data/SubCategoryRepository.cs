@@ -21,7 +21,7 @@ namespace CrowdOrder.beta.Data
             _cache = cache;
         }
 
-        internal SubCategory FindById(int id, bool includeEmpty = false)
+        internal SubCategory FindById(int id, bool includeEmpty = false, string affiliate = "")
         {
             if (includeEmpty)
             {
@@ -29,9 +29,22 @@ namespace CrowdOrder.beta.Data
                 return data;
             }
             else
-
             {
-                var data = _context.SubCategorys.Include(x => x.Services).ThenInclude(p => p.Partner).Where(sc => sc.Id == id).FirstOrDefault();
+                //Todo - this is crap tidy it up
+                var ignorepartners = _context.AffiliateIgnorePartners.Where(x => x.Affiliate.Link == affiliate).Select(p => p.Partner.Id).ToArray();
+              
+                var data = _context.SubCategorys.Include(x => x.Services).ThenInclude(p => p.Partner)
+                    .Where(sc => sc.Id == id).FirstOrDefault();
+                
+                var include = new List<Service>();
+                foreach(var service in data.Services)
+                {
+                    if (!ignorepartners.Contains(service.PartnerId))
+                    {
+                        include.Add(service);
+                    }
+                }
+                data.Services = include;
                 return data;
             }
         }

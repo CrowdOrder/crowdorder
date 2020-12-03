@@ -71,7 +71,7 @@
                     <li class="drop-down">
                         <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")">Services</a>
                         <ul>
-                            @foreach (var cat in repo.MenuData())
+                            @foreach (var cat in SiteDataService.AffiliatesMenuData(Context))
                             {
                                 if (cat.SubCategories.Count > 0)
                                 {
