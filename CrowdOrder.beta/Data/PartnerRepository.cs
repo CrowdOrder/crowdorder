@@ -25,6 +25,16 @@ namespace CrowdOrder.beta.Data
             return data;
         }
 
+        internal List<Partner> GetAllNotIgnored(string affiliate = "")
+        {
+            var ignorepartners = _context.AffiliateIgnorePartners.Where(x => x.Affiliate.Link == affiliate).Select(p => p.Partner.Id).ToArray();
+            var data = (from p in _context.Partners
+                       where !ignorepartners.Contains(p.Id)
+                       select p).ToList();
+            
+            return data;
+        }
+
         internal Partner FindById(int id)
         {
             var data = _context.Partners.Include(x => x.Services).Where(x => x.Id == id).FirstOrDefault();

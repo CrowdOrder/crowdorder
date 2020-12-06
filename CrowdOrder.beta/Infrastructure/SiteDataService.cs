@@ -71,10 +71,15 @@ namespace CrowdOrder.beta.Infrastructure
             var data = _articlesRepository.GetLatestBlogs(count);
             return data;
         }
-        public List<Partner> GetPartnerLogos()
+        public List<Partner> GetPartnerLogos(HttpContext context)
         {
-            var data = _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).ToList();
-            return data;
+            var affiliate = context.Session.GetString(_configuration["AffiliateKey"]);
+            if (affiliate != null)
+            {
+                var data = _partnerRepository.GetAllNotIgnored(affiliate).OrderBy(x => Guid.NewGuid()).ToList();
+                return data;
+            }
+            return _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).ToList();
         }
         public bool IsDev
         {
