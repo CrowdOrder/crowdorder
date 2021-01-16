@@ -14,7 +14,7 @@ namespace CrowdOrder.beta.Infrastructure
         }
         public string EmailUserPassword
         {
-            get { return "!QAZcrowdorder"; }
+            get { return "!QAZXSW\"crowd"; }
         }
         public string EmailUserMike
         {
