@@ -14,11 +14,12 @@
     @RenderSection("metatags", false)
 
     <!-- Favicons -->
-    <link href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "favicon.png")" rel="icon">
-    <link href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/apple-touch-icon.png")" rel="apple-touch-icon">
+    <link href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "favicons/favicon-96x96.png")" rel="icon">
+    <link href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "favicons/apple-icon-76x76.png")" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
@@ -72,7 +73,7 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <a asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/Logo100.png" alt="" class="img-fluid"></a>
+            <a asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/Logo.png" alt="" class="img-fluid"></a>
 
             <nav class="nav-menu d-none d-lg-block">
 
