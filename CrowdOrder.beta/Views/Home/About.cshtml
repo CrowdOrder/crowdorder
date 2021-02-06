@@ -1,4 +1,4 @@
-﻿
+﻿@using CrowdOrder.beta.Infrastructure;
 @{
     ViewData["Title"] = "About Us";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,7 +15,7 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
                     <li>About us</li>
                 </ol>
             </div>
@@ -29,7 +29,7 @@
                 <div class="col-lg-6" style="padding-top:30px;">
                     <h1>About us</h1>
                     <p>
-                        Crowd Order was founded with one simple purpose in mind; to support small and growing businesses to reduce costs and improve access to premium products and services.
+                        Crowd Order was founded with one simple purpose in mind: to support small and growing businesses to reduce costs and improve access to premium products and services.
                     </p>
                     <p>
                         Too often society favours the big guy, with greater purchasing power and the resources to enhance their business. But what about entrepreneurs and founders of smaller companies? How do you get a better deal and reduce costs in an efficient way?
@@ -84,7 +84,7 @@
                         Crowd Order gives our partners a meaningful, sustainable, and easy means of giving back to the small business community. By working with Crowd Order, they can develop their business model in a way that benefits society more broadly, not just bigger business.
                     </p>
                     <p>
-                        Because small businesses are the backbone of UK industry, driving up employment and giving people access to a higher quality of living. Simply put, helping you is the right thing to do. 
+                        Because small businesses are the backbone of UK industry, driving up employment and giving people access to a higher quality of living. Simply put, helping you is the right thing to do.
                     </p>
                 </div>
             </div>
@@ -118,6 +118,5 @@
             </div>
         </div>
     </section><!-- End About Section -->
-  
-</main><!-- End #main -->
 
+</main><!-- End #main -->

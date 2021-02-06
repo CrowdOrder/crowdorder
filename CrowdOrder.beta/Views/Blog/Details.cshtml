@@ -90,7 +90,7 @@
                             {
                                 <div class="post-item clearfix">
                                     <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
-                                    <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time>
+                                    <time datetime="2020-01-01">@item.CreatedDate.ToString("dd MMM yyyy")</time>
                                 </div>
                             }
 

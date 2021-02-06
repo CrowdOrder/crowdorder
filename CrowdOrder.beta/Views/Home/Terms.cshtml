@@ -1,4 +1,5 @@
-﻿@{
+﻿@using CrowdOrder.beta.Infrastructure;
+@{
     ViewData["Title"] = "Terms & Conditons";
 }
 <main id="main">
@@ -10,7 +11,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h1>@ViewData["Title"]</h1>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
                     <li>@ViewData["Title"]</li>
                 </ol>
             </div>

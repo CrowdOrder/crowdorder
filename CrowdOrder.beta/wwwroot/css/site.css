@@ -256,7 +256,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-toggle {
     position: fixed;
     right: 15px;
-    top: 35px;
+    top: 15px;
     z-index: 9998;
     border: 0;
     background: none;
@@ -557,6 +557,12 @@ section {
     padding: 60px 0;
 }
 
+@media (max-width: 768px) {    
+    section {
+        padding: 10px;
+    }
+}
+
 .section-bg {
     background-color: #BBDCF3;
 }
@@ -637,6 +643,10 @@ section {
             color: #6b7b8d;
             content: "/";
         }
+    .breadcrumbs ol li a:hover {
+        color: #000;
+        text-decoration: underline;
+    }
 
 @media (max-width: 992px) {
     .breadcrumbs {
@@ -675,7 +685,7 @@ section {
     font-weight: 700;
     color: #29235C;
     font-size: 48px;
-    line-height: 60px;
+
     margin-bottom: 20px;
 }
 
@@ -716,12 +726,12 @@ section {
 }
 
     .clients img {
-        max-width: 45%;
+        max-width: 85%;
         transition: all 0.4s ease-in-out;
         display: inline-block;
         padding: 15px 0;
-        -webkit-filter: grayscale(100);
-        filter: grayscale(100);
+        /*-webkit-filter: grayscale(100);
+        filter: grayscale(100);*/
     }
 
         .clients img:hover {
@@ -2267,23 +2277,40 @@ input[type="checkbox"]:checked ~ .connectbtn {
     border-color: #579E66;
 }
 
-@media (max-width: 992px) {
-    body{
-        margin: 0;
+@media (max-width: 500px) {
+    #hero h1 {
+        color: #29235C;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-size: 36px;
+        font-weight: 700;
     }
-    .hideSmall {
-        display: none;
-    }
-    .homeSmallImgFix {
-        margin-left: 0;
-        padding-left: 0;
-    }
-}
-@media (min-width: 992px) {
-    .hideBig {
-        display: none;
+    #hero p.largerfont{
+        font-size:medium;
     }
 }
+
+    @media (max-width: 992px) {
+        body {
+            margin: 0;
+        }
+
+        .hideSmall {
+            display: none;
+        }
+
+        .homeSmallImgFix {
+            margin-left: 0;
+            padding-left: 0;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .hideBig {
+            display: none;
+        }
+    }
+
     .adminmenu {
         list-style-type: none;
     }
