@@ -14,12 +14,15 @@ namespace CrowdOrder.beta.Controllers
         private readonly ILogger<ServicesController> _logger;
         private readonly CategoryRepository _categoryRepository;
         private readonly ServicesRepository _servicesRepository;
+        private readonly PartnerRepository _partnerRepository;
+
         public ServicesController(ILogger<ServicesController> logger, 
-            CategoryRepository categoryRepository, ServicesRepository servicesRepository)
+            CategoryRepository categoryRepository, ServicesRepository servicesRepository, PartnerRepository partnerRepository)
         {
             _logger = logger;
             _categoryRepository = categoryRepository;
             _servicesRepository = servicesRepository;
+            _partnerRepository = partnerRepository;
         }
 
         /// <summary>
@@ -30,7 +33,10 @@ namespace CrowdOrder.beta.Controllers
         public IActionResult Index(string showall)
         {
             var includeEmpty = showall == "true";
-            var model = _categoryRepository.MenuData();
+            var cats = _categoryRepository.MenuData();
+            var featured = _partnerRepository.FindById(24);
+            var model = new ServicesVM() { Categories = cats, FeaturedPartner = featured};
+
             return View(model);
         }
 

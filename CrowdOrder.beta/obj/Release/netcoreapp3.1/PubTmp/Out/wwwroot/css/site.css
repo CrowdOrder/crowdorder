@@ -746,6 +746,15 @@ section {
         margin-bottom: 20px;
         color: #29235C;
     }
+    .clients .read-more a {
+        display: inline-block;
+        background: #579E66;
+        color: #fff;
+        padding: 6px 20px 7px;
+        transition: 0.3s;
+        font-size: 14px;
+        border-radius: 4px;
+    }
 
 @media (max-width: 768px) {
     .clients img {
@@ -1527,6 +1536,7 @@ section {
         min-width: 350px;
         overflow: hidden;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
     }
 
         .blog .entry .entry-img {

@@ -81,6 +81,11 @@ namespace CrowdOrder.beta.Infrastructure
             }
             return _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).Take(6).ToList();
         }
+        public Partner GetPartner(int Id)
+        {
+            return _partnerRepository.FindById(Id);
+        }
+
         public bool IsDev
         {
             get

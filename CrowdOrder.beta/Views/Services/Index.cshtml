@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CrowdOrder.beta.Models.Category>
+﻿@model ServicesVM
 @using CrowdOrder.beta.Infrastructure;
 @{
     ViewData["Title"] = "Start Up and Small Business Services, Offers and Discounts";
@@ -22,38 +22,123 @@
 
         </div>
     </section><!-- End Breadcrumbs -->
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="services" class="blog">
+        <div class="home-container">
+            <div class="container">
+                <div class="row content">
+                    <div class="col-lg-6  pt-4 pt-lg-0">
+                        <h1>Start Up and Small Business Services, Offers and Discounts</h1>
+                        <p>
+                            Our partners have been handpicked to provide your small business with the support you need to thrive. We’ve organised their services into categories, and if you click into a category, you’ll be able to see all of the service providers with a quick overview of what they can offer you.
+                        </p>
+                    </div>
+                    <div class="col-lg-6" style="text-align:center;">
+                        <img src="~/img/commerce320.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="clients" class="clients hideSmall">
+        <div class="home-container">
+            <div class="container">
+                <div class="row content">
+                    <h2>Featured partner: </h2>
+                </div>
+
+                <div class="row">
+                    <div class="home-container">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="row" style="padding: 20px;">
+                                    <div class="col-lg-4  pt-4 pt-lg-0">
+                                        <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{Model.FeaturedPartner.LogoUrl}")" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p>
+                                            @Html.DisplayFor(modelItem => Model.FeaturedPartner.Body)
+                                        </p>
+                                        <div class="read-more">
+                                            <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.FeaturedPartner.Url)">Click here for offers</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="blog section-bg">
         <div class="container">
             <div class="row">
-                <h1>Start Up and Small Business Services, Offers and Discounts</h1>
-                <p>Does your start up or small business have a need that needs real expertise? Search Crowd Order's marketplace to find the perfect partner for all your business needs.</p>
+                <h2>View services for</h2>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Categories)
+                {
+                    <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                        <article class="entry">
+                            <div class="entry-img">
+                                <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/{item.Url}.png")" class="img-fluid" />                                
+                            </div>
+                            <h2 class="entry-title">
+                                <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Name</a>
+                            </h2>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>
-                                Categories
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td><img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/{item.Url}.png")" /></td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    <a href="@item.Url">Find out more</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                            <div class="entry-content">
+                                <p>
+
+                                </p>
+                                <div class="read-more">
+                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">Find out more</a>
+                                </div>
+                            </div>
+
+                        </article><!-- End blog entry -->
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <section id="clients" class="clients hideSmall">
+        <div class="home-container">
+            <div class="container">
+                <div class="row content">
+                    <h2>Most popular partners</h2>
+                </div>
+
+                <div class="row">
+                    <div class="home-container">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="row" style="padding: 20px;">
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/mazuma-money"><img src="partners/Mazuma_Logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/opayo"><img src="partners/Opayo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/pipedrive"><img src="partners/pipedrive_logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/monday-dot-com"><img src="partners/mondaydotcom.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/get-response"><img src="partners/get-response.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/you-at-work"><img src="partners/You_at_work_logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
