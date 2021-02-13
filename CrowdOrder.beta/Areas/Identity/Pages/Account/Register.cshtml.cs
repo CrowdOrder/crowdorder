@@ -89,11 +89,13 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
+                    var callbackUrl = Url.Page("/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    var callbackUrl2 = Url.Page("/Account/ConfirmEmail", null, new { userId = user.Id, code }, Request.Scheme);
+
 
                     await ((EmailSender)_emailSender).SendEmailAsync(Input.Email, "Please confirm your email",
                         $"Please confirm your account by clicking the button below.", "Confirm email", callbackUrl);
