@@ -501,7 +501,7 @@ h1, h2, h3, h4, h5, h6 {
         background: #29235C;
     }
 
-#hero .btn-get-started {
+#hero .btn-get-started, #who .btn-get-started {
     font-family: "Raleway", sans-serif;
     font-weight: 500;
     font-size: 14px;
@@ -517,7 +517,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #579E66;
 }
 
-    #hero .btn-get-started:hover {
+    #hero .btn-get-started:hover, #who .btn-get-started:hover {
         background: #29235C;
     }
 
@@ -700,10 +700,10 @@ section {
     padding: 0;
 }
 
-    .about .content ul li {
+/*    .about .content ul li {
         padding: 10px 0 0 28px;
         position: relative;
-    }
+    }*/
 
     .about .content ul i {
         left: 0;

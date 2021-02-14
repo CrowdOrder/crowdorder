@@ -700,10 +700,10 @@ section {
     padding: 0;
 }
 
-    .about .content ul li {
+/*    .about .content ul li {
         padding: 10px 0 0 28px;
         position: relative;
-    }
+    }*/
 
     .about .content ul i {
         left: 0;
@@ -799,6 +799,7 @@ section {
     .services .icon-box:hover h4 a {
         color: #29235C;
     }
+
 
 /*--------------------------------------------------------------
 # Portfolio

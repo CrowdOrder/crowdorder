@@ -34,7 +34,7 @@ namespace CrowdOrder.beta.Controllers
         {
             var includeEmpty = showall == "true";
             var cats = _categoryRepository.MenuData();
-            var featured = _partnerRepository.FindById(2);
+            var featured = _partnerRepository.FindById(24);
             var model = new ServicesVM() { Categories = cats, FeaturedPartner = featured};
 
             return View(model);

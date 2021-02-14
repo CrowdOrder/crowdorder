@@ -40,15 +40,15 @@
             <div class="row">
                 <h1>@Html.DisplayFor(model => model.H1)</h1>
                 <p>@Html.DisplayFor(model => model.Body)</p>
-                @foreach (var item in Model.SubCategories)
-                {
-                    <section id="blog" class="blog">
-                        <h3>@Html.DisplayFor(modelItem => item.Name) </h3>
-                        <div class="row">
+                <section id="blog" class="blog">
+                    @*<h3>@Html.DisplayFor(modelItem => item.Name) </h3>*@
+                    <div class="row">
 
-                            @*<a href="@item.Url">View all @item.Name</a>*@
-                        </div>
-                        <div class="row">
+                        @*<a href="@item.Url">View all @item.Name</a>*@
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model.SubCategories)
+                        {
                             @foreach (var serv in item.Services)
                             {
                                 <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
@@ -74,10 +74,9 @@
                                     </div><!-- End blog entry -->
                                 </div>
                             }
-                        </div>
-                    </section>
-                }
-
+                        }
+                    </div>
+                </section>
             </div>
         </div>
     </section>
