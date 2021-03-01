@@ -6,7 +6,7 @@
 @inject UserManager<IdentityUser> UserManager
 @inject SiteDataService siteDataService
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
 }
 @section metatags{
     <meta property='og:title' content='@Model.Title' />
