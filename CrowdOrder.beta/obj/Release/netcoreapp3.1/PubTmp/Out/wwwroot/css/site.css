@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .alreadyTakenUp {
-    background: #df7861;
+    background: #29235C;
     color: #fff;
     border-radius: 4px;
     padding: 8px;
@@ -2279,7 +2279,7 @@ input[type="checkbox"]:checked ~ .connectbtn {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #df7861;
+    background-color: #29235C;
 }
 
 .btn-primary {
@@ -2437,7 +2437,7 @@ for details on configuring this project to bundle and minify static web assets. 
     color: #ecb390
 }
 .colour4 {
-    color: #df7861
+    color: #29235C
 }
 
 }*/

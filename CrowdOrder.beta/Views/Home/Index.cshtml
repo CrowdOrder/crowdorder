@@ -54,7 +54,7 @@
                                 {
                                 <form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin"
                                       asp-route-returnUrl="/" method="post">
-                                    <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Register your business for free</a>
+                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">View all offers</a>
                                     <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started animate__animated animate__fadeInUp scrollto loginBtn--google">    </button>
                                 </form>
                                 }
@@ -191,7 +191,7 @@
                                     <li><a href="/financial-accountancy-offers-discounts/payment-solutions">Payment processing services</a></li>
                                 </ul>
                             </p>
-                            <p class="hideSmall">We aim to offer a choice of suppliers for every small business need. If you want to incentivise and reward your team, or speed up the onboarding process for new starters, have a look at our <a href="/hr-people-services-offers-discounts">HR and People discounted services</a>. If you need some help with admin tasks, a <a href="/outsourced-administration-pa-services">virtual assistant</a> might be the solution.</p>
+                            <p class="hideSmall">We aim to offer a choice of suppliers for every small business need. If you want to incentivise and reward your team, or speed up the onboarding process for new starters, have a look at our <a href="/hr-people-services-offers-discounts">HR and People discounted services</a>. If you need some help with admin tasks, a <a href="/business-operations-services-offers-discounts/outsourced-administration-pa-services">virtual assistant</a> might be the solution.</p>
                             <p class="hideSmall">If you need <a href="/project-management-services-offers-discounts">project management software</a> to streamline your business processes, we have fantastic rates with some of the finest software providers around. How about <a href="/logistics-services-offers-discounts">fulfilment support</a> getting your products to your customers? Our service providers can integrate with your eCommerce platform and make this process seamless and at a lower price than you're paying today.</p>
                         </div>
                         <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
