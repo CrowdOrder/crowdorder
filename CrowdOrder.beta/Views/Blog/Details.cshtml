@@ -91,16 +91,34 @@
                         <div class="sidebar-item recent-posts">
                             @foreach (var item in siteDataService.GetLatestBlogs(3))
                             {
-                                <div class="post-item clearfix">
-                                    <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
-                                    <time datetime="2020-01-01">@item.CreatedDate.ToString("dd MMM yyyy")</time>
-                                </div>
+                            <div class="post-item clearfix">
+                                <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
+                                <time datetime="2020-01-01">@item.CreatedDate.ToString("dd MMM yyyy")</time>
+                            </div>
                             }
 
                         </div><!-- End sidebar recent posts-->
 
                     </div><!-- End sidebar -->
+                    <div class="sidebar2">
 
+                        <h5 class="sidebar-title">
+                            Stop paying full price for the software and services you use to drive growth
+                            See what you can save
+                        </h5>
+                        @if (!SignInManager.IsSignedIn(User))
+                                {
+                    <div class="read-more">
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-page-handler="Post" asp-route-returnUrl="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" title="login">Register for free offers now</a>
+                    </div>
+                                }
+                                else{
+
+                    <div class="read-more">                        
+                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")">View all free offers now</a>
+                    </div>
+                                }
+                    </div><!-- End sidebar -->
                 </div><!-- End blog sidebar -->
 
             </div>
