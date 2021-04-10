@@ -799,12 +799,22 @@ section {
     .services .icon-box:hover h4 a {
         color: #29235C;
     }
-
-
-/*--------------------------------------------------------------
+    .services .icon-box .read-more a {
+        display: inline-block;
+        background: #579E66;
+        color: #fff;
+        padding: 6px 20px 7px;
+        transition: 0.3s;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+        .services .icon-box .read-more a:hover {
+            background: #29235C;
+        }
+    /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
-.portfolio .portfolio-item {
+    .portfolio .portfolio-item {
     margin-bottom: 30px;
 }
 
