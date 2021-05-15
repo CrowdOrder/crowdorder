@@ -34,32 +34,33 @@
                             <div class="col-lg-6 align-text-bottom">
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                <h1 class="animate__animated animate__fadeInDown">Welcome to Crowd Order!</h1>
-                                <p class="animate__animated animate__fadeInUp">
-                                    Now you’re a registered user, you’ll be able to see the details of the discounts available on each of the services pages.
-                                    <br />
-                                    When you’ve found one that interests you, just click on ‘Connect to Partner’ and we’ll make the introduction. You’re not committing yourself to anything at this stage; it’s just an expression of interest. The next step will be directly with the supplier, leveraging the Crowd Order discount.
-                                </p>
+                                    <h1 class="animate__animated animate__fadeInDown">Welcome to Crowd Order!</h1>
+                                    <p class="animate__animated animate__fadeInUp">
+                                        Now you’re a registered user, you’ll be able to see the details of the discounts available on each of the services pages.
+                                        <br />
+                                        When you’ve found one that interests you, just click on ‘Connect to Partner’ and we’ll make the introduction. You’re not committing yourself to anything at this stage; it’s just an expression of interest. The next step will be directly with the supplier, leveraging the Crowd Order discount.
+                                    </p>
                                 }
                                 else
                                 {
-                                <h1 class="animate__animated animate__fadeInDown">Exclusive discounts on software and services for small businesses</h1>
-                                <p class="animate__animated animate__fadeInUp largerfont">
-                                    Crowd Order's mission is simple: we combine the buying power of our community to negotiate discounts with market-leading software and service providers, so you pay less.
-                                </p>
+                                    <h1 class="animate__animated animate__fadeInDown">Exclusive discounts on software and services for small businesses</h1>
+                                    <p class="animate__animated animate__fadeInUp largerfont">
+                                        Crowd Order's mission is simple: we combine the buying power of our community to negotiate discounts with market-leading software and service providers, so you pay less.
+                                    </p>
                                 }
 
 
                                 @if (!SignInManager.IsSignedIn(User))
                                 {
-                                <form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin"
-                                      asp-route-returnUrl="/" method="post">
-                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">View all offers</a>
-                                    <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started animate__animated animate__fadeInUp scrollto loginBtn--google">    </button>
-                                </form>
+                                    <form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin"
+                                          asp-route-returnUrl="/" method="post">
+                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">View all offers</a>
+                                        <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started animate__animated animate__fadeInUp scrollto loginBtn--google">    </button>
+                                    </form>
                                 }
-                                else{
-                                
+                                else
+                                {
+
                                     <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">Browse services</a>
                                 }
                             </div>
@@ -396,3 +397,10 @@
         </div>
     </section><!-- End Services Section -->
 </main><!-- End #main -->
+
+<div id="modal-content">
+    <h2>I Can Haz Email?</h2>
+    <label for="yurEmail">Yur Email Adress:</label>
+    <input placeholder="I needz it" id="yurEmail">
+    <button class="button order-cheezburger">Order Cheezburger</button>
+</div>

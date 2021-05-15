@@ -85,7 +85,7 @@
                     <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "about-us")">About Us</a></li>
                     <li class="drop-down">
-                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")">Services</a>
+                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")">Offers &amp; Discounts</a>
                         <ul>
                             @foreach (var cat in SiteDataService.AffiliatesMenuData(Context))
                             {
@@ -134,7 +134,7 @@
             </nav><!-- .nav-menu -->
             @if (!SignInManager.IsSignedIn(User))
             {
-                <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn ml-auto">Get started</a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn ml-auto">Get Discounts</a>
             }
 
 
@@ -206,7 +206,7 @@
     <!-- Vendor JS Files -->
     <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/jquery/jquery.min.js")"></script>
     <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/aos/aos.js")"></script>
-    <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>    
+    <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
     <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/swiper/swiper-bundle.min.js")"></script>
     <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/jquery.easing/jquery.easing.min.js")"></script>
     <script src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "vendor/php-email-form/validate.js")"></script>
@@ -242,5 +242,54 @@
         </noscript>
         <!-- End Facebook Pixel Code -->
     }
+
+    <script>
+
+
+        $(".order-cheezburger").on("click", function () {
+            $.colorbox.close();
+        });
+
+        function onPopupOpen() {
+            $("#modal-content").show();
+            $("#yurEmail").focus();
+        }
+
+        function onPopupClose() {
+            $("#modal-content").hide();
+            //Cookies.set('colorboxShown', 'yes', {
+            //    expires: 1
+            //});
+            $(".clear-cookie").fadeIn();
+            lastFocus.focus();
+        }
+
+        function displayPopup() {
+            $.colorbox({
+                inline: true,
+                href: "#modal-content",
+                className: "cta",
+                width: 600,
+                height: 350,
+                onComplete: onPopupOpen,
+                onClosed: onPopupClose
+            });
+        }
+
+        var lastFocus;
+        var popupShown = true; //Cookies.get('colorboxShown');
+
+        if (popupShown) {
+            console.log("Cookie found. No action necessary");
+            $(".clear-cookie").show();
+        } else {
+            console.log("No cookie found. Opening popup in 3 seconds");
+            $(".clear-cookie").hide();
+            setTimeout(function () {
+                lastFocus = document.activeElement;
+                displayPopup();
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

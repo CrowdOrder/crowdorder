@@ -39,13 +39,8 @@
 
             <div class="row">
                 <h1>@Html.DisplayFor(model => model.H1)</h1>
-                <p>@Html.DisplayFor(model => model.Body)</p>
-                <section id="blog" class="blog">
-                    @*<h3>@Html.DisplayFor(modelItem => item.Name) </h3>*@
-                    <div class="row">
-
-                        @*<a href="@item.Url">View all @item.Name</a>*@
-                    </div>
+                <p>@Html.Raw(Model.Body)</p>
+                <section id="blog" class="blog">                  
                     <div class="row">
                         @foreach (var item in Model.SubCategories)
                         {
