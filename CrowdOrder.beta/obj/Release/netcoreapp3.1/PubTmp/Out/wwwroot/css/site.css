@@ -1322,6 +1322,9 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+#contact {
+    padding-top: 20px;
+}
 .contact .info {
     width: 100%;
     background: #fff;
@@ -2570,3 +2573,59 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 }*/
+/*POPUP TEST#################################################################################
+    ############################################
+    ###############################
+*/
+
+#container {
+    width: 650px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+h1,
+h2 {
+    color: #2B292E
+}
+
+input {
+    border: 1px solid #333;
+    margin-bottom: 15px;
+    min-width: 250px;
+    padding: 8px;
+}
+
+.button {
+    transition-duration: 0.4s;
+    background: #720000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+}
+
+button.button:hover {
+    background: #990000
+}
+
+#cboxLoadedContent {
+    padding: 10px;
+    background: #fffff0;
+}
+
+#modal-content {
+    display: none;
+}
+
+    #modal-content label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    #modal-content input {
+        width: 95%;
+    }
