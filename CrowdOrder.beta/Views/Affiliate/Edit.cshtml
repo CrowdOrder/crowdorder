@@ -1,0 +1,77 @@
+﻿@model CrowdOrder.beta.Models.Affiliate
+@using CrowdOrder.beta.Infrastructure;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Start Up and Small Business Blog and Guides</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="~/Admin">Website Admin</a></li>
+                    <li>Affiliate</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" style="padding-top:5px;">
+        <div class="container">
+            <form asp-action="Create">
+                <div class="form-horizontal">
+                    <h4>Create new blog</h4>
+                    <hr />
+                    <div asp-validation-summary="None" class="text-danger"><p>Please complete all fields</p></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="col-md-10 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="col-md-10 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telephone" class="col-md-10 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Telephone" class="form-control" />
+                            <span asp-validation-for="Telephone" class="text-danger" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Link" class="col-md-10 control-label">LINK - These are read only, if you need to change then create a new link</label>
+                        <div class="col-md-10">
+                            @UrlRewriteService.AffiliatesUrl(Context.Request.Host.Value, Model.Link)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Notes" class="col-md-10 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Notes" class="form-control" rows="5" />
+                            <span asp-validation-for="Notes" class="text-danger" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="hidden" asp-for="Id" />
+                            <button type="submit" class="get-started-btn">Save affiliate</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+

@@ -6,12 +6,15 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace CrowdOrder.beta.Areas.Identity.Pages.Account
@@ -23,17 +26,23 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly AffiliateService _affiliatesService;
 
         public ExternalLoginModel(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IConfiguration configuration, 
+            AffiliateService affiliatesService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
             _emailSender = emailSender;
+            _affiliatesService = affiliatesService;
+            _configuration = configuration;
         }
 
         [BindProperty]
@@ -96,73 +105,35 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
             {
                 // If the user does not have an account, then ask the user to create an account.
                 ReturnUrl = returnUrl;
-                ProviderDisplayName = info.ProviderDisplayName;
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                var email = "";
+                if (info.LoginProvider == "Google")
                 {
-                    Input = new InputModel
-                    {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                    };
+                    email = info.Principal.FindFirst(ClaimTypes.Email).Value;
                 }
-                return Page();
-            }
-        }
-
-        public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
-        {
-            returnUrl = returnUrl ?? Url.Content("~/");
-            // Get the information about the user from the external login provider
-            var info = await _signInManager.GetExternalLoginInfoAsync();
-            if (info == null)
-            {
-                ErrorMessage = "Error loading external login information during confirmation.";
-                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
-            }
-
-            if (ModelState.IsValid)
-            {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-
-                var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
+              
+                var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+               
+                var uresult = await _userManager.CreateAsync(user);
+                if (uresult.Succeeded)
                 {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
+                    uresult = await _userManager.AddLoginAsync(user, info);
+                    if (uresult.Succeeded)
                     {
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-
-                        var userId = await _userManager.GetUserIdAsync(user);
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                        var callbackUrl = Url.Page(
-                            "/Account/ConfirmEmail",
-                            pageHandler: null,
-                            values: new { area = "Identity", userId = userId, code = code },
-                            protocol: Request.Scheme);
-
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                        // If account confirmation is required, we need to show the link if we don't have a real email sender
-                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        var affiliate = HttpContext.Session.GetString(_configuration["AffiliateKey"]);
+                        if (affiliate != "")
                         {
-                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
+                            _affiliatesService.SignupWithAffiliateLink(affiliate, user);
                         }
+                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
                         await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);
 
                         return LocalRedirect(returnUrl);
                     }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                }               
+                ErrorMessage = "Error loading external login information.";
+                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });               
             }
-
-            ProviderDisplayName = info.ProviderDisplayName;
-            ReturnUrl = returnUrl;
-            return Page();
         }
     }
 }

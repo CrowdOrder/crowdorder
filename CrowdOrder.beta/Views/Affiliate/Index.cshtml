@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CrowdOrder.beta.Models.Affiliate>
+@using CrowdOrder.beta.Infrastructure;
+@{
+    ViewData["Title"] = "Affiliates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Website Admin</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="~/Admin">Website Admin</a></li>
+                    <li>Affiliates</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <a asp-controller="Affiliate" asp-action="Create" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create new affiliate link
+                </a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Link)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @UrlRewriteService.AffiliatesUrl(Context.Request.Host.Value, item.Link)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">copy</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</main>
+

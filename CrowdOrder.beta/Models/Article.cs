@@ -11,17 +11,21 @@ namespace CrowdOrder.beta.Models
     {
         [Key]
         public int ArticleId { get; set; }
+
+        [Required]
         public string Url { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
         public string Abstract { get; set; }
+        [Required]
         public string MainImagePath { get; set; }
         [Required]
         public string Contents { get; set; }
         public DateTime CreatedDate { get; set; }
         public string AuthorName { get; set; }
         public string AuthorId { get; set; }
+        public bool? InActive { get; set; }
         public virtual IdentityUser Author { get; set; }
 
     }

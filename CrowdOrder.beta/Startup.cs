@@ -16,6 +16,10 @@ using Microsoft.Extensions.Caching.Memory;
 using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
 
 namespace CrowdOrder.beta
 {
@@ -46,38 +50,84 @@ namespace CrowdOrder.beta
             services.AddScoped<SubCategoryRepository>();
             services.AddScoped<PartnerConnectionRepository>();
             services.AddScoped<ArticlesRepository>();
+            services.AddScoped<AffiliatesRepository>();
+            services.AddScoped<SignUpRepository>();
+            services.AddScoped<IgnoresRepository>();
             services.AddScoped<SiteDataService>();
             services.AddScoped<PartnerConnectionsService>();
+            services.AddScoped<AffiliateService>();
             services.AddSingleton<Cache>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            // To list physical files from a path provided by configuration:
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\blogs");
+            var physicalProvider = new PhysicalFileProvider(filePath);
 
+            services.AddSingleton<IFileProvider>(physicalProvider);
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".crowdorder.session";
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            services.AddAuthentication()
+                    .AddFacebook(options =>
+                    {
+                        options.AppId = "295782441715653";
+                        options.AppSecret = "cb9c354fc63671038978ffec883127a1";
+                    })
+                    .AddGoogle(opts =>
+                    {
+                        opts.ClientId = "111680795545-dq470akedcqtg424nllsd50svr8fm64o.apps.googleusercontent.com";
+                        opts.ClientSecret = "wxZ-xKA2N89n8SVmxX3j_9wm";
+                        opts.SignInScheme = IdentityConstants.ExternalScheme;
+                    });
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IMemoryCache cache, IWebHostEnvironment env, ApplicationDbContext context)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseStatusCodePages();
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                //The default HSTS value is 30 days.You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
-            //}
+            }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromDays(30)
+                    };
+
+                }
+            });
 
             app.UseRewriter(UrlRewriteService.GetOptions(context));
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAffiliateMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
@@ -88,6 +138,8 @@ namespace CrowdOrder.beta
                     pattern: "blog/{*article}");
                 endpoints.MapRazorPages();
             });
+
+            
         }
     }
 }

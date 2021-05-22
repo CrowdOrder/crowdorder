@@ -1,0 +1,20 @@
+﻿{{greeting}}
+
+{{maintext}}
+
+Kind regards
+
+Mike Patrick
+Head of Growth
+
+
+
+Mobile: +44 (0)7701 094 766
+Office: 24 Holborn Viaduct, London, England, EC1A 2BN
+Website: www.crowdorder.co.uk
+
+
+Confidentiality Notice: 
+
+This e-mail may contain confidential or privileged information, if you are not the intended recipient, or the person responsible for delivering the message to the intended recipient, then please notify us by return e-mail immediately. Should you have received this e-mail in error then you should not copy this for any purpose nor disclose its contents to any other person.
+

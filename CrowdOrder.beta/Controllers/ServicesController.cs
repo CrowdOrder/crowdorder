@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
+using CrowdOrder.beta.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,12 +14,15 @@ namespace CrowdOrder.beta.Controllers
         private readonly ILogger<ServicesController> _logger;
         private readonly CategoryRepository _categoryRepository;
         private readonly ServicesRepository _servicesRepository;
+        private readonly PartnerRepository _partnerRepository;
+
         public ServicesController(ILogger<ServicesController> logger, 
-            CategoryRepository categoryRepository, ServicesRepository servicesRepository)
+            CategoryRepository categoryRepository, ServicesRepository servicesRepository, PartnerRepository partnerRepository)
         {
             _logger = logger;
             _categoryRepository = categoryRepository;
             _servicesRepository = servicesRepository;
+            _partnerRepository = partnerRepository;
         }
 
         /// <summary>
@@ -29,7 +33,10 @@ namespace CrowdOrder.beta.Controllers
         public IActionResult Index(string showall)
         {
             var includeEmpty = showall == "true";
-            var model = _categoryRepository.MenuData();
+            var cats = _categoryRepository.MenuData();
+            var featured = _partnerRepository.FindById(24);
+            var model = new ServicesVM() { Categories = cats, FeaturedPartner = featured};
+
             return View(model);
         }
 
@@ -42,6 +49,45 @@ namespace CrowdOrder.beta.Controllers
         {
             var model = _categoryRepository.MenuData().Find(x => x.Id == id);
             return View(model);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var model = _servicesRepository.FindById(id);
+            return View(model);
+        }
+
+        public IActionResult Create(int id)
+        {            
+            var model = _servicesRepository.CreateNew(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,Url,Name,Title,MetaDescription,H1,Body,DiscountOffer,ConnectUrl,ConnectContact,ConnectEmail,QualifyingCriteria,PartnerSignupType,PartnerId,SubCategoryId")] Service service)
+        {
+            if (ModelState.IsValid)
+            {
+                service.Id = null;
+                _servicesRepository.Upsert(ref service);
+                return RedirectToAction("index", "partners");
+            }
+
+            return View(service);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("Id,Url,Name,Title,MetaDescription,H1,Body,DiscountOffer,ConnectUrl,ConnectContact,ConnectEmail,QualifyingCriteria,PartnerSignupType,PartnerId,SubCategoryId")] Service service)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _servicesRepository.Upsert(ref service);
+
+                return RedirectToAction("index", "partners");
+            }
+            return View(service);
         }
 
         /// <summary>
@@ -58,6 +104,12 @@ namespace CrowdOrder.beta.Controllers
         public IActionResult Partner (int id)
         {
             var model = _servicesRepository.FindById(id);
+            return View(model);
+        }
+
+        public IActionResult PartnerServices(int id)
+        {
+            var model = _servicesRepository.FindByPartnerId(id);
             return View(model);
         }
     }

@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace CrowdOrder.beta.Areas.Identity.Pages.Account
@@ -24,17 +26,21 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly AffiliateService _affiliatesService;
+        private readonly IConfiguration _configuration;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, AffiliateService affiliatesService, IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _affiliatesService = affiliatesService;
+            this._configuration = configuration;
         }
 
         [BindProperty]
@@ -83,15 +89,24 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
+                    var callbackUrl = Url.Page("/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
+                    var callbackUrl2 = Url.Page("/Account/ConfirmEmail", null, new { userId = user.Id, code }, Request.Scheme);
+
+
                     await ((EmailSender)_emailSender).SendEmailAsync(Input.Email, "Please confirm your email",
                         $"Please confirm your account by clicking the button below.", "Confirm email", callbackUrl);
 
+                    //Affiliate links
+                    var affiliate = HttpContext.Session.GetString(_configuration["AffiliateKey"]);
+                    
+                    if (affiliate != "")
+                    {
+                        _affiliatesService.SignupWithAffiliateLink(affiliate, user);
+                    }
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

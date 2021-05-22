@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
+using CrowdOrder.beta.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,11 +14,14 @@ namespace CrowdOrder.beta.Controllers
     {
         private readonly ILogger<ServicesController> _logger;
         private readonly CategoryRepository _categoryRepository;
+        private readonly SiteDataService _siteDataService;
+
         public CategorysController(ILogger<ServicesController> logger, 
-            CategoryRepository categoryRepository, ServicesRepository servicesRepository)
+            CategoryRepository categoryRepository, ServicesRepository servicesRepository, SiteDataService siteDataService)
         {
             _logger = logger;
             _categoryRepository = categoryRepository;
+            _siteDataService = siteDataService;
         }
         // GET: Categorys
         public ActionResult Index()
@@ -28,7 +32,7 @@ namespace CrowdOrder.beta.Controllers
         // GET: Categorys/Details/5
         public ActionResult Details(int id)
         {
-            var model = _categoryRepository.MenuData().Find(x => x.Id == id);
+            var model = _siteDataService.AffiliatesMenuData(HttpContext).Find(x => x.Id == id);
             return View(model);
         }
 

@@ -1,5 +1,7 @@
 ﻿@page
 @model RegisterModel
+@using CrowdOrder.beta.Infrastructure;
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -9,10 +11,9 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
 
-            <div class="d-flex justify-content-between align-items-center">
-                <h1>Sign up for free</h1>
+            <div class="d-flex justify-content-between align-items-center">                
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Request.Host.Value, "")">Home</a></li>
                     <li>Sign up</li>
                 </ol>
             </div>
@@ -23,39 +24,61 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="form-row">
-                <div class="col-md-6">
+                <div class="col-md-10">
                     <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                        <h4>Sign up for free and start exploring the discounted rates that our Partners offer</h4>
+                        <h1>Get instant access to all discounted services</h1>
                         <p>
-                            Once you’ve signed up for free, you’ll see which of the fantastic companies that we get to call our partners are offering exclusive rates to companies like yours!
+                            The discounts we offer are exclusive and unique – you can’t get these prices anywhere else! For
+                            this reason, our partners prefer that we not openly advertise what’s on offer. Please provide your
+                            email address and you’ll gain complete access to the discounts and offers Crowd Order has
+                            negotiated.
                         </p>
+                        <ul>
+                            <li>
+                                We <u>won't</u>:
+                                <ul>
+                                    <li>Share your email with anyone, including our partners</li>
+                                    <li>Send you unsolicited email</li>
+                                </ul>
+                            </li>
+                            <li>
+                                We'd <u>like to</u>:
+                                <ul><li>Tell you when new suppliers sign up (optional)</li></ul>
+                            </li>
+                            <li>
+                                We <u>will</u>:
+                                <ul><li>Give you full details of the discounts on offer</li></ul>
+                            </li>
+                        </ul>
                         <hr />
                         <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Input.Email"></label>
-                            <input asp-for="Input.Email" class="form-control" />
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Input.Password"></label>
-                            <input asp-for="Input.Password" class="form-control" />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Input.ConfirmPassword"></label>
-                            <input asp-for="Input.ConfirmPassword" class="form-control" />
-                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="get-started-btn">Register</button>
-                        </div>
-                        <div class="form-group my-auto">
-                            <a asp-area="Identity" asp-page="/Account/Login">If you already have an account, please click here to login.</a>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.ConfirmPassword"></label>
+                                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="get-started-btn">Register</button>
+                            </div>
+                            <div class="form-group my-auto">
+                                <a asp-area="Identity" asp-page="/Account/Login">If you already have an account, please click here to login.</a>
+                            </div>
                         </div>
                     </form>
                 </div>
-        </section>
-    </main>
+    </section>
+</main>
 
 
 @section Scripts {

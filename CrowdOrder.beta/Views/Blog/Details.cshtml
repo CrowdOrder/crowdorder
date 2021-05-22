@@ -6,7 +6,21 @@
 @inject UserManager<IdentityUser> UserManager
 @inject SiteDataService siteDataService
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
+}
+@section metatags{
+    
+<meta name="description" content='@Model.Abstract' />
+
+    <meta property='og:title' content='@Model.Title' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{Model.MainImagePath}")' />
+    <meta property='og:description' content='@Model.Abstract' />
+    <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{Model.Url}")' />
+    <meta name='twitter:title' content='@Model.Title' />
+    <meta name='twitter:description' content='@Model.Abstract' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{Model.MainImagePath}")' />
 }
 
 <main id="main">
@@ -19,7 +33,7 @@
                 <h1>Start Up and Small Business Blog and Guides</h1>
                 <ol>
                     <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
-                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "/small-business-start-up-blogs-guides")"></a>Blogs &amp; Guides</li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-blogs-guides")">Blogs &amp; Guides</a></li>
                     <li>Blog</li>
                 </ol>
             </div>
@@ -41,7 +55,7 @@
                         <div class="entry-meta">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="icofont-user"></i>@(Model.AuthorName ?? Model.Author.UserName)</li>
-                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>                                
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time></li>
                             </ul>
                         </div>
 
@@ -64,29 +78,46 @@
 
                     </article><!-- End blog entry -->
 
-                   
+
 
 
                 </div><!-- End blog entries list -->
 
                 <div class="col-lg-4">
 
-                    <div class="sidebar">                       
+                    <div class="sidebar">
 
                         <h3 class="sidebar-title">Recent Posts</h3>
                         <div class="sidebar-item recent-posts">
                             @foreach (var item in siteDataService.GetLatestBlogs(3))
                             {
-                                <div class="post-item clearfix">
-                                    <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
-                                    <time datetime="2020-01-01">@Model.CreatedDate.ToString("dd MMM yyyy")</time>
-                                </div>
+                            <div class="post-item clearfix">
+                                <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
+                                <time datetime="2020-01-01">@item.CreatedDate.ToString("dd MMM yyyy")</time>
+                            </div>
                             }
 
                         </div><!-- End sidebar recent posts-->
 
                     </div><!-- End sidebar -->
+                    <div class="sidebar2">
 
+                        <h5 class="sidebar-title">
+                            Stop paying full price for the software and services you use to drive growth
+                        </h5>
+                        @if (!SignInManager.IsSignedIn(User))
+                                {
+                    <div class="read-more">
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-page-handler="Post" asp-route-returnUrl="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" title="login">Register for free offers now</a>
+                    </div>
+                                }
+                                else{
+
+                    <div class="read-more">                        
+                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")">View all free offers now</a>
+                    </div>
+                                }
+                    </div><!-- End sidebar -->
                 </div><!-- End blog sidebar -->
 
             </div>

@@ -1,51 +1,98 @@
 ﻿@model CrowdOrder.beta.Models.Article
+@using CrowdOrder.beta.Infrastructure;
 
 @{
     ViewData["Title"] = "Create";
 }
+@section head{
+    <script src="https://cdn.tiny.cloud/1/aafarkkrn2fznunaht1sof4bd4r8o5092fypbv85fn9i3rv4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter link image linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment anchor showcomments casechange link image checklist code formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
 
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Create new article</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Title" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Url" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Url" class="form-control" />
-                <span asp-validation-for="Url" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Abstract" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <textarea asp-for="Abstract" class="form-control" rows="5"></textarea>
-                <span asp-validation-for="Abstract" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Contents" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <textarea asp-for="Contents" class="form-control" rows="20"></textarea>
-                <span asp-validation-for="Contents" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</form>
+<main id="main">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Start Up and Small Business Blog and Guides</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li><a href="~/Admin">Website Admin</a></li>
+                    <li>Blog</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" style="padding-top:5px;">
+        <div class="container">
+                <form asp-action="Create">
+                    <div class="form-horizontal">
+                        <h4>Create new blog</h4>
+                        <hr />
+                        <div asp-validation-summary="None" class="text-danger"><p>Please complete all fields</p></div>
+                        <div class="form-group">
+                            <label asp-for="Title" class="col-md-10 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Url" class="col-md-10 control-label">Url - ensure correct format is used (/ensure-correct-format-is-used)</label>
+                            <div class="col-md-10">
+                                <input asp-for="Url" class="form-control" />
+                                <span asp-validation-for="Url" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MainImagePath" class="col-md-10 control-label">Main image - Used for list screens (images must be uploaded to blog folder before selecting)</label>
+                            <div class="col-md-10">
+                                <input asp-for="MainImagePath" class="form-control" />
+                                <span asp-validation-for="MainImagePath" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AuthorName" class="col-md-10 control-label">Authors name as it will appear next to blog</label>
+                            <div class="col-md-10">
+                                <input asp-for="AuthorName" class="form-control" />
+                                <span asp-validation-for="AuthorName" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Abstract" class="col-md-10 control-label">Abstract - short overview description</label>
+                            <div class="col-md-10">
+                                <input asp-for="Abstract" class="form-control" rows="5" />
+                                <span asp-validation-for="Abstract" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Contents" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <textarea asp-for="Contents" class="form-control" rows="20"></textarea>
+                                <span asp-validation-for="Contents" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="get-started-btn">Create blog</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </section>
+</main>
+
 

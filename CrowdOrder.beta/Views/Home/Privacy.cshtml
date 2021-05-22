@@ -1,5 +1,10 @@
-﻿@{
+﻿@using CrowdOrder.beta.Infrastructure;
+@{
     ViewData["Title"] = "Privacy Policy";
+}
+@section metatags
+{
+    <meta name="description" content="Find out more about Crowd Order's privacy policy." />
 }
 <main id="main">
 
@@ -10,7 +15,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h1>@ViewData["Title"]</h1>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
                     <li>Privacy</li>
                 </ol>
             </div>
@@ -400,7 +405,7 @@
                     <p>
                         We may update this privacy notice from time to time as necessary. The terms that apply to you are those posted here on our website on the day you use our website. We advise you to print a copy for your records.
                         If you have any question regarding our privacy policy, please contact us.
-                    </p>                    
+                    </p>
                 </div>
             </div>
         </div>

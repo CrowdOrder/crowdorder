@@ -10,7 +10,7 @@
 }
 @section metatags
 {
-    <meta name="description" content=@Model.MetaDescription />
+    <meta name="description" content="@Model.MetaDescription" />
 }
 
 <main id="main">
@@ -22,7 +22,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h1>@Html.DisplayFor(model => model.H1)</h1>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
                     <li><a href="/small-business-start-up-services">Services</a></li>
                     <li>@Model.Name</li>
                 </ol>
@@ -41,7 +41,7 @@
                     <article class="entry entry-single">
 
                         <div class="entry-img">
-                            <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{Model.LogoUrl}")" alt="" class="img-fluid">
+                            <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"Partners/{Model.LogoUrl}")" alt="" class="img-fluid">
                         </div>
 
                         <h2 class="entry-title">

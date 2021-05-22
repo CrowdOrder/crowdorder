@@ -1,0 +1,19 @@
+﻿Connection Confirmation email copy
+
+
+Subject: Connection Confirmation
+
+
+Hi (First Name),
+
+This is just an email to confirm that we’ve just connected you to our Partner, (PARTNER COMPANY NAME), as you requested.
+
+We’ll leave you to discuss your business requirements directly with them, but rest assured that you will now automatically receive a discount of (PARTNER DISCOUNT AMOUNT) should you decide to start working with (PARTNER COMPANY NAME).
+
+Best of luck and thanks for your using Crowd Order!
+
+
+
+
+Thanks,
+The Crowd Order team 

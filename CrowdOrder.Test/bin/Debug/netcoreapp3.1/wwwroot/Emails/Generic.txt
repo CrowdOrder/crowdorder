@@ -1,0 +1,23 @@
+﻿( https://www.crowdorder.co.uk )
+
+******
+{{h1}}
+******
+
+{{greeting}}
+
+{{maintext}}
+
+ If having trouble, please copy and paste the following link into your browser 
+ {{buttonurl}}
+
+
+Thanks,
+
+The Crowd Order team.
+
+Crowd Order Ltd.
+
+24 Holborn Viaduct.
+
+London, EC1A 2BN.

@@ -60,7 +60,7 @@ namespace CrowdOrder.beta.Areas.Identity.Pages.Account
                 await ((EmailSender)_emailSender).SendEmailAsync(
                     Input.Email,
                     "Reset Password",
-                    $"You have requested to reset your password. Please click the button below to create your new password", "Reset Password", HtmlEncoder.Default.Encode(callbackUrl));
+                    $"You have requested to reset your password. Please click the button or link below to create your new password", "Reset Password", HtmlEncoder.Default.Encode(callbackUrl));
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

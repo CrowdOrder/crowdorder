@@ -22,9 +22,28 @@ namespace CrowdOrder.beta.Data
 
         internal List<PartnerConnection> ListAll()
         {
-            var data = _context.PartnerConnections.ToList();
+            var data = _context.PartnerConnections.Include(x => x.Service).ThenInclude(p => p.Partner).ToList();
             return data;
         }
+
+        //internal List<PartnerConnection> ListAllWithUsers()
+        //{
+        //    var newlist = new List<PartnerConnectionDisplayVM>();
+        //    var data = _context.PartnerConnections.Include(x => x.Service).ThenInclude(p => p.Partner).ToList();
+        //    foreach(var item in data)
+        //    {
+        //        newlist.Add(
+        //            new PartnerConnectionDisplayVM
+        //            {
+        //                Id = item.Id,
+        //                Service = item.Service,
+        //                Timestamp = item.Timestamp,
+        //                UserId = item.UserId,
+        //                User = _context.Companys
+        //            });
+        //    }
+        //    return data;
+        //}
 
         internal PartnerConnection FindById(int id)
         {

@@ -24,7 +24,11 @@
     ".NETCoreApp,Version=v3.1": {
       "CrowdOrder.beta/1.0.0": {
         "dependencies": {
+          "MailKit": "2.9.0",
           "Markdown": "2.2.1",
+          "Microsoft.AspNet.Mvc": "5.2.7",
+          "Microsoft.AspNetCore.Authentication.Facebook": "3.1.10",
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.10",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.7",
           "Microsoft.AspNetCore.Identity.UI": "3.1.7",
@@ -32,6 +36,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.7",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.7",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
+          "MimeKit": "2.9.2",
           "SendGrid": "9.21.0",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "3.4.0",
@@ -307,6 +312,20 @@
           "CrowdOrder.beta.dll": {}
         }
       },
+      "MailKit/2.9.0": {
+        "dependencies": {
+          "MimeKit": "2.9.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MailKit.dll": {
+            "assemblyVersion": "2.9.0.0",
+            "fileVersion": "2.9.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MailKit.dll": {}
+        }
+      },
       "Markdown/2.2.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -321,6 +340,84 @@
         },
         "compile": {
           "lib/netstandard1.3/Markdown.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Mvc/5.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.7",
+          "Microsoft.AspNet.WebPages": "3.2.7"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.7": {
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.7",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.Deployment.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.10": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "3.1.10.0",
+            "fileVersion": "3.100.1020.52004"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.10": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.10.0",
+            "fileVersion": "3.100.1020.52004"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.7": {
@@ -1225,7 +1322,7 @@
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "5.5.0",
           "Newtonsoft.Json": "12.0.2",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "System.Security.Cryptography.Cng": "4.7.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -1361,6 +1458,17 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          }
+        },
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        }
+      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -1372,6 +1480,23 @@
         "dependencies": {
           "System.Security.AccessControl": "4.5.0",
           "System.Security.Principal.Windows": "4.5.0"
+        }
+      },
+      "MimeKit/2.9.2": {
+        "dependencies": {
+          "Portable.BouncyCastle": "1.8.5",
+          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Security.Cryptography.Pkcs": "4.7.0",
+          "System.Text.Encoding.CodePages": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MimeKit.dll": {
+            "assemblyVersion": "2.9.0.0",
+            "fileVersion": "2.9.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MimeKit.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -1445,6 +1570,17 @@
         },
         "compile": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.5": {
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "assemblyVersion": "1.8.5.0",
+            "fileVersion": "1.8.5.50"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -1945,7 +2081,7 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2167,7 +2303,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2296,7 +2432,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2392,7 +2528,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2457,12 +2593,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
+      "System.Reflection.TypeExtensions/4.4.0": {},
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -2594,7 +2725,7 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2"
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {},
+      "System.Security.Cryptography.Cng/4.7.0": {},
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -2645,6 +2776,14 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2"
         }
       },
+      "System.Security.Cryptography.Pkcs/4.7.0": {
+        "dependencies": {
+          "System.Security.Cryptography.Cng": "4.7.0"
+        },
+        "compile": {
+          "ref/netcoreapp3.0/System.Security.Cryptography.Pkcs.dll": {}
+        }
+      },
       "System.Security.Cryptography.Primitives/4.3.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
@@ -2689,7 +2828,7 @@
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.Numerics": "4.3.0",
           "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.Cng": "4.5.0",
+          "System.Security.Cryptography.Cng": "4.7.0",
           "System.Security.Cryptography.Csp": "4.3.0",
           "System.Security.Cryptography.Encoding": "4.3.0",
           "System.Security.Cryptography.OpenSsl": "4.3.0",
@@ -2853,7 +2992,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -4443,12 +4582,54 @@
       "serviceable": false,
       "sha512": ""
     },
+    "MailKit/2.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yFXqvORpRyveseJ4+RNOKNwabu/5vk1EVdY4oTKWvwDgWGTnOyop+U7iF6C1uYe5NroCCkKYPMPsgtMVX9FdcQ==",
+      "path": "mailkit/2.9.0",
+      "hashPath": "mailkit.2.9.0.nupkg.sha512"
+    },
     "Markdown/2.2.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-A6veXuFP1n50RbmFNtTgfHxnHmwMsgFLSCgS1xWbg5L8n5N6HFEksTlXocZ0LsmGW4leBzeLJd+BY7+g83zFJA==",
       "path": "markdown/2.2.1",
       "hashPath": "markdown.2.2.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Mvc/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m3hUsn48k6Qb5El9A8naTwGTLCdSQKGSpGweqIfiVKltGJzAJJxuXvhhaQQtLCGg3i5V88iGjz0JG72/tlFKlg==",
+      "path": "microsoft.aspnet.mvc/5.2.7",
+      "hashPath": "microsoft.aspnet.mvc.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Razor/3.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BpWEZ+Ys7g9VAkbAfpG5jr5A1fKcmadCCXv3fYfps5YfTVABJIGV4uc9yvmXKxsNsjL+BzDld2gs+xtgT2gg1g==",
+      "path": "microsoft.aspnet.razor/3.2.7",
+      "hashPath": "microsoft.aspnet.razor.3.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebPages/3.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2jwZFB7PvY+tbdz0ZP4iEo7gMrJxkCQUzoGLh6swUc6ZXl6DoKyDslmGcC/j9PFmJXCRMVIqtRorlPSMU2DuRA==",
+      "path": "microsoft.aspnet.webpages/3.2.7",
+      "hashPath": "microsoft.aspnet.webpages.3.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Cm4ajy89/oRCXI5OMbeA+Hq5vMy9p7wKN+d7KS7kMTxyIDlBjuyLhbuF99WAbvOi6P2IKAPxf/k1rhi5l2PU0g==",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.10",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.3.1.10.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-evidhsli1MSvLUMVt+eSJPW/6VIpcngUnuTkZj9QhnjuRcf9G2RrkuVNPSUY/0eKZD9RM+R9AMrJlBqvcF6WOQ==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.10",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.7": {
       "type": "package",
@@ -4912,6 +5093,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/3.1.4",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.3.1.4.nupkg.sha512"
     },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "hashPath": "microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4925,6 +5113,13 @@
       "sha512": "sha512-+FWlwd//+Tt56316p00hVePBCouXyEzT86Jb3+AuRotTND0IYn0OO3obs1gnQEs/txEnt+rF2JBGLItTG+Be6A==",
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
+    },
+    "MimeKit/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tj8mhCKPFu4FK9F2Md1x5xN3hVY7EC5e6j8Z51ynReRWhnlFfVkIWj5jnHZu7irUsvSX3JWk0HL5LLOuECOFbw==",
+      "path": "mimekit/2.9.2",
+      "hashPath": "mimekit.2.9.2.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
@@ -4946,6 +5141,13 @@
       "sha512": "sha512-qbXaB76XYUVLocLBs8Z9TS/ERGK2wm797feO+0JEPFvT7o7MRadOR77mqaSD4J1k8G+DlZQyq+MlkCuxrkr3ag==",
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
+    },
+    "Portable.BouncyCastle/1.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EaCgmntbH1sOzemRTqyXSqYjB6pLH7VCYHhhDYZ59guHSD5qPwhIYa7kfy0QUlmTRt9IXhaXdFhNuBUArp70Ng==",
+      "path": "portable.bouncycastle/1.8.5",
+      "hashPath": "portable.bouncycastle.1.8.5.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",
@@ -5556,12 +5758,12 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.TypeExtensions/4.3.0": {
+    "System.Reflection.TypeExtensions/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
-      "path": "system.reflection.typeextensions/4.3.0",
-      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
+      "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
+      "path": "system.reflection.typeextensions/4.4.0",
+      "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
@@ -5661,12 +5863,12 @@
       "path": "system.security.cryptography.algorithms/4.3.0",
       "hashPath": "system.security.cryptography.algorithms.4.3.0.nupkg.sha512"
     },
-    "System.Security.Cryptography.Cng/4.5.0": {
+    "System.Security.Cryptography.Cng/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
-      "path": "system.security.cryptography.cng/4.5.0",
-      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
+      "sha512": "sha512-4WQjFuypWtxb/bl/YwEE7LYGn4fgpsikFfBU6xwEm4YBYiRAhXAEJ62lILBu2JJSFbClIAntFTGfDZafn8yZTg==",
+      "path": "system.security.cryptography.cng/4.7.0",
+      "hashPath": "system.security.cryptography.cng.4.7.0.nupkg.sha512"
     },
     "System.Security.Cryptography.Csp/4.3.0": {
       "type": "package",
@@ -5688,6 +5890,13 @@
       "sha512": "sha512-h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
       "path": "system.security.cryptography.openssl/4.3.0",
       "hashPath": "system.security.cryptography.openssl.4.3.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0Srzh6YlhjuMxaqMyeCCdZs22cucaUAG6SKDd3gNHBJmre0VZ71ekzWu9rvLD4YXPetyNdPvV6Qst+8C++9v3Q==",
+      "path": "system.security.cryptography.pkcs/4.7.0",
+      "hashPath": "system.security.cryptography.pkcs.4.7.0.nupkg.sha512"
     },
     "System.Security.Cryptography.Primitives/4.3.0": {
       "type": "package",

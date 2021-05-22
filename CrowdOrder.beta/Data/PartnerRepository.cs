@@ -25,6 +25,16 @@ namespace CrowdOrder.beta.Data
             return data;
         }
 
+        internal List<Partner> GetAllNotIgnored(string affiliate = "")
+        {
+            var ignorepartners = _context.AffiliateIgnorePartners.Where(x => x.Affiliate.Link == affiliate).Select(p => p.Partner.Id).ToArray();
+            var data = (from p in _context.Partners
+                       where !ignorepartners.Contains(p.Id)
+                       select p).ToList();
+            
+            return data;
+        }
+
         internal Partner FindById(int id)
         {
             var data = _context.Partners.Include(x => x.Services).Where(x => x.Id == id).FirstOrDefault();
@@ -39,6 +49,7 @@ namespace CrowdOrder.beta.Data
                 var partner = FindById((int)model.Id);
                 partner.MainContact = model.MainContact;
                 partner.Name = model.Name;
+                partner.Body = model.Body;
                 partner.Url = model.Url;
                 partner.MainContactEmail = model.MainContactEmail;
                 partner.MainContactTel = model.MainContactTel;
@@ -56,6 +67,13 @@ namespace CrowdOrder.beta.Data
                 _context.SaveChanges();
                 return true;
             }
+        }
+
+        internal void SetActive(int id)
+        {
+            var partner = FindById(id);
+            partner.InActive = false;
+            Upsert(ref partner);
         }
     }
 }

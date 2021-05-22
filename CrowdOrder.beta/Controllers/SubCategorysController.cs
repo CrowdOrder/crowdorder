@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace CrowdOrder.beta.Controllers
@@ -13,13 +14,14 @@ namespace CrowdOrder.beta.Controllers
     {
         private readonly ILogger<SubCategorysController> _logger;
         private readonly SubCategoryRepository _subCategoryRepository;
+        private readonly IConfiguration _configuration;
 
         public SubCategorysController(ILogger<SubCategorysController> logger, 
-            SubCategoryRepository subCategoryRepository)
+            SubCategoryRepository subCategoryRepository, IConfiguration configuration)
         {
             _logger = logger;
             _subCategoryRepository = subCategoryRepository;
-
+            _configuration = configuration;
         }
         // GET: SubCategorys
         public ActionResult Index(int id)
@@ -30,7 +32,9 @@ namespace CrowdOrder.beta.Controllers
         // GET: SubCategorys/Details/5
         public ActionResult Details(int id)
         {
-            var model = _subCategoryRepository.FindById(id);
+            var affiliate = HttpContext.Session.GetString(_configuration["AffiliateKey"]);
+
+            var model = _subCategoryRepository.FindById(id,false, affiliate);
             return View(model);
         }
 

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using CrowdOrder.beta.Data;
 using CrowdOrder.beta.Infrastructure;
+using CrowdOrder.beta.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -38,7 +39,8 @@ namespace CrowdOrder.beta.Controllers
         // GET: PartnerConnectController
         public ActionResult Index()
         {
-            return View();
+            var data = _partnerConnectionRepository.ListAll();
+            return View(data);
         }
 
         // GET: PartnerConnectController/Details/5
@@ -49,7 +51,12 @@ namespace CrowdOrder.beta.Controllers
             var claim = User.FindFirst(ClaimTypes.NameIdentifier);
             var userId = Guid.Parse(claim.Value);
             var company = _companyRepository.FindByUserId(userId);
-            
+            if (company == null)
+            {
+                //user has not completed registration
+                return RedirectToAction("Company", "Home", new { returnUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.Path}" }) ;
+            }
+
             var connect = new PartnerConnection()
             {
                 Service = service,
@@ -66,7 +73,8 @@ namespace CrowdOrder.beta.Controllers
                 {
                     //send email to user
                     var email = _configuration["OverrideConnectionEmails"] != "" ? _configuration["OverrideConnectionEmails"] : connect.Service.Partner.MainContactEmail;
-                    var recipients = new List<string>() { email, User.Identity.Name };
+                    var mike = _configuration["OverrideConnectionEmails"] != "" ? _configuration["OverrideConnectionEmails"] : "mike.patrick@crowdorder.co.uk";
+                    var recipients = new List<string>() { email, User.Identity.Name, mike };
                     var greeting = $"Hi {connect.Service.Partner.MainContactInformalName},";
                     var body = $"I'd like to introduce you to {company.ContactFirstName} from {company.Name} who is interested in exploring the rates you offer to Crowd Order's users.";
 
@@ -75,7 +83,7 @@ namespace CrowdOrder.beta.Controllers
                         $"I'm sure {connect.Service.Partner.MainContactInformalName}  will reach out shortly to introduce themselves properly and thanks again for using Crowd Order. ";
 
 
-                    var dynamicTemplateData = new ExampleTemplateData
+                    var dynamicTemplateData = new EmailTemplateData
                     {                       
                         Subject = "Connection request",
                         Greeting = greeting,

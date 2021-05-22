@@ -1,32 +1,46 @@
 ﻿@page
 @model ExternalLoginModel
+@using CrowdOrder.beta.Infrastructure;
 @{
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-<h4 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h4>
-<hr />
+<main id="main">
 
-<p id="external-login-description" class="text-info">
-    You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
-    Please enter an email address for this site below and click the Register button to finish
-    logging in.
-</p>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Login</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Request.Host.Value, "")">Home</a></li>
+                    <li>Login</li>
+                </ol>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-</div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <p id="external-login-description" class="text-info">
+                You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
+                A CrowdOrder account has been created for you, please provide further detailsnext time you login - please use the same <strong>@Model.ProviderDisplayName</strong> login.
+            </p>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <input type="hidden" asp-for="Input.Email" class="form-control" />
+                        <button type="submit" class="btn btn-primary">Continue account setup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

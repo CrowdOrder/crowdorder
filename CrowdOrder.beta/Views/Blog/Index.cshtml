@@ -12,6 +12,17 @@
 @section metatags
 {
     <meta name="description" content="There are so many factors that go into making a start up or SME successful. Our Blogs and Guide are a great resource to help you drive your business forward." />
+    
+    <meta property='og:title' content='Crowd Order' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
+    <meta property='og:description' content='There are so many factors that go into making a start up or SME successful. Our Blogs and Guide are a great resource to help you drive your business forward.' />
+    <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-blogs-guides")' />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-blogs-guides")' />
+    <meta name='twitter:title' content='Crowd Order' />
+    <meta name='twitter:description' content='There are so many factors that go into making a start up or SME successful. Our Blogs and Guide are a great resource to help you drive your business forward.' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
+    
 }
 
 <main id="main">
@@ -20,10 +31,9 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
 
-            <div class="d-flex justify-content-between align-items-center">
-                <h1>Start Up and Small Business Blog and Guides</h1>
+            <div class="d-flex justify-content-between align-items-center">               
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>  
                     <li>Blogs &amp; Guides</li>
                 </ol>
             </div>
@@ -31,10 +41,10 @@
         </div>
     </section><!-- End Breadcrumbs -->
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <section id="about" class="blog">
         <div class="container">
-            <div class="=row">
-
+            <div class="row">
+                <h1>Start Up and Small Business Blog and Guides</h1>
                 <p>There are so many factors that go into making a start up or SME successful. Our Blogs and Guide are a great resource to help you drive your business forward.</p>
 
             </div>
