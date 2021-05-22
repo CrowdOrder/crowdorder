@@ -1,0 +1,113 @@
+﻿@using CrowdOrder.beta.Infrastructure;
+@{
+    ViewData["Title"] = "Testimonials";
+}
+@section metatags
+{
+    <meta name="description" content="Find out more about what people think about Crowd Order. Read their testimonials." />
+}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>@ViewData["Title"]</h1>
+                <ol>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li>Privacy</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item">
+                        <img src="~/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                        <h3>RA Allen</h3>
+                        <h4>Civil Engineer</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            The discounts are worth having, there's new partners added pretty regularly, and Crowd Order don't send you any spam. No complaints from my end.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item mt-4 mt-lg-0">
+                        <img src="~/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                        <h3> Sara Swift</h3>
+                        <h4>Salon Owner</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            I really liked Crowd Order's mission of standing up for SMEs, and when I looked at the services on offer, I found a couple that were really interesting. I've saved money and the software I purchased is saving me time.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item mt-4">
+                        <img src="~/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                        <h3>Steph Miller</h3>
+                        <h4>Social Media and Influencer Marketing Manager</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Why pay more than you need to? Crowd Order saved me money with no effort or hoops to jump through. It is simple and straight forward and awesome!
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item mt-4">
+                        <img src="~/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                        <h3> Mark Wilson</h3>
+                        <h4>Mechanic and Business Owner</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            I was spending more time on admin and less time on my business, and was already looking at Mazuma Money to help. Finding it discounted was an added bonus, and I'm looking forward to exploring what else Crowd Order has to offer.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item mt-4">
+                        <img src="~/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="testimonial-item mt-4">
+                        <img src="~/img/testimonials/testimonials-6.jpg" class="testimonial-img" alt="">
+                        <h3>Emily Harison</h3>
+                        <h4>Store Owner</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Eius ipsam praesentium dolor quaerat inventore rerum odio. Quos laudantium adipisci eius. Accusamus qui iste cupiditate sed temporibus est aspernatur. Sequi officiis ea et quia quidem.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+</main>

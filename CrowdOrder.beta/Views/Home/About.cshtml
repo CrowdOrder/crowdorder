@@ -1,4 +1,4 @@
-﻿
+﻿@using CrowdOrder.beta.Infrastructure;
 @{
     ViewData["Title"] = "About Us";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,10 +14,9 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h1>About Us</h1>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li>About Us</li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
+                    <li>About us</li>
                 </ol>
             </div>
 
@@ -28,44 +27,96 @@
         <div class="container">
             <div class="row content">
                 <div class="col-lg-6" style="padding-top:30px;">
+                    <h1>About us</h1>
                     <p>
-                        Crowd Order was founded with one simple purpose in mind; to support small and growing businesses to reduce costs and improve access to premium products and services.
+                        Crowd Order was founded with one simple purpose in mind: to support small and growing businesses to reduce costs and improve access to premium products and services.
                     </p>
                     <p>
                         Too often society favours the big guy, with greater purchasing power and the resources to enhance their business. But what about entrepreneurs and founders of smaller companies? How do you get a better deal and reduce costs in an efficient way?
                     </p>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0" style="text-align:center;">
-                    <img src="~/img/about1300.png" />
+                    <img src="~/img/About us -1400.png" />
                 </div>
             </div>
             <div class="row content" style="margin-top:40px;">
-                    <div class="col-lg-6 hideSmall" style="text-align:center;">
-                        <img src="~/img/about2300.png" />
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0">
-                        <p>
-                            Crowd Order has created a fairer Marketplace to save these companies thousands per year by aggregating the buying power of hundreds of smaller businesses.
-                        </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> Lots of small businesses sign-up for free on Crowd Order</li>
-                            <li><i class="ri-check-double-line"></i> Crowd Order aggregates this  buying power to secure reduced rates with its Partners</li>
-                            <li><i class="ri-check-double-line"></i> Any Crowd Order user can then access those reduced rates, at any time</li>
-                        </ul>
-                        <p>
-                            Couple this need with the increasing pressure larger companies are coming under to lead with “Purpose” and the need to demonstrate they are giving back to society and the economy, Crowd Order both contributes to the Purpose mission, at the same time as delivering access to a new customer base.
-                        </p>
-                        <p>
-                            It was critical to us that we ensure there is something in it for everyone, big or small.
-                        </p>
-                        <p>
-                            <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn ml-auto">Join Crowd Order for free!</a>
-                        </p>
-                    </div>
+                <div class="col-lg-6 hideSmall" style="text-align:center;">
+                    <img src="~/img/About us - Saving Money.png" />
                 </div>
-
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>How does Crowd Order work?</h3>
+                    <p>
+                        Crowd Order has created a fairer Marketplace to save these companies thousands per year by aggregating the buying power of hundreds of smaller businesses.
+                    </p>
+                    <ol>
+                        <li>Lots of small businesses sign-up for free on Crowd Order</li>
+                        <li>Crowd Order aggregates this  buying power to secure reduced rates with its Partners</li>
+                        <li>Any Crowd Order user can then access those reduced rates, at any time</li>
+                    </ol>
+                </div>
             </div>
-    </section><!-- End About Section -->
-  
-</main><!-- End #main -->
+            <div class="row content">
+                <div class="col-lg-6" style="padding-top:30px;">
+                    <h3>What we don't do</h3>
+                    <p>
+                        Crowd Order does not share any of your data with our partners; it is up to you whether to sign up for the discounted services on offer, or contact the service provider to learn more.
+                    </p>
+                    <p>
+                        We’re also not in the business of spamming small business owners with unsolicited messages. We know how busy you are, and while you might be used to wading through emails you didn’t ask for, we won’t be adding to that challenge. We’d like to let you know when a new service provider has come on board, and there’s an optional monthly newsletter, but you’re in complete control of what you receive from us, and when.
+                    </p>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0" style="text-align:center;">
+                    <img src="~/img/About us - dont.png" />
+                </div>
+            </div>
+            <div class="row content" style="margin-top:40px;">
+                <div class="col-lg-6 hideSmall" style="text-align:center;">
+                    <img src="~/img/About us - partners.png" />
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>
+                        What’s in it for our partners?
+                    </h3>
+                    <p>
+                        Why should our partners offer Crowd Order users a discount when they’re doing really well selling their services at full price?
+                    </p>
+                    <p>
+                        Crowd Order gives our partners a meaningful, sustainable, and easy means of giving back to the small business community. By working with Crowd Order, they can develop their business model in a way that benefits society more broadly, not just bigger business.
+                    </p>
+                    <p>
+                        Because small businesses are the backbone of UK industry, driving up employment and giving people access to a higher quality of living. Simply put, helping you is the right thing to do.
+                    </p>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-lg-6" style="padding-top:30px;">
+                    <h3>
+                        How does Crowd Order choose partners?
+                    </h3>
+                    <p>
+                        We are regularly approached by potential partners, and while we welcome this, we are really selective about who we add to the Crowd Order partner list. We want to be sure that their business is robust and well supported, that their service genuinely drives value, and that they are one of the leaders in their field.
+                    </p>
+                    <p>
+                        It’s a fine balance between offering our users choice, and ensuring that we are confident that all of our partners are high quality. We will continue to add suppliers who meet our criteria, and we welcome suggestions from our users about potential partners to add.
+                    </p>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0" style="text-align:center;">
+                    <img src="~/img/About us - how.png" />
+                </div>
+            </div>
+            <div class="row content" style="margin-top:40px;">
+                <div class="col-lg-6 hideSmall" style="text-align:center;">
+                    <img src="~/img/About us - fund.png" />
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>How does Crowd Order fund itself?</h3>
+                    <p>
+                        Crowd Order typically gets a referral fee when one of our users signs up for one of our partner’s services. This helps us continue to bring on new partners, and spread the word about Crowd Order, so that more small businesses and start-ups can benefit from paying lower prices for essential business services.
 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section><!-- End About Section -->
+
+</main><!-- End #main -->

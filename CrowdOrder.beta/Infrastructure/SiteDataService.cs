@@ -76,11 +76,16 @@ namespace CrowdOrder.beta.Infrastructure
             var affiliate = context.Session.GetString(_configuration["AffiliateKey"]);
             if (affiliate != null)
             {
-                var data = _partnerRepository.GetAllNotIgnored(affiliate).OrderBy(x => Guid.NewGuid()).ToList();
+                var data = _partnerRepository.GetAllNotIgnored(affiliate).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
                 return data;
             }
-            return _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).ToList();
+            return _partnerRepository.ListAll().OrderBy(x => Guid.NewGuid()).Take(6).ToList();
         }
+        public Partner GetPartner(int Id)
+        {
+            return _partnerRepository.FindById(Id);
+        }
+
         public bool IsDev
         {
             get

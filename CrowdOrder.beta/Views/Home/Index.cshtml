@@ -8,18 +8,19 @@
 
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Discount software and services for small business";
 }
 @section metatags{
+    <meta name="description" content="Crowd Order secures exclusive, can't-be-beaten discounts on market-leading software and services for start-ups and small businesses. Register for free today!" />
     <meta property='og:title' content='Crowd Order' />
-    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
     <meta property='og:description' content='The only marketplace where companies offer exclusive rates to start-ups and small businesses' />
     <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")' />
     <meta name='twitter:card' content='summary' />
     <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")' />
     <meta name='twitter:title' content='Crowd Order' />
     <meta name='twitter:description' content='The only marketplace where companies offer exclusive rates to start-ups and small businesses' />
-    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
 }
 <section id="hero" class="section-bg">
     <div id="heroCarousel" class="slide carousel-fade">
@@ -30,25 +31,41 @@
                 <div class="carousel-container">
                     <div class="container">
                         <div class="row content">
-                            <div class="col-lg-7 align-text-bottom">
-                                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Crowd Order</span></h2>
-                                <p class="animate__animated animate__fadeInUp largerfont">
-                                    The only marketplace where companies offer exclusive rates to start-ups and small businesses
-                                </p>
+                            <div class="col-lg-6 align-text-bottom">
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <h1 class="animate__animated animate__fadeInDown">Welcome to Crowd Order!</h1>
+                                    <p class="animate__animated animate__fadeInUp">
+                                        Now you’re a registered user, you’ll be able to see the details of the discounts available on each of the services pages.
+                                        <br />
+                                        When you’ve found one that interests you, just click on ‘Connect to Partner’ and we’ll make the introduction. You’re not committing yourself to anything at this stage; it’s just an expression of interest. The next step will be directly with the supplier, leveraging the Crowd Order discount.
+                                    </p>
+                                }
+                                else
+                                {
+                                    <h1 class="animate__animated animate__fadeInDown">Exclusive discounts on software and services for small businesses</h1>
+                                    <p class="animate__animated animate__fadeInUp largerfont">
+                                        Crowd Order's mission is simple: we combine the buying power of our community to negotiate discounts with market-leading software and service providers, so you pay less.
+                                    </p>
+                                }
+
+
                                 @if (!SignInManager.IsSignedIn(User))
                                 {
                                     <form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin"
                                           asp-route-returnUrl="/" method="post">
-                                        <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started animate__animated animate__fadeInUp scrollto">Join Crowd Order for free</a>
+                                        <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">View all offers</a>
                                         <button type="submit" asp-area="Identity" name="provider" value="Google" asp-page="/Account/Externallogin" class="btn-get-started animate__animated animate__fadeInUp scrollto loginBtn--google">    </button>
                                     </form>
                                 }
-                                <p class="animate__animated animate__fadeInUp" style="margin-top:20px;">
-                                    Everything your business needs at an attractive price
-                                </p>
+                                else
+                                {
+
+                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started animate__animated animate__fadeInUp scrollto">Browse services</a>
+                                }
                             </div>
-                            <div class="col-lg-5 pt-4 pt-lg-0 hideSmall homeSmallImgFix">
-                                <img src="~/img/finance320.png" />
+                            <div class="col-lg-6 pt-4 pt-lg-0 homeSmallImgFix hideSmall">
+                                <img src="~/img/Homepage Banner.png" />
                             </div>
                         </div>
                     </div>
@@ -64,13 +81,36 @@
             <div class="container">
                 <div class="row content">
                     <div class="col-lg-6  pt-4 pt-lg-0">
-                        <h2>Who we are</h2>
-                        <img src="~/Who we are320.png" class="hideBig" />
-                        <p>Crowd Order is the only marketplace where companies are prepared to offer their products and services at exclusive rates to start-ups and small businesses</p>
-                        <a href="about-us" class="get-started-btn animate__animated animate__fadeInUp scrollto">Learn more</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <h2>Not sure where to start?</h2>
+                            <p>
+                                Every small business is different, so we’d suggest browsing through the products and services on offer to see if inspiration strikes you! From finance to marketing, operations to HR, there’s something for everyone. That said, if you’d like a steer, we’ve written <a href="small-business-start-up-blogs-guides/getting-started-guide">a simple guide</a> to the most popular services on our platform, by company size.
+                            </p>
+                            <p>
+                                Our most popular services right now are <a href="small-business-start-up-services/mazuma-money">Mazuma Money</a> - helping with bookkeeping, VAT returns and management accounts; <a href="small-business-start-up-services/monday-dot-com">Monday.com</a> - project management software to help get your project across the line on time and on budget, and <a href="small-business-start-up-services/you-at-work">You at Work</a>, helping you retain and strengthen your hardworking staff through these challenging times.
+                            </p>
+                            <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "small-business-start-up-services")" class="btn-get-started">Browse services</a>
+                        }
+                        else
+                        {
+                            <h2>Who is Crowd Order for?</h2>
+                            <p>
+                                Crowd Order is for small businesses and start-ups who are growing fast, and need support for anything from <a href="/financial-accountancy-offers-discounts/accounting-bookkeeping">bookkeeping</a> to <a href="/marketing-services-offers-discounts/branding-services">designing a new logo</a>.
+                                We handpick the best reviewed and most reputable service providers in the market, and negotiate discounts on behalf of our community, so your small business benefits from big purchasing power.
+
+                            <p>
+                                SMEs are the backbone of the UK economy, and helping small businesses is helping society: greater employment, higher quality of living, and more innovative products and services being brought to market. The software and service providers we work with will help you take your business from strength to strength.
+                            </p>
+                            </p>
+                            <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Register for free</a>
+                        }
                     </div>
                     <div class="col-lg-6 hideSmall">
-                        <img src="~/img/Who we are400.png" />
+                        <img src="~/img/Who we are500.png" />
+                    </div>
+                    <div class="col-lg-6 hideBig">
+                        <img src="~/img/Who we are320.png" />
                     </div>
                 </div>
             </div>
@@ -83,53 +123,228 @@
 
                 <div class="row content">
                     <div class="col-lg-6  pt-4 pt-lg-0 hideSmall">
-                        <img src="~/img/commerce400.png" />
+                        <img src="~/img/commerce500.png" />
                     </div>
                     <div class="col-lg-6">
-                        <h2>What we do</h2>
-                        <img src="~/commerce320.png" class="hideBig" />
-                        <p>
-                            We find companies that are ready and willing to offer you a reduced rate to help your start-up or small businesses access premium products and services at affordable prices. Essentially, Crowd Order aggregates the buying power of all of its users to secure a rate that anyone can take advantage of
-                        </p>
-                        <p>
-                            It’s completely free to join Crowd Order and takes less than a minute to get started
-                        </p>
-                        <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Get started</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <h2> What if you can’t find a provider for the service you need?</h2>
+                            <p>
+                                We are pretty selective about the service providers we add to Crowd Order <a href='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "about-us")'>(find out more about how we go about choosing suppliers)</a>, but we are always open to suggestions. Please get in touch whether you have a general need or a specific supplier in mind, and we’ll see what we can do.
+                            </p>
+                            <p>
+                                Secondly, because some of the deals we have secured are so competitive, they can't be made public. After you've signed up, the full details of every discount is available to view on the site, and it's then up to you which deals you want to explore further.
+                                <i>Your email won't be shared with any partners unless you actively contact them, so don't worry about being drowned in emails you didn't request.</i>'
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="https://twitter.com/CrowdOrder" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="https://www.facebook.com/crowdorder" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="https://linkedin.com/company/crowdorder" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        }
+                        else
+                        {
+                            <h2>How does Crowd Order work?</h2>
+                            <ul class="hideBig">
+                                <li>We use the buying power of our thousands of users to secure special rates that wouldn't otherwise be available to small businesses.</li>
+                                <li>Some of these deals are so competitive, they can not be made public! That's why we ask you to register as a user, but your email won't be passed to any service provider; it's up to you whether to take the next steps.</li>
+                            </ul>
+
+                            <p class="hideSmall">
+                                We ask you to register for Crowd Order for two reasons: firstly because it is through volume of users that we can negotiate the best deals (we're effectively aggregating your buyer power to secure special rates that wouldn't otherwise be available to small businesses).
+                            </p>
+                            <p class="hideSmall">
+                                Secondly, because some of the deals we have secured are so competitive, they can't be made public. After you've signed up, the full details of every discount is available to view on the site, and it's then up to you which deals you want to explore further.
+                                <i>Your email won't be shared with any partners unless you actively contact them, so don't worry about being drowned in emails you didn't request.</i>
+                            </p>
+
+                            <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Register for free</a>
+                        }
+                    </div>
+                    <div class="col-lg-6  pt-4 pt-lg-0 hideBig">
+                        <img src="~/img/commerce320.png" />
                     </div>
                 </div>
             </div>
         </div>
     </section><!-- End About Section -->
-    <!-- ======= available Section ======= -->
-    <section id="available" class="about">
-        <div class="home-container">
-            <div class="container">
-                <div class="row content">
-                    <div class="col-lg-6">
-                        <h2>What's available</h2>
-                        <img src="~/img/What's available320.png" class="hideBig" />
-                        <p>Are you looking for a new software solution? A marketing or design agency to work on your brand? To discover new ways to save on tax? Perhaps to improve your finance function? Or maybe to outsource admin or other operations? Whatever you need, we have a partner ready to offer you an exclusive rate</p>
-                        <a href="/small-business-start-up-services" class="get-started-btn animate__animated animate__fadeInUp scrollto">View all offers</a>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <!-- ======= available Section ======= -->
+        <section id="available" class="about">
+            <div class="home-container">
+                <div class="container">
+                    <div class="row content">
+                        <div class="col-lg-6">
+                            <h2>What services are available?</h2>
+                            <p class="hideBig">We aim to offer a choice of suppliers for every small business need. Here are some of the most requested services:</p>
+                            <p class="hideBig">
+                                <ul class="hideBig">
+                                    <li><a href="/hr-people-services-offers-discounts">HR and People discounted services</a></li>
+                                    <li><a href="/business-operations-services-offers-discounts/outsourced-administration-pa-services">Virtual Assistants</a></li>
+                                    <li><a href="/project-management-services-offers-discounts/project-management-software">Project management software</a></li>
+                                    <li><a href="/logistics-services-offers-discounts/procurement-logistics">Fulfilment support</a></li>
+                                    <li><a href="/marketing-services-offers-discounts/CRM">CRM software</a></li>
+                                    <li><a href="/marketing-services-offers-discounts/email-marketing">Email marketing</a></li>
+                                    <li><a href="/marketing-services-offers-discounts/branding-services">Branding support</a></li>
+                                    <li><a href="/marketing-services-offers-discounts/content-marketing">Digital marketing</a></li>
+                                    <li><a href="/financial-accountancy-offers-discounts/accounting-bookkeeping">Outsourced accounting</a></li>
+                                    <li><a href="/financial-accountancy-offers-discounts/payment-solutions">Payment processing services</a></li>
+                                </ul>
+                            </p>
+                            <p class="hideSmall">We aim to offer a choice of suppliers for every small business need. If you want to incentivise and reward your team, or speed up the onboarding process for new starters, have a look at our <a href="/hr-people-services-offers-discounts">HR and People discounted services</a>. If you need some help with admin tasks, a <a href="/business-operations-services-offers-discounts/outsourced-administration-pa-services">virtual assistant</a> might be the solution.</p>
+                            <p class="hideSmall">If you need <a href="/project-management-services-offers-discounts">project management software</a> to streamline your business processes, we have fantastic rates with some of the finest software providers around. How about <a href="/logistics-services-offers-discounts">fulfilment support</a> getting your products to your customers? Our service providers can integrate with your eCommerce platform and make this process seamless and at a lower price than you're paying today.</p>
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
+                            <img src="~/img/What's available500.png" />
+                        </div>
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
-                        <img src="~/img/What's available500.png" />
+                    <div class="row content hideSmall">
+                        <div class="col-lg-6">
+                            <img src="~/img/Services - Finance.png" />
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 hideSmall">
+                            <p>Sales and marketing is the lifeblood of small businesses; from <a href="/marketing-services-offers-discounts/CRM">CRM software</a> to manage sales, to <a href="/marketing-services-offers-discounts/email-marketing">email marketing</a>; from <a href="/marketing-services-offers-discounts/branding-services">branding support</a> to <a href="/marketing-services-offers-discounts/content-marketing">digital marketing</a>, our partners specialise in accelerating growth in start-ups and small businesses alike.</p>
+                            <p><a href="/financial-accountancy-offers-discounts">Outsourced accounting</a> and bookkeeping services ensure that you can focus on where you add value to your business rather than trying to navigate tax relief claims yourself. We even have discounts with <a href="/financial-accountancy-offers-discounts/payment-solutions">payment processing services</a> so you can take payments online or over the phone without having to worry about PCI compliance</p>
+                            @if (!SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-area="Identity" asp-page="/Account/Register" class="get-started-btn animate__animated animate__fadeInUp scrollto">Register for free</a>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
+        </section><!-- End Whats Section -->
+    }
+
+    <section id="testimonials" class="testimonials">
+        <div class="container content" data-aos="fade-up">
+            <h2>What people are saying about us</h2>
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                The discounts are worth having, there's new partners added pretty regularly, and Crowd Order don't send you any spam. No complaints from my end.
+                            </p>
+                            <div class="profile mt-auto">
+                                <img src="~/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                                <h3>RA Allen</h3>
+                                <h4>Civil Engineer</h4>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                I really liked Crowd Order's mission of standing up for SMEs, and when I looked at the services on offer, I found a couple that were really interesting. I've saved money and the software I purchased is saving me time.
+                            </p>
+                            <div class="profile mt-auto">
+                                <img src="~/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                <h3>Zac Brown</h3>
+                                <h4>Start Up Founder</h4>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                Why pay more than you need to? Crowd Order saved me money with no effort or hoops to jump through. It is simple, straight forward and awesome!
+                            </p>
+                            <div class="profile mt-auto">
+                                <img src="~/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                <h3>Steph Miller</h3>
+                                <h4>Social Media and Influencer Marketing Manager</h4>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                I was spending more time on admin and less time on my business, and was already looking at Mazuma Money to help. Finding it discounted was an added bonus, and I'm looking forward to exploring what else Crowd Order has to offer.
+                            </p>
+                            <div class="profile mt-auto">
+                                <img src="~/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                                <h3>Mark Wilson</h3>
+                                <h4>Mechanic and Business Owner</h4>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                The information from Crowd Order is bang-on and to the point, great for informing my decisions. It also helps that they saved me money as well.
+                            </p>
+                            <div class="profile mt-auto">
+                                <img src="~/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                                <h3>JP Larson</h3>
+                                <h4>Entrepreneur</h4>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
         </div>
-    </section><!-- End Whats Section -->
+
+    </section><!-- End Testimonials Section -->
     <!-- ======= Partners Section ======= -->
     <section id="clients" class="clients hideSmall">
         <div class="home-container">
             <div class="container">
                 <div class="row content">
-                    <div class="row" style="padding: 20px;">
-                        @foreach (var logo in siteDataService.GetPartnerLogos(Context))
-                        {
-                            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                                <a href="@logo.Url"><img src="partners/@logo.LogoUrl" class="img-fluid" alt=""></a>
+                    <h2>Some of our most popular partners</h2>
+                </div>
+
+                <div class="row">
+                    <div class="home-container">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="row" style="padding: 20px;">
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/mazuma-money"><img src="partners/Mazuma_Logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/opayo"><img src="partners/Opayo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/pipedrive"><img src="partners/pipedrive_logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/monday-dot-com"><img src="partners/mondaydotcom.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/get-response"><img src="partners/get-response.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                                        <a href="small-business-start-up-services/you-at-work"><img src="partners/You_at_work_logo.png" class="img-fluid" alt=""></a>
+                                    </div>
+                                </div>
                             </div>
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,10 +369,12 @@
                         first = false;
                         <div class="col-md-6">
                             <div class="icon-box">
-                                <i class="icofont-computer"></i>
                                 <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
                                 <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")" style="max-width:100%" />
                                 <p>@item.Abstract</p>
+                                <div class="read-more">
+                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">Read More</a>
+                                </div>
                             </div>
                         </div>
                     }
@@ -165,10 +382,12 @@
                     {
                         <div class="col-md-6 mt-4 mt-md-0">
                             <div class="icon-box">
-                                <i class="icofont-computer"></i>
                                 <h4><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">@item.Title</a></h4>
                                 <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"img/blogs/{item.MainImagePath}")" style="max-width:100%" />
                                 <p>@item.Abstract</p>
+                                <div class="read-more">
+                                    <a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"small-business-start-up-blogs-guides/{item.Url}")">Read More</a>
+                                </div>
                             </div>
                         </div>
                     }

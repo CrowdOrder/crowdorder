@@ -995,3 +995,4 @@ C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\wwwroot\Emails\RegistrationConfirm.txt
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\wwwroot\Emails\Welcome.html
 C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\bin\Release\netcoreapp3.1\wwwroot\Emails\Welcome.txt
+C:\DEV\In Progress\Crowdorder\git\Develop\CrowdOrder.beta\obj\Release\netcoreapp3.1\Razor\Views\Home\Testimonials.cshtml.g.cs

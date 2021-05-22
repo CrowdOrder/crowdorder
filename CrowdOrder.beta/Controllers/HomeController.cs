@@ -92,6 +92,10 @@ namespace CrowdOrder.beta.Controllers
         {
             return View();
         }
+        public IActionResult Testimonials()
+        {
+            return View();
+        }
         public IActionResult Terms()
         {
             return View();

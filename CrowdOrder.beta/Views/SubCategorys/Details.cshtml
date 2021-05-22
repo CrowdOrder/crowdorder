@@ -7,14 +7,14 @@
 {
     <meta name="description" content="@Model.MetaDescription" />
     <meta property='og:title' content='Crowd Order' />
-    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta property='og:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
     <meta property='og:description' content='@Model.MetaDescription' />
     <meta property='og:url' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)' />
     <meta name='twitter:card' content='summary' />
     <meta name='twitter:site' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, Model.Url)' />
     <meta name='twitter:title' content='Crowd Order' />
     <meta name='twitter:description' content='@Model.MetaDescription' />
-    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "Logo100.png")' />
+    <meta name='twitter:image' content='@UrlRewriteService.FixUrl(Context.Request.Host.Value, "img/Logo.png")' />
 }
 
 <main id="main">
@@ -25,7 +25,7 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="@UrlRewriteService.FixUrl(Context.Request.Host.Value, "")">Home</a></li>
                     <li><a href="/small-business-start-up-services">Services</a></li>
                     <li>@Model.Name</li>
                 </ol>
@@ -47,7 +47,7 @@
                             <div class="entry">
 
                                 <div class="entry-img">
-                                    <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"/Partners/{item.Partner.LogoUrl}")" alt="" class="img-fluid">
+                                    <img src="@UrlRewriteService.FixUrl(Context.Request.Host.Value, $"Partners/{item.Partner.LogoUrl}")" alt="" class="img-fluid">
                                 </div>
 
                                 <h2 class="entry-title">

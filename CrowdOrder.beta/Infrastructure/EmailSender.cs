@@ -74,6 +74,11 @@ namespace CrowdOrder.beta.Infrastructure
             {
                 email.To.Add(MailboxAddress.Parse(recipient));
             }
+            if (_configuration["Environment"].ToLower() != "dev")
+            {
+                email.Bcc.Add(MailboxAddress.Parse(Options.EmailUser));
+            }
+            
 
             email.Subject = templateData.Subject;
             var builder = new BodyBuilder();
